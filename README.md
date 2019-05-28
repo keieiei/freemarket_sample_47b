@@ -35,11 +35,16 @@ Things you may want to cover:
 
 ### Association
 
+- has_many :credit_cards
+- has_one :receiver_information
+- has_many :sender_evaluations, class_name: 'Evaluation', foreign_key: 'sender_id'
+- has_many :receiver_evaluations, class_name: 'Evaluation', foreign_key: 'receiver_id'
 - has_many :seller_items, class_name: 'Item', foreign_key: 'seller_id'
 - has_many :buyer_items, class_name: 'Item', foreign_key: 'buyer_id'
-- has_one :credit_card
-- has_one :receiver_information
+- has_many :nices
+- has_many :item_reports
 - has_many :comments
+- has_many :item_comments
 
 
 ## credit_cardsテーブル
@@ -50,7 +55,7 @@ Things you may want to cover:
 |valid_year|integer|-------|
 |valid_month|integer|-------|
 |security_code|integer|-------|
-|user_id|integer|null: false, unique: true|
+|user_id|integer|null: false|
 
 
 ### Association
@@ -80,25 +85,42 @@ Things you may want to cover:
 - belongs_to :user
 
 
+## evaluationsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|state|integer|null: false|
+|sender_state|integer|null: false|
+|comment|text|-------|
+|created_at|datetime|null: false|
+|sender_id|integer|null: false|
+|receiver_id|integer|null: false|
+
+
+### Association
+
+- belongs_to :sender, class_name: 'User', foreign_key: 'sender_id'
+- belongs_to :receiver, class_name: 'User', foreign_key: 'receiver_id'
+
+
 ## itemsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |detail|text|null: false|
+|large_category_id|integer|null: false|
+|middle_category_id|integer|null: false|
+|small_category_id|integer|-------|
 |size|integer|null: false|
-|brand|string|-------|
+|brand_id|integer|-------|
 |condition|integer|null: false|
 |deliverly_charge|integer|null: false|
 |deliverly_prefecture|integer|null: false|
 |delivery_time|integer|null: false|
-|price|integer :bigint, limit:8|null: false|
+|price|integer|null: false|
 |created_at|datetime|null: false|
-|sold_status|integer|null: false|
-|evaluation|integer|-------|
-|large_category_id|integer|null: false|
-|middle_category_id|integer|null: false|
-|small_category_id|integer|-------|
+|state|integer|null: false|
 |seller_id|integer|null: false|
 |buyer_id|integer|null: false|
 
@@ -110,7 +132,10 @@ Things you may want to cover:
 - belongs_to :large_category
 - belongs_to :middle_category
 - belongs_to :small_category
+- belongs_to :brand
 - has_many :images
+- has_many :nices
+- has_many :item_reports
 - has_many :comments
 
 
@@ -169,16 +194,72 @@ Things you may want to cover:
 - belongs_to :middle_category
 
 
-## commentsテーブル
+## brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
-|item_id|text|null: false|
-|user_id|text|null: false|
+|name|string|null: false|
+
+
+### Association
+
+- has_many :items
+
+
+## nicesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|item_id|integer|null: false|
+|user_id|integer|null: false|
 
 
 ### Association
 
 - belongs_to :item
+- belongs_to :user
+
+
+## item_reportsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|created_at|datetime|null: false|
+|item_id|integer|null: false|
+|user_id|integer|null: false|
+
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+
+## commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|item_id|integer|null: false|
+|user_id|integer|null: false|
+
+
+### Association
+
+- has_many :comment_reports
+- belongs_to :item
+- belongs_to :user
+
+
+## comment_reportsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|created_at|datetime|null: false|
+|comment_id|integer|null: false|
+|user_id|integer|null: false|
+
+### Association
+
+- belongs_to :comment
 - belongs_to :user
