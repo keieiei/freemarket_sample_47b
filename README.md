@@ -32,6 +32,7 @@ Things you may want to cover:
 |email|string|null: false, unique: true|
 |password|string|null: false|
 |profile|text|-------|
+|created_at|datetime|null: false|
 
 ### Association
 
@@ -45,6 +46,33 @@ Things you may want to cover:
 - has_many :item_reports
 - has_many :comments
 - has_many :item_comments
+- has_many :notifications, thorough: :user_notifications
+- has_many :user_notifications
+
+
+## notificationsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|url|string|null: false|
+|created_at|datetime|null: false|
+
+### Association
+- has_many :users, thorough: :user_notifications
+- has_many :user_notifications
+
+
+## user_notificationsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+|notification_id|integer|null: false|
+
+### Association
+- belongs_to :user
+- belongs_to :notification
 
 
 ## credit_cardsテーブル
