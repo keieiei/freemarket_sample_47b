@@ -42,7 +42,7 @@ Things you may want to cover:
 - has_many :receiver_evaluations, class_name: 'Evaluation', foreign_key: 'receiver_id'
 - has_many :seller_items, class_name: 'Item', foreign_key: 'seller_id'
 - has_many :buyer_items, class_name: 'Item', foreign_key: 'buyer_id'
-- has_many :nices
+- has_many :likes
 - has_many :item_reports
 - has_many :comments
 - has_many :item_comments
@@ -80,6 +80,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |card_number|integer :bigint, limit:8|null: false, unique: true|
+|name|string|-------|
 |valid_year|integer|-------|
 |valid_month|integer|-------|
 |security_code|integer|-------|
@@ -95,8 +96,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|family_name_kanji|string|null: false|
-|first_name_kanji|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
 |postal_code|string|null: false|
@@ -162,7 +163,7 @@ Things you may want to cover:
 - belongs_to :small_category
 - belongs_to :brand
 - has_many :images
-- has_many :nices
+- has_many :likes
 - has_many :item_reports
 - has_many :comments
 
@@ -234,7 +235,7 @@ Things you may want to cover:
 - has_many :items
 
 
-## nicesテーブル
+## likesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
