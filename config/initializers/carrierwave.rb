@@ -6,14 +6,16 @@ CarrierWave.configure do |config|
   if Rails.env.production? 
     config.storage = :fog
     config.fog_provider = 'fog/aws'
+    puts "#{Rails.application.secrets.aws_access_key_id}"
+    puts "#{Rails.application.secrets.aws_secret_access_key}"
     config.fog_credentials = {
       provider: 'AWS',
-      binding.pry
       aws_access_key_id: Rails.application.secrets.aws_access_key_id,
       aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
       region: 'ap-northeast-1'
     }
-
+    puts "#{config.fog_credentials[aws_access_key_id]}"
+    puts "#{config.fog_credentials[aws_secret_access_key]}"
     config.fog_directory  = 'FreeMarket'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket47'
   else
