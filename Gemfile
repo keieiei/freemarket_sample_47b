@@ -59,6 +59,7 @@ end
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem 'pry-rails'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -67,7 +68,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 
-    gem 'pry-byebug'
+  gem 'pry-byebug'
 end
 
 group :production do
