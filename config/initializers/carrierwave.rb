@@ -15,8 +15,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
       region: 'ap-northeast-1'
     }
-    puts "#{config.fog_credentials[aws_access_key_id]}"
-    puts "#{config.fog_credentials[aws_secret_access_key]}"
+   
     config.fog_directory  = 'FreeMarket'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket47'
   else
