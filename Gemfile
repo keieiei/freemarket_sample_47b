@@ -61,6 +61,8 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'pry-rails'
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
