@@ -60,6 +60,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'pry-rails'
+gem 'devise'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
