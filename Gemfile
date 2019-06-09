@@ -63,6 +63,8 @@ gem 'pry-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'haml-rails'
+gem 'erb2haml'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
