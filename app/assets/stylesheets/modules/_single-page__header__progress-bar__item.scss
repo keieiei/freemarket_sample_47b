@@ -1,0 +1,38 @@
+.single-page__header__progress-bar__item {
+  &__status {
+    width: 12px;
+    height: 12px;
+    margin: 8px auto 0;
+    background: $gray;
+    border-radius: 50%;
+    &.active {
+      background: $red;
+    }
+    &:before, &:after {
+      position: absolute;
+      bottom: 5px;
+      z-index: -1;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: $gray;
+    }
+    &:before {
+      right: 50%;
+    }
+    &:after {
+      left: 50%;
+    }
+  }
+  &:first-child {
+    .single-page__header__progress-bar__item__status:before {
+      content: none;
+    }
+  }
+  &:last-child {
+    .single-page__header__progress-bar__item__status:after {
+      content: none;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+html {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  background-color: $white;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: $dark-black;
+  cursor: default;
+  font: 66.66667% sans-serif;
+  cursor: auto;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  background: $dark-white;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: $black;
+  line-height: 1;
+}
+
+a, area, button, input, label, select, textarea, [tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+select {
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}

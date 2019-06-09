@@ -1,0 +1,31 @@
+.single-page__body__form {
+  &__box {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  &__group {
+    margin: 40px 0 0;
+    &--top {
+      margin: 0;
+    }
+  }
+  &__info-text {
+    color: $dark-gray;
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+  &__submit-btn {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    background: $red;
+    border: 1px solid $red;
+    color: $white;
+    margin: 40px 0 0;
+  }
+}

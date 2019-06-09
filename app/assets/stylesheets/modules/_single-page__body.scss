@@ -1,0 +1,18 @@
+.single-page__body {
+  &__container {
+    background: $white;
+    width: 700px;
+    margin: 0 auto;
+  }
+  &__title {
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 32px 16px;
+    font-size: 22px;
+  }
+  &__form {
+    border-top: 1px solid $dark-white;
+    padding: 40px 16px;
+  }
+}
