@@ -1,0 +1,22 @@
+.single-page {
+  padding: 0 0 220px;
+  &__header {
+    height: 128px;
+    text-align: center;
+  }
+  &__body  {
+    display: block;
+  }
+  &__footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
+    z-index: 1;
+    padding: 40px 0;
+    text-align: center;
+  }
+}

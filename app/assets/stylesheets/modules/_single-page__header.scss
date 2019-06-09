@@ -1,0 +1,14 @@
+.single-page__header {
+  &__mercari-logo {
+    display: inline-block;
+    margin: 40px 0 0;
+  }
+  &__progress-bar {
+    font-size: 0;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    padding: 40px 0 0 44px;
+    border: 0;
+  }
+}
