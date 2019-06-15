@@ -108,13 +108,13 @@
         .single-page__body__form__group
           %p.single-page__body__form__group__text.single-page__body__form__group__text--text-center
             「次へ進む」のボタンを押すことにより、
-            %a.single-page__body__form__group__text__link
+            = link_to 'https://www.mercari.com/jp/tos_list/', class: 'single-page__body__form__group__text__link' do
               利用規約
             に同意したものとみなします
         %button.single-page__body__form__submit-btn
           次へ進む
         .single-page__body__form__group
           %p.single-page__body__form__group__text.single-page__body__form__group__text--text-right
-            %a.single-page__body__form__group__text__link
+            = link_to 'https://www.mercari.com/jp/help_center/article/423/', class: 'single-page__body__form__group__text__link' do
               本人情報の登録について
             = fa_icon 'angle-right', class: 'single-page__body__form__group__text__icon-arrow-right'
