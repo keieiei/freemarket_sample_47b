@@ -10,5 +10,9 @@
   &__link {
     display: block;
     color: $black;
+    &:hover {
+      opacity: .7;
+      text-decoration: underline;
+    }
   }
 }

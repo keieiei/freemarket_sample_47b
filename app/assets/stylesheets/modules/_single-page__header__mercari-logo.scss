@@ -5,6 +5,9 @@
     width: 185px;
     height: 49px;
     line-height: 49px;
+    &:hover {
+      opacity: .7;
+    }
   }
   &__image {
     width: 185px;
