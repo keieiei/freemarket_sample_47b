@@ -1,0 +1,23 @@
+%section.main-page__body__content__tab-container
+  %h2.main-page__body__content__tab-container__head-title
+    購入した商品
+  %ul.main-page__body__content__tab-container__title-list
+    %li.main-page__body__content__tab-container__title-list__item.main-page__body__content__tab-container__title-list__item--active
+      %h3.main-page__body__content__tab-container__title-list__item__title
+        = link_to '', class: 'main-page__body__content__tab-container__title-list__item__link' do
+          取引中
+          %span.main-page__body__content__tab-container__title-list__item__number
+            0
+    %li.main-page__body__content__tab-container__title-list__item
+      %h3.main-page__body__content__tab-container__title-list__item__title
+        = link_to '', class: 'main-page__body__content__tab-container__title-list__item__link' do
+          過去の取引
+          %span.main-page__body__content__tab-container__title-list__item__number
+            0
+  .main-page__body__content__tab-container__content-list
+    %ul#mypage-tab-transaction-now.main-page__body__content__tab-container__content-list__content.main-page__body__content__tab-container__content-list__content--active
+      %li.main-page__body__content__tab-container__content-list__content__item.main-page__body__content__tab-container__content-list__content__item--not-found
+        取引中の商品がありません
+    %ul#mypage-tab-transaction-old.main-page__body__content__tab-container__content-list__content
+      %li.main-page__body__content__tab-container__content-list__content__item.main-page__body__content__tab-container__content-list__content__item--not-found
+        過去に取引した商品がありません
