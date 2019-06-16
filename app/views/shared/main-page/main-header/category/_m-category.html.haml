@@ -1,0 +1,8 @@
+%li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child
+  = link_to 'トップス', '', class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child__link'
+  %ul.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child__grand-child-wrap
+    / categorysテーブル実装後、この部分をeachメソッドで書き換えること
+    / 部分テンプレートもsharedから移しとくこと
+    = render 'shared/main-page/main-header/category/s-category'
+    = render 'shared/main-page/main-header/category/s-category'
+    = render 'shared/main-page/main-header/category/s-category'
