@@ -1,0 +1,12 @@
+%li.main-page__header__nav-box__right-box__list__item__item-box__item
+  = link_to '', class: 'main-page__header__nav-box__right-box__list__item__item-box__item__link' do
+    %figure.main-page__header__nav-box__right-box__list__item__item-box__item__mercari-logo
+      = image_tag 'mercari_profile.png', class: 'main-page__header__nav-box__right-box__list__item__item-box__item__mercari-logo__image'
+    .main-page__header__nav-box__right-box__list__item__item-box__item__body
+      .main-page__header__nav-box__right-box__list__item__item-box__item__body__text
+        お知らせ1だよ!
+      %time.main-page__header__nav-box__right-box__list__item__item-box__item__body__time
+        = fa_icon 'clock', class: 'main-page__header__nav-box__right-box__list__item__item-box__item__body__time__icon'
+        %span.main-page__header__nav-box__right-box__list__item__item-box__item__body__time__text
+          10時間前
+  = fa_icon 'angle-right', class: 'main-page__header__nav-box__right-box__list__item__item-box__item__icon-arrow-right'

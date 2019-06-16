@@ -1,0 +1,35 @@
+%section.main-page__body__content__tab-container.main-page__body__content__tab-container--notification-todo
+  %ul.main-page__body__content__tab-container__title-list
+    %li.main-page__body__content__tab-container__title-list__item.main-page__body__content__tab-container__title-list__item--active
+      %h3.main-page__body__content__tab-container__title-list__item__title
+        = link_to '', class: 'main-page__body__content__tab-container__title-list__item__link' do
+          お知らせ
+          %span.main-page__body__content__tab-container__title-list__item__number
+            0
+    %li.main-page__body__content__tab-container__title-list__item
+      %h3.main-page__body__content__tab-container__title-list__item__title
+        = link_to '', class: 'main-page__body__content__tab-container__title-list__item__link' do
+          やることリスト
+          %span.main-page__body__content__tab-container__title-list__item__number
+            0
+  .main-page__body__content__tab-container__content-list
+    %ul#mypage-tab-notification.main-page__body__content__tab-container__content-list__content.main-page__body__content__tab-container__content-list__content--active
+      / 以下user-informationテーブルでeachメソッドを使用する
+      %li.main-page__body__content__tab-container__content-list__content__item
+        = link_to '', class: 'main-page__body__content__tab-container__content-list__content__item__link' do
+          %figure.main-page__body__content__tab-container__content-list__content__item__mercari-figure
+            = image_tag 'mercari_profile.png', class: 'main-page__body__content__tab-container__content-list__content__item__mercari-figure__image'
+          .main-page__body__content__tab-container__content-list__content__item__body
+            .main-page__body__content__tab-container__content-list__content__item__body__text
+              【出品はじめかたガイド】安心でかんたんに出品する方法をCHECKしてみよう！
+            %time.main-page__body__content__tab-container__content-list__content__item__body__time
+              = fa_icon 'clock', class: 'main-page__body__content__tab-container__content-list__content__item__body__time__icon'
+              %span.main-page__body__content__tab-container__content-list__content__item__body__time__text
+                12時間前
+          = fa_icon 'angle-right', class: 'main-page__body__content__tab-container__content-list__content__item__icon-arrow-right'
+      %li.main-page__body__content__tab-container__content-list__content__item.main-page__body__content__tab-container__content-list__content__item--last
+        = link_to '一覧を見る', '', class: 'main-page__body__content__tab-container__content-list__content__item--last__link'
+    %ul#mypage-tab-todo.main-page__body__content__tab-container__content-list__content
+      / 以下やることリストでeachメソッドを使用する
+      %li.main-page__body__content__tab-container__content-list__content__item.main-page__body__content__tab-container__content-list__content__item--not-found
+        現在、やることはありません

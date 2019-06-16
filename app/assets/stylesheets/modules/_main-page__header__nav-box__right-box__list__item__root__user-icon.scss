@@ -1,0 +1,10 @@
+.main-page__header__nav-box__right-box__list__item__root__user-icon {
+  &__image-wrap {
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  &__image {
+    vertical-align: bottom;
+    width: 32px;
+  }
+}

@@ -1,0 +1,19 @@
+%aside.main-page__app-banner
+  .main-page__app-banner__inner
+    .main-page__app-banner__inner__links
+      %h2.main-page__app-banner__inner__links__title
+        スマホでかんたんフリマアプリ
+      %p.main-page__app-banner__inner__links__text
+        今すぐ無料ダウンロード！
+      .main-page__app-banner__inner__links__icons
+        %figure.main-page__app-banner__inner__links__icons__mercari-figure
+          = image_tag 'mercari_icon.png', class: 'main-page__app-banner__inner__links__icons__mercari-figure__image'
+        %ul.main-page__app-banner__inner__links__icons__link-lists
+          %li.main-page__app-banner__inner__links__icons__link-lists__item
+            = link_to 'https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8', class: 'main-page__app-banner__inner__links__icons__link-lists__item__link' do
+              = image_tag 'app-store.svg', class: 'main-page__app-banner__inner__links__icons__link-lists__item__image'
+          %li.main-page__app-banner__inner__links__icons__link-lists__item
+            = link_to 'https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja', class: 'main-page__app-banner__inner__links__icons__link-lists__item__link' do
+              = image_tag 'google-play.svg', class: 'main-page__app-banner__inner__links__icons__link-lists__item__image'
+    %figure.main-page__app-banner__inner__sp-figure
+      = image_tag 'download_content_pc.png', class: 'main-page__app-banner__inner__sp-figure__image'

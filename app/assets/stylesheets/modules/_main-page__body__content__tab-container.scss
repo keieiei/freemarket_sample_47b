@@ -1,0 +1,14 @@
+.main-page__body__content__tab-container {
+  &__title-list {
+    border: 0;
+    background: $light-gray;
+    font-size: 0;
+  }
+  &__head-title {
+    padding: 0 16px;
+    background: $light-white;
+    font-size: 16px;
+    line-height: 72px;
+    font-weight: bold;
+  }
+}
