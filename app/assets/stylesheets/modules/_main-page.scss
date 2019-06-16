@@ -1,0 +1,44 @@
+.main-page {
+  &__header {
+    @include visible();
+    position: relative;
+    z-index: 1001;
+    background: $white;
+  }
+  &__bread-crumbs {
+    position: relative;
+    border-top: 1px solid $light-gray;
+    -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    background: $white;
+  }
+  &__body {
+    @include clearfix();
+    padding: 0 0 40px;
+    margin: 40px auto 0;
+    width: 1020px;
+  }
+  &__app-banner {
+    background: url(/images/download_bg_pc.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  &__footer {
+    padding: 0 20px 10px 20px;
+    background: $light-black;
+    color: $white;
+  }
+  &__sell-btn {
+    position: fixed;
+    z-index: 1000;
+    border-radius: 50%;
+    background: $red;
+    color: $white;
+    text-align: center;
+    bottom: 32px;
+    right: 32px;
+    width: 160px;
+    height: 160px;
+    font-size: 22px;
+  }
+}
