@@ -1,0 +1,9 @@
+%li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
+  %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
+    = link_to 'レディース', '', class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
+  %ul.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap
+    / categorysテーブル実装後、この部分をeachメソッドで書き換えること
+    / 部分テンプレートもsharedから移しとくこと
+    = render 'shared/main-page/main-header/category/m-category'
+    = render 'shared/main-page/main-header/category/m-category'
+    = render 'shared/main-page/main-header/category/m-category'
