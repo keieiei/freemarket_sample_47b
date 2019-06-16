@@ -8,8 +8,8 @@
   &__bread-crumbs {
     position: relative;
     border-top: 1px solid $light-gray;
-    -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    -webkit-box-shadow: 0 3px 3px 0 $light-transparent-dark-black;
+    box-shadow: 0 3px 3px 0 $light-transparent-dark-black;
     background: $white;
   }
   &__body {
@@ -19,7 +19,7 @@
     width: 1020px;
   }
   &__app-banner {
-    background: url(/images/download_bg_pc.jpg);
+    background-image: image-url("download_bg_pc.jpg");
     background-position: center;
     background-size: cover;
   }
