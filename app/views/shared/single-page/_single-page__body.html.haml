@@ -104,7 +104,7 @@
         .single-page__body__form__group
           -# 「私はロボットではありません」は実装方法後で調べて作る。今は画像を仮置きで置く
           .single-page__body__form__group__recaptcha
-            = image_tag('recaptcha.jpeg', size: "304x78", alt: "recaptcha")
+            = image_tag 'recaptcha.jpeg', alt: "recaptcha", class: "single-page__body__form__group__recaptcha__image"
         .single-page__body__form__group
           %p.single-page__body__form__group__text.single-page__body__form__group__text--text-center
             「次へ進む」のボタンを押すことにより、
