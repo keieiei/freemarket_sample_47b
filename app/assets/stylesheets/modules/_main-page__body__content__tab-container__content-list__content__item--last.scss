@@ -1,0 +1,14 @@
+.main-page__body__content__tab-container__content-list__content__item--last {
+  &__link {
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: $light-gray;
+    color: $black;
+    line-height: 56px;
+    text-align: center;
+    &:hover {
+      background-color: $light-white;
+    }
+  }
+}

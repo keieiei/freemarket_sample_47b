@@ -1,0 +1,11 @@
+.main-page__body {
+  &__content {
+    width: 700px;
+    float: right;
+  }
+  &__side-bar {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+  }
+}

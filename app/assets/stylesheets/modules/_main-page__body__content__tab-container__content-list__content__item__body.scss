@@ -1,0 +1,16 @@
+.main-page__body__content__tab-container__content-list__content__item__body {
+  &__text {
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    max-height: 4.4em;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+  }
+  &__time {
+    display: inline-block;
+    color: $dark-gray;
+  }
+}

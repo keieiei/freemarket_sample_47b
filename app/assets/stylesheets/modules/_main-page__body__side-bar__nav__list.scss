@@ -1,0 +1,8 @@
+.main-page__body__side-bar__nav__list {
+  &__item {
+    border-top: 1px solid $light-gray;
+    &:first-child {
+      border: 0;
+    }
+  }
+}
