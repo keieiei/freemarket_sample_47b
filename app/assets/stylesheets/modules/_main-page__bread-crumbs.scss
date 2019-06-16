@@ -1,0 +1,11 @@
+.main-page__bread-crumbs {
+    &__list {
+			overflow: visible;
+			width: 1020px;
+			min-width: 1068px;
+			margin: 0 auto;
+			padding: 16px 0;
+			white-space: normal;
+			font-size: 0;
+		}
+}
