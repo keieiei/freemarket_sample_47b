@@ -1,0 +1,13 @@
+.main-page__body__side-bar__nav {
+  &__title {
+    margin: 40px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &__list {
+    margin: 8px 0 0;
+    &:first-child {
+      margin: 0;
+    }
+  }
+}

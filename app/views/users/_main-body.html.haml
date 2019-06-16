@@ -1,0 +1,14 @@
+.main-page__body
+  .main-page__body__content
+    = render 'users/main-body/user-info'
+    = render 'users/main-body/notification-todo-box'
+    = render 'users/main-body/item-box'
+  .main-page__body__side-bar
+    %nav.main-page__body__side-bar__nav
+      = render 'users/main-body/general-list'
+      %h3.main-page__body__side-bar__nav__title
+        メルペイ
+      = render 'users/main-body/merpay-list'
+      %h3.main-page__body__side-bar__nav__title
+        設定
+      = render 'users/main-body/setting-list'
