@@ -3,7 +3,7 @@
     .main-page__header__top
       %h1.main-page__header__top__mercari-logo
         = link_to '', class: 'main-page__header__top__mercari-logo__link' do
-          = image_tag '/images/logo.svg', alt: "mercari", class: "main-page__header__top__mercari-logo__image"
+          = image_tag 'logo.svg', alt: "mercari", class: "main-page__header__top__mercari-logo__image"
       / 検索コントローラを作成したら下記直すこと
       %form.main-page__header__top__search-form
         %input{name: 'keyword', class: 'main-page__header__top__search-form__input-text', placeholder: "何かお探しですか？"}
