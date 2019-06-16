@@ -1,0 +1,30 @@
+.main-page__header__nav-box__right-box__list__item__item-box__item {
+  &__link {
+    display: block;
+    min-height: 80px;
+    padding: 16px;
+    color: $black;
+    &:hover {
+      background-color: $light-white;
+    }
+  }
+  &__mercari-logo {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 48px;
+    height: 48px;
+  }
+  &__body {
+    margin: 0 40px 0 68px;
+  }
+  &__icon-arrow-right {
+    vertical-align: middle;
+    color: $gray;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+}

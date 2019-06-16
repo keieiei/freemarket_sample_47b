@@ -1,0 +1,28 @@
+.main-page__header__nav-box__right-box__list__item {
+  &__root {
+    position: relative;
+    display: block;
+    height: 44px;
+    line-height: 32px;
+    font-size: 0;
+    color: #333;
+    &:hover {
+      color: $blue;
+    }
+  }
+  &__item-box {
+    position: absolute;
+    top: 44px;
+    z-index: 1;
+    display: none;
+    width: 320px;
+    background: $white;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+    font-size: 14px;
+    left: 0;
+    &--active {
+      display: block;
+    }
+  }
+}

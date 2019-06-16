@@ -1,0 +1,13 @@
+%li.main-page__header__nav-box__right-box__list__item
+  = link_to '', class: 'main-page__header__nav-box__right-box__list__item__root' do
+    = fa_icon 'bell', class: 'main-page__header__nav-box__right-box__list__item__root__icon'
+    %span.main-page__header__nav-box__right-box__list__item__root__title
+      お知らせ
+    .main-page__header__nav-box__right-box__list__item__root__unread-number
+      10
+  %ul.main-page__header__nav-box__right-box__list__item__item-box
+    / notificationsテーブル実装後、この部分をeachメソッドで書き換えること
+    / 部分テンプレートもsharedから移しとくこと
+    = render 'shared/main-page/main-header/notification/notification'
+    = render 'shared/main-page/main-header/notification/notification'
+    = render 'shared/main-page/main-header/notification/notification'

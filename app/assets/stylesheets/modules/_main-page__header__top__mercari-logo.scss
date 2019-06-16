@@ -1,0 +1,19 @@
+.main-page__header__top__mercari-logo {
+  &__link {
+    display: block;
+    color: $black;
+  }
+  &__image {
+    vertical-align: middle;
+    width: 134px;
+    height: 36px;
+  }
+  &__search-form {
+    position: relative;
+    margin-left: 45px;
+    width: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
