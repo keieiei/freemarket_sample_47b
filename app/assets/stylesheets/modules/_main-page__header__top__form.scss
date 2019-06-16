@@ -1,0 +1,29 @@
+.main-page__header__top__search-form {
+  &__input-text {
+    border: 1px solid $gray;
+    background: $dark-white;
+    border-radius: 4px;
+    padding: 0 42px 0 10px;
+    width: 100%;
+    height: 40px;
+    line-height: 1.5;
+    font-size: 16px;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+  }
+  &__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+}

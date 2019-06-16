@@ -1,0 +1,9 @@
+.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap {
+ &__child {
+  display: none;
+  width: 224px;
+  &--active {
+    display: block;
+  }
+ } 
+}
