@@ -66,6 +66,7 @@ gem 'devise-i18n-views'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
