@@ -1,0 +1,12 @@
+.main-page__footer__cell__inner-cell__list__item {
+  &__link {
+    color: $white;
+    font-size: 12px;
+    line-height: 1.5em;
+    display: block;
+    opacity: .7;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
