@@ -9,6 +9,9 @@
     margin: 40px auto 0;
     display: block;
     color: $black;
+    &:hover {
+      opacity: .7;
+    }
   }
   &__text {
     margin: 8px 0 0;
