@@ -1,0 +1,4 @@
+@mixin visible() {
+  display: block;
+  min-width: 768px;
+}
