@@ -1,0 +1,24 @@
+%footer.main-page__footer
+  %nav.main-page__footer__inner
+    .main-page__footer__cell
+      %h2.main-page__footer__cell__title
+        メルカリについて
+      = render 'shared/main-page/main-footer/company-info'
+    .main-page__footer__cell
+      %h2.main-page__footer__cell__title
+        ヘルプ＆ガイド
+      = render 'shared/main-page/main-footer/help-guide'
+    .main-page__footer__cell.main-page__footer__cell--columns
+      %h2.main-page__footer__cell__title
+        プライバシーと利用規約
+      = render 'shared/main-page/main-footer/policy-rule'
+    .main-page__footer__cell.main-page__footer__cell--lang
+      %h2.main-page__footer__cell__title
+        国
+      = render 'shared/main-page/main-footer/language'
+  .main-page__footer__bottom
+    = link_to '', class: 'main-page__footer__bottom__logo' do
+      = image_tag 'logo-white.svg', alt: "mercari", class: 'main-page__footer__bottom__logo__image'
+    %span.main-page__footer__bottom__copyright
+      %small.main-page__footer__bottom__copyright__text
+        ©︎2019 Mercari
