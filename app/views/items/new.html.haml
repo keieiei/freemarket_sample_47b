@@ -1,0 +1,133 @@
+%main.single-page__body
+  %section.single-page__body__container
+    %h2.single-page__body__title
+      商品情報を入力
+    =form_for @item do |f|
+      %form.single-page__body__form
+        .single-page__body__form__box
+          .single-page__body__form__group.single-page__body__form__group--top
+            %label{for: 'image', class: 'single-page__body__form__group__label '}
+              出品画像
+            %span.single-page__body__form__group__require-mark
+              必須
+            %div
+              最大10枚までアップロードできます
+            .single-page__body__form__group__image
+              = f.fields_for :images do |image|
+                .dz-message#needsclick
+                  Drop file here
+                .fallback
+                = image.file_field :image, multiple: true  
+          .single-page__body__form__group
+            %label{for: 'name', class: 'single-page__body__form__group__label'}
+            商品名
+            %span.single-page__body__form__group__require-mark
+              必須
+            = f.text_field :name, placeholder: '商品名（必須40文字まで）', class: 'single-page__body__form__group__input-text'
+          .single-page__body__form__group
+            %label{for: 'detail', class: 'single-page__body__form__group__label'}
+            商品の説明
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            = f.text_area :detail, placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。', class: 'single-page__body__form__group__input-text',rows: 10,cols:80
+          .single-page__body__form__group
+            %h3.single-page__body__form__group__title
+              商品の詳細
+            %label{for: 'large_category', class: 'single-page__body__form__group__label'}
+              カテゴリー
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            .single-page__body__form__group__large_category-select-wrap
+              .single-page__body__form__group__large_category-select-wrap__select-wrap
+              = f.select 'large_category', [["---", "0"],["レディース", "1"]]
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__large_category-select-wrap__select-wrap__icon-arrow-bottom'
+            %label{for: 'size', class: 'single-page__body__form__group__label'}
+
+            .single-page__body__form__group__middle_category-select-wrap
+              .single-page__body__form__group__middle_category-select-wrap__select-wrap
+              = f.select 'middle_category', [["---", "0"],["トップス", "1"]]
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__middle_category-select-wrap__select-wrap__icon-arrow-bottom'
+            %label{for: 'size', class: 'single-page__body__form__group__label'}
+
+            .single-page__body__form__group__small_category-select-wrap
+              .single-page__body__form__group__small_category-select-wrap__select-wrap
+              = f.select 'small_category', [["---", "0"],["Tシャツ/カットソー(半袖/袖なし)", "1"]]
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__small_category-select-wrap__select-wrap__icon-arrow-bottom'
+            %label{for: 'size', class: 'single-page__body__form__group__label'}
+              サイズ
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            .single-page__body__form__group__size-select-wrap
+              .single-page__body__form__group__size-select-wrap__select-wrap
+              = f.select :size, [["---", "0"],["XXS以下", "1"], ["XS(SS)", "2"], ["S", "3"], ["M", "4"], ["L", "5"], ["XL(LL)", "6"], ["XL(LL)", "7"], ["2XL(3LL)", "8"], ["3XL(4LL)", "9"], ["4XL(5LL)", "10"], ["FREE SIZE", "11"]]
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__size-select-wrap__select-wrap__icon-arrow-bottom'
+            .single-page__body__form__group
+            %label{for: 'brand', class: 'single-page__body__form__group__label'}            
+              ブランド
+            %span.single-page__body__form__group__require-mark
+              任意
+              %br
+              = f.text_field :brand, placeholder: '例)シャネル', class: 'single-page__body__form__group__input-text'
+              %br
+            %label{for: 'state', class: 'single-page__body__form__group__label'}
+              商品の状態
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            .single-page__body__form__group__state-select-wrap
+              .single-page__body__form__group__state-select-wrap__select-wrap
+              = f.select :state, [["---", "0"],["新品、未使用", "1"], ["未使用に近い", "2"], ["目立った傷や汚れなし", "3"], ["やや傷や汚れあり", "4"], ["傷や汚れあり", "5"], ["全体的に状態が悪い", "6"]]
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__state-select-wrap__select-wrap__icon-arrow-bottom'
+          .single-page__body__form__group
+            %h3.single-page__body__form__group__title
+              配送について
+            %label{for: 'delivery_charge', class: 'single-page__body__form__group__label'}
+              配送料の負担
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            .single-page__body__form__group__delivery_charge-select-wrap
+              .single-page__body__form__group__delivery_charge-select-wrap__select-wrap
+              = f.select :delivery_charge, [["---", "0"],["着払い(購入者負担)", "1"], ["送料込み(出品者負担)", "2"]]
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__delivery_charge-select-wrap__select-wrap__icon-arrow-bottom'
+            %br
+            %label{for: 'delivery_way', class: 'single-page__body__form__group__label'}
+              配送の方法
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            .single-page__body__form__group__delivery_way-select-wrap
+              .single-page__body__form__group__delivery_way-select-wrap__select-wrap
+              = f.select :delivery_way, [["---", "0"],["未定", "1"], ["らくらくメルカリ便", "2"]]
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__delivery_way-select-wrap__select-wrap__icon-arrow-bottom'
+            %label{for: 'delivery_prefecture', class: 'single-page__body__form__group__label'}
+              発送元の地域
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            .single-page__body__form__group__delivery_prefecture-select-wrap
+              .single-page__body__form__group__delivery_prefecture-select-wrap__select-wrap
+                = f.select :delivery_prefecture, [["---", "0"],["北海道", "1"], ["青森県", "2"]]
+                = fa_icon 'angle-down', class: 'single-page__body__form__group__delivery_prefecture-select-wrap__select-wrap__icon-arrow-bottom'
+            %label{for: 'delivery_time', class: 'single-page__body__form__group__label'}
+              発送までの日数
+            %span.single-page__body__form__group__require-mark
+              必須
+            %br
+            .single-page__body__form__group__delivery_time-select-wrap
+              .single-page__body__form__group__delivery_time-select-wrap__select-wrap
+                = f.select :delivery_time, [["---", "0"],["1~2日で発送", "1"], ["2~3日で発送", "2"], ["4~7日で発送", "3"]]
+                = fa_icon 'angle-down', class: 'single-page__body__form__group__delivery_time-select-wrap__select-wrap__icon-arrow-bottom'
+          .single-page__body__form__group
+            %h3.single-page__body__form__group__title
+              販売価格(300〜9,999,999)
+          .single-page__body__form__group
+            %label{for: 'price', class: 'single-page__body__form__group__label'}
+              価格
+            %span.single-page__body__form__group__require-mark
+              必須
+            = f.text_field :price , placeholder: '例）300', class: 'single-page__body__form__group__input-text'
+          = f.submit '出品する', class:'single-page__body__form__submit-btn'
