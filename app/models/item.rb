@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  has_many :images,  dependent: :destroy, inverse_of: "item"
+  accepts_nested_attributes_for :images
   with_options presence: true do
     validates :name
     validates :detail
