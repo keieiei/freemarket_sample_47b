@@ -11,10 +11,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(items_params)
     if @item.save
-      puts"ほぞんできてる"
       render :index
     else
-      puts"ほぞんできていない"
       render :new
     end
   end
