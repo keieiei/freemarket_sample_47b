@@ -12,10 +12,10 @@ class ItemsController < ApplicationController
     @item = Item.new(items_params)
     if @item.save
       puts"ほぞんできてる"
-      render ("items/index")
+      render :index
     else
       puts"ほぞんできていない"
-      render ("items/new")
+      render :new
     end
   end
 
