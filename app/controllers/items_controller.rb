@@ -12,10 +12,10 @@ class ItemsController < ApplicationController
     @item = Item.new(items_params)
     if @item.save
       puts"ほぞんできてる"
-      redirect_to root_path
+      render ("items/index")
     else
       puts"ほぞんできていない"
-      redirect_to action: 'new'
+      render ("items/new")
     end
   end
 
