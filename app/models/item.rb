@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     validates :delivery_prefecture
     validates :delivery_time
     validates :delivery_way
-    validates :price
+    validates :price, length: {maximum: 7}
     validates :state
     validates :large_category
     validates :middle_category
