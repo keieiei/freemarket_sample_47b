@@ -13,7 +13,8 @@ FactoryBot.define do
     middle_category {Faker::Number.digit}
     small_category {Faker::Number.digit}
     brand{Faker::Name.first_name}
-    created_at {Time.now}
-    updated_at {Time.now}
+    after(:build) do |item|
+      create_list(:image , 10, item: item)
+    end
   end
 end
