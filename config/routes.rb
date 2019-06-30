@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get "sign_up", :to => "users/registrations#new"
     post "sign_up", :to => "users/registrations#create"
     get "sign_in", :to => "users/sessions#new"
-    get "sign_out", :to => "users/sessions#destroy" 
+    get "sign_out", :to => "users/sessions#destroy"
+    post 'users/sign_up/confirm' => 'users/registrations#confirm'
+    get 'users/sign_up/complete' => 'users/registrations#complete'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
