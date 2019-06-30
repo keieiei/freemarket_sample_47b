@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     validates :delivery_prefecture
     validates :delivery_time
     validates :delivery_way
-    validates :price, length: {maximum: 7,minimum: 3},numericality:{greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999}
+    validates :price,numericality:{greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999}
     validates :state
     validates :large_category
     validates :middle_category

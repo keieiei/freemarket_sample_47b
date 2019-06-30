@@ -42,16 +42,6 @@ RSpec.describe Item, type: :model do
         item.valid?
         expect(item.errors[:price]).to include('を入力してください')
       end
-      it "is invalid without price more than 2 digits" do    
-        item = FactoryBot.build(:item, price: '11')
-        item.valid?
-        expect(item.errors[:price]).to include('は3文字以上で入力してください')
-      end
-      it "is invalid without price more than 8 digits" do    
-        item = FactoryBot.build(:item, price: '1'* 8)
-        item.valid?
-        expect(item.errors[:price]).to include('は7文字以内で入力してください')
-      end
       it "is invalid with price 299" do    
         item = FactoryBot.build(:item, price: '299')
         item.valid?
