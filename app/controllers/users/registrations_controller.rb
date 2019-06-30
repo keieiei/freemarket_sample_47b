@@ -26,6 +26,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to new_user_receiver_information_path(current_user.id)
   end
 
+  def complete
+  end
+
   # GET /resource/edit
   # def edit
   #   super
