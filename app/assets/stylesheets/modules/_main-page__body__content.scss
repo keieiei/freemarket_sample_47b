@@ -15,4 +15,11 @@
       margin: 0;
     }
   }
+  &__chapter {
+    margin: 40px 0 0;
+    background: $white;
+    &:first-child {
+      margin: 0;
+    }
+  }
 }
