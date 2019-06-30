@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_22_113741) do
+ActiveRecord::Schema.define(version: 2019_06_30_042508) do
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_number", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "valid_year", default: "", null: false
+    t.string "valid_month", default: "", null: false
+    t.string "security_code", default: "", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image"
@@ -38,6 +50,23 @@ ActiveRecord::Schema.define(version: 2019_06_22_113741) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "receiver_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "family_name_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.integer "prefecture", default: 0, null: false
+    t.string "city", default: "", null: false
+    t.string "street", default: "", null: false
+    t.string "building"
+    t.string "phone_number"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_receiver_informations_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,9 +78,20 @@ ActiveRecord::Schema.define(version: 2019_06_22_113741) do
     t.string "nickname"
     t.text "profile"
     t.string "icon"
+    t.string "family_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "family_name_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.integer "birth_year", default: 0, null: false
+    t.integer "birth_month", default: 0, null: false
+    t.integer "birth_day", default: 0, null: false
+    t.string "phone_number", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "receiver_informations", "users"
 end
