@@ -1,7 +1,7 @@
 .single-page
   %header.single-page__header
     = render 'shared/single-page/header/single-page__header__mercari-logo'
-    = render 'users/registrations/header__progress-bar'
+    = render 'users/registrations/header__progress-bar', { page_number: @page_number }
   = render 'users/registrations/complete_body'
   = render 'shared/single-page/single-page__app-banner'
   = render 'shared/single-page/single-page__footer'

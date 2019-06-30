@@ -3,10 +3,12 @@ class ReceiverInformationsController < ApplicationController
 
   def new
     @receiver_information = ReceiverInformation.new
+    @page_number = 3
   end
 
   def create
     @receiver_information = ReceiverInformation.new(receiver_information_params)
+    @page_number = 3
     return render :new unless @receiver_information.valid?
     @receiver_information.save
     redirect_to new_user_credit_card_path(current_user.id)

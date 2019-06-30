@@ -1,6 +1,6 @@
 .single-page
   %header.single-page__header
     = render 'shared/single-page/header/single-page__header__mercari-logo'
-    = render 'users/registrations/header__progress-bar'
+    = render 'users/registrations/header__progress-bar', { page_number: @page_number }
   = render 'credit_cards/new_body', { credit_card: @credit_card }
   = render 'shared/single-page/single-page__footer'
