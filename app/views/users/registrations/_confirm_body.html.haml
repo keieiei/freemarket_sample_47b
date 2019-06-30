@@ -1,0 +1,19 @@
+%main.single-page__body
+  %section.single-page__body__container
+    %h2.single-page__body__title
+      電話番号の確認
+    = form_with model: user, url: user_registration_path, method: :post, class: "single-page__body__form" do |f|
+      .single-page__body__form__box
+        .single-page__body__form__group.single-page__body__form__group--top
+          = f.label :phone_number, "携帯電話の番号", class: 'single-page__body__form__group__label'
+          = f.text_field :phone_number, placeholder: '携帯電話の番号を入力', class: 'single-page__body__form__group__input-text'
+          %p.single-page__body__form__info-text
+            本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
+        = f.submit "SMSを送信する", class: "single-page__body__form__submit-btn"
+        .single-page__body__form__group.single-page__body__form__group--top
+          %p.single-page__body__form__info-text
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        .single-page__body__form__group
+          %p.single-page__body__form__group__text.single-page__body__form__group__text--text-right
+            = link_to '電話番号の確認が必要な理由', '', class: 'single-page__body__form__group__text__link'
+            = fa_icon 'angle-right', class: 'single-page__body__form__group__text__icon-arrow-right'
