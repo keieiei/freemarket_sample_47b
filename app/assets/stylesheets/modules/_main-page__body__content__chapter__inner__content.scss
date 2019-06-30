@@ -1,0 +1,22 @@
+.main-page__body__content__chapter__inner__content {
+  &__btn {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    &--red {
+      background: $red;
+      border: 1px solid $red;
+      color: $white;
+      margin: 40px 0 0;
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+}
