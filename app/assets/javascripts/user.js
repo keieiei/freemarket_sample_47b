@@ -49,4 +49,33 @@ $(document).on('turbolinks:load', function(){
       }
     })
   })
+
+  var birthYearId = '#user_birth_year';
+  var birthMonthId = '#user_birth_month';
+  var birthDayId = '#user_birth_day';
+  var getMonthDays = function(year, month) {
+    return new Date(year, month, 0).getDate();
+  };
+  var changeDaySelction = function() {
+    var year = $(birthYearId).val();
+    var month = $(birthMonthId).val();
+    if (year != 0 && month != 0) {
+      var days = getMonthDays(year, month);
+      $(birthDayId).empty();
+      for (var i = 1; i <= days; i++) {
+        $(birthDayId).append($("<option>").val(i).text(i));
+      }
+    } else {
+      $(birthDayId).empty();
+      $(birthDayId).append($("<option>").val("--").text("--"));
+    }
+  };
+  $(function(){
+    $(birthYearId).on('change', function(){
+      changeDaySelction();
+    })
+    $(birthMonthId).on('change', function(){
+      changeDaySelction();
+    })
+  })
 })
