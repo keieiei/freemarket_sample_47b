@@ -7,6 +7,11 @@
   &__body  {
     display: block;
   }
+  &__app-banner {
+    background: url(/images/download_bg_pc.jpg);
+    background-position: center;
+    background-size: cover;
+  }
   &__footer {
     position: absolute;
     right: 0;

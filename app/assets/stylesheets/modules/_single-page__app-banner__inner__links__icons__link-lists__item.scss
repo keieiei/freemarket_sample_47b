@@ -1,0 +1,12 @@
+.single-page__app-banner__inner__links__icons__link-lists__item {
+  &__link {
+    display: block;
+    line-height: 68px;
+    &:hover {
+      opacity: .7;
+    }
+  }
+  &__image {
+    width: 133px;
+  }
+}
