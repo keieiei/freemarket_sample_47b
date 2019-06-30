@@ -10,12 +10,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def confirm
+    return redirect_to root_path if user_signed_in?
+    @user = User.new(configure_sign_up_params)
+    return render :new unless @user.valid?(:admin)
+    session[:user_1st_params] = configure_sign_up_params
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(user_params)
+    return render :confirm unless @user.valid?
+    @user.save
+    sign_in @user
+    session[:user_1st_params] = nil
+    redirect_to new_user_receiver_information_path(current_user.id)
+  end
 
   # GET /resource/edit
   # def edit
@@ -44,9 +53,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :family_name, :first_name, :family_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day)
+  end
+
+  def phone_number_params
+    params.require(:user).permit(:phone_number)
+  end
+
+  def user_params
+    session[:user_1st_params].merge(phone_number_params)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
