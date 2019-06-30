@@ -7,18 +7,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user = User.new
+    @page_number = 1
   end
 
   def confirm
     return redirect_to root_path if user_signed_in?
     @user = User.new(configure_sign_up_params)
+    @page_number = 1
     return render :new unless @user.valid?(:admin)
+    @page_number = 2
     session[:user_1st_params] = configure_sign_up_params
   end
 
   # POST /resource
   def create
     @user = User.new(user_params)
+    @page_number = 2
     return render :confirm unless @user.valid?
     @user.save
     sign_in @user
@@ -28,6 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def complete
     return redirect_to new_user_session_path unless user_signed_in?
+    @page_number = 5
   end
 
   # GET /resource/edit

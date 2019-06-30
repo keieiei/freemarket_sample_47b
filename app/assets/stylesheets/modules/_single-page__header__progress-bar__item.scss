@@ -5,9 +5,6 @@
     margin: 8px auto 0;
     background: $gray;
     border-radius: 50%;
-    &.active {
-      background: $red;
-    }
     &:before, &:after {
       position: absolute;
       bottom: 5px;
@@ -24,15 +21,26 @@
     &:after {
       left: 50%;
     }
-  }
-  &:first-child {
-    .single-page__header__progress-bar__item__status:before {
+    &--first:before {
       content: none;
     }
-  }
-  &:last-child {
-    .single-page__header__progress-bar__item__status:after {
+    &--last:after {
       content: none;
+    }
+    &--active {
+      background: $red;
+      &:before {
+        background: $red;
+      }
+    }
+    &--before {
+      background: $red;
+      &:before {
+        background: $red;
+      }
+      &:after {
+        background: $red;
+      }
     }
   }
 }
