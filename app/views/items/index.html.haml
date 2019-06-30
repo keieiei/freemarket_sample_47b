@@ -1,3 +1,6 @@
-%h1
- Hello
- = link_to("出品",new_item_path)
+.main-page
+  = render 'shared/main-page/main-header'
+  = render 'items/index-body'
+  = render 'shared/main-page/aside'
+  = render 'shared/main-page/main-footer'
+  = render 'shared/main-page/footer-sell-button'
