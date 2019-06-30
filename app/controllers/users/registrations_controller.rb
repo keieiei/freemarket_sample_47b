@@ -27,6 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def complete
+    return redirect_to new_user_session_path unless user_signed_in?
   end
 
   # GET /resource/edit

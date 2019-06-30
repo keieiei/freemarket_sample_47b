@@ -1,0 +1,16 @@
+.single-page__app-banner__inner__links {
+  &__title {
+    margin: 0;
+    font-size: 24px;
+    text-shadow: 0 0 5px $transparent-dark-black;
+  }
+  &__text {
+    margin: 10px 0 0;
+    font-size: 35px;
+    text-shadow: 0 0 5px $transparent-dark-black;
+  }
+  &__icons {
+    @include clearfix();
+    margin: 20px 0 0;
+  }
+}

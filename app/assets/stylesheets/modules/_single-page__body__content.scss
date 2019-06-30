@@ -1,0 +1,25 @@
+.single-page__body__content {
+  &__box {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  &__text {
+    font-size: 24px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  &__btn {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    background: $red;
+    border: 1px solid $red;
+    color: $white;
+    margin: 40px 0 0;
+  }
+}
