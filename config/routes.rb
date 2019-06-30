@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
-  resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:index, :edit, :update] do
+    collection do
+      get 'confirm_sign_out'
+    end
+  end
   resources :items, only: [:index, :new, :create]
 end
