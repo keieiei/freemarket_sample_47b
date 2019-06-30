@@ -1,0 +1,12 @@
+.single-page__body__form__group__valid-select-wrap {
+  &__select-wrap {
+    position: relative;
+    background: $white;
+    margin: 8px 0 0;
+    display: inline-block;
+    width: 35%;
+  }
+  &__unit-text {
+    margin: 0 2px;
+  }
+}

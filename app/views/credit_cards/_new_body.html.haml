@@ -1,0 +1,51 @@
+%main.single-page__body
+  %section.single-page__body__container
+    %h2.single-page__body__title
+      支払い方法
+    = form_for credit_card, url: user_credit_cards_path, method: :post, html: { class: "single-page__body__form" } do |f|
+      .single-page__body__form__box
+        .single-page__body__form__group.single-page__body__form__group--top
+          = f.label :card_number, "カード番号", class: 'single-page__body__form__group__label'
+          %span.single-page__body__form__group__require-mark
+            必須
+          = f.text_field :card_number, placeholder: '半角数字のみ', class: 'single-page__body__form__group__input-text'
+          %ul.single-page__body__form__group__credit-card-list
+            %li.single-page__body__form__group__credit-card-list__item
+              = image_tag 'visa.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+            %li.single-page__body__form__group__credit-card-list__item
+              = image_tag 'master-card.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+            %li.single-page__body__form__group__credit-card-list__item
+              = image_tag 'saison-card.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+            %li.single-page__body__form__group__credit-card-list__item
+              = image_tag 'jcb.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+            %li.single-page__body__form__group__credit-card-list__item
+              = image_tag 'american_express.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+            %li.single-page__body__form__group__credit-card-list__item
+              = image_tag 'dinersclub.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+            %li.single-page__body__form__group__credit-card-list__item
+              = image_tag 'discover.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+        .single-page__body__form__group
+          = f.label :valid, "有効期限", class: 'single-page__body__form__group__label'
+          %span.single-page__body__form__group__require-mark
+            必須
+          .single-page__body__form__group__valid-select-wrap
+            .single-page__body__form__group__valid-select-wrap__select-wrap
+              = f.select :valid_month, options_for_select(valid_month_selection), { prompt: "--" }, { class: 'single-page__body__form__group__valid-select-wrap__select-wrap__select' }
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__valid-select-wrap__select-wrap__icon-arrow-bottom'
+            %span.single-page__body__form__group__valid-select-wrap__unit-text
+              月
+          .single-page__body__form__group__valid-select-wrap
+            .single-page__body__form__group__valid-select-wrap__select-wrap
+              = f.select :valid_year, options_for_select(19..29), { prompt: "--" }, { class: 'single-page__body__form__group__valid-select-wrap__select-wrap__select' }
+              = fa_icon 'angle-down', class: 'single-page__body__form__group__valid-select-wrap__select-wrap__icon-arrow-bottom'
+            %span.single-page__body__form__group__valid-select-wrap__unit-text
+              年
+        .single-page__body__form__group
+          = f.label :security_code, "セキュリティコード", class: 'single-page__body__form__group__label'
+          %span.single-page__body__form__group__require-mark
+            必須
+          = f.text_field :security_code, placeholder: 'カード背面4桁もしくは3桁の番号', class: 'single-page__body__form__group__input-text'
+          %p.single-page__body__form__group__text.single-page__body__form__group__text--text-right
+            = fa_icon 'question', class: 'single-page__body__form__group__text__question'
+            = link_to 'カード裏面の番号とは？', '', class: 'single-page__body__form__group__text__link'
+        = f.submit "次へ進む", class: "single-page__body__form__submit-btn"
