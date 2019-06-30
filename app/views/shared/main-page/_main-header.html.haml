@@ -15,6 +15,9 @@
           = render 'shared/main-page/main-header/brand'
       .main-page__header__nav-box__right-box
         %ul.main-page__header__nav-box__right-box__list
-          = render 'shared/main-page/main-header/notification'
-          = render 'shared/main-page/main-header/todo'
-          = render 'shared/main-page/main-header/mypage'
+          - if user_signed_in?
+            = render 'shared/main-page/main-header/notification'
+            = render 'shared/main-page/main-header/todo'
+            = render 'shared/main-page/main-header/mypage'
+          - else
+            = render 'shared/main-page/main-header/login-btns'
