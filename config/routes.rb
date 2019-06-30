@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'   
   }
   devise_scope :user do
-    get "sign_up", :to => "users/registrations#new"
-    post "sign_up", :to => "users/registrations#create"
-    get "sign_in", :to => "users/sessions#new"
-    get "sign_out", :to => "users/sessions#destroy"
     post 'users/sign_up/confirm' => 'users/registrations#confirm'
     get 'users/sign_up/complete' => 'users/registrations#complete'
   end
@@ -17,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get 'confirm_sign_out'
     end
+    resources :receiver_informations, only: [:new, :create, :edit, :update]
   end
   resources :items, only: [:index, :new, :create]
 end
