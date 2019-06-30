@@ -11,7 +11,7 @@ module ApplicationHelper
     active_name = base_name + "--active"
     item_name = []
     item_name << base_name
-    if i == page_number - 1 then
+    if i == page_number - 1
       item_name << active_name
     end
     return item_name
@@ -24,16 +24,16 @@ module ApplicationHelper
     last_name = base_name + "--last"
     status_name = []
     status_name << base_name
-    if i == 0 then
+    if i == 0
       status_name << first_name
     end
-    if i == 4 then
+    if i == 4
       status_name << last_name
     end
-    if i == page_number - 1 then
+    if i == page_number - 1
       status_name << active_name
     end
-    if i < page_number - 1 then
+    if i < page_number - 1
       status_name << before_name
     end
     return status_name
