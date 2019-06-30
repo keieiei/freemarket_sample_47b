@@ -61,6 +61,7 @@ $(document).on('turbolinks:load', function(){
     var month = $(birthMonthId).val();
     if (year != 0 && month != 0) {
       var days = getMonthDays(year, month);
+      $(birthDayId).empty();
       for (var i = 1; i <= days; i++) {
         $(birthDayId).append($("<option>").val(i).text(i));
       }
