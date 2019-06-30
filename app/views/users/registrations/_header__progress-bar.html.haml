@@ -1,17 +1,6 @@
 %nav.single-page__header__progress-bar
   %ol.single-page__header__progress-bar__list
-    %li.single-page__header__progress-bar__item.active
-      会員情報
-      .single-page__header__progress-bar__item__status.active
-    %li.single-page__header__progress-bar__item
-      暗証番号認証
-      .single-page__header__progress-bar__item__status
-    %li.single-page__header__progress-bar__item
-      お届け先住所入力
-      .single-page__header__progress-bar__item__status
-    %li.single-page__header__progress-bar__item
-      支払い方法
-      .single-page__header__progress-bar__item__status
-    %li.single-page__header__progress-bar__item
-      完了
-      .single-page__header__progress-bar__item__status
+    - t('progress_bar_text').each.with_index(0) do |text, i|
+      %li{ class: progress_bar_item_name(i, page_number, "single-page__header__progress-bar__item") }
+        = text
+        %div{ class: progress_bar_status_name(i, page_number, "single-page__header__progress-bar__item__status") }
