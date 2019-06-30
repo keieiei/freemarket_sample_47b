@@ -4,6 +4,7 @@ describe ItemsController do
   let(:image) { create(:image) }
 
   describe '#index' do
+    before {get :index}
     it 'has a 200 status code' do
       expect(response).to have_http_status(:ok)
     end
@@ -16,6 +17,7 @@ describe ItemsController do
   end
 
   describe '#new' do
+    before {get :new}
     it 'has a 200 status code' do
       expect(response).to have_http_status(:ok)
     end
