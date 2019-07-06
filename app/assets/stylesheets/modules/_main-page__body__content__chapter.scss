@@ -3,4 +3,10 @@
     border-top: 1px solid $dark-white;
     padding: 64px;
   }
+  &__title {
+    border-bottom: 1px solid $dark-white;
+    text-align: center;
+    font-size: 24px;
+    padding: 8px 24px;
+  }
 }
