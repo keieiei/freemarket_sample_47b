@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :confirm_signed_in, except: [:new, :create, :confirm]
 
   # GET /resource/sign_up
   def new
@@ -11,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def confirm
-    return redirect_to root_path if user_signed_in?
     @user = User.new(configure_sign_up_params)
     @page_number = 1
     return render :new unless @user.valid?(:admin)
@@ -31,8 +31,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def complete
-    return redirect_to new_user_session_path unless user_signed_in?
     @page_number = 5
+  end
+
+  def edit_profile
+    @user = current_user
+  end
+
+  def update_profile
+    @user = User.find(current_user.id)
+    @valid_user = User.new(update_profile_params)
+    if validate_update_profile(@valid_user)
+      @user.update_columns(update_profile_params.to_hash)
+      redirect_to users_path
+    else
+      render :edit_profile
+    end 
   end
 
   # GET /resource/edit
@@ -72,6 +86,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     session[:user_1st_params].merge(phone_number_params)
+  end
+
+  def update_profile_params
+    params.require(:user).permit(:nickname, :profile)
+  end
+
+  def confirm_signed_in
+    return redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def validate_update_profile(user)
+    return user.valid_nickname?
   end
 
   # If you have extra params to permit, append them to the sanitizer.
