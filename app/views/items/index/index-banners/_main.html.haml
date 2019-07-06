@@ -1,0 +1,18 @@
+%div{ class: first_add_active_class_name(i, "main-page__body__top-banner__contents__container__content") }
+  .main-page__body__top-banner__contents__container__content__top-main
+    .main-page__body__top-banner__contents__container__content__top-main__inner
+      .main-page__body__top-banner__contents__container__content__top-main__inner__content
+        %h2.main-page__body__top-banner__contents__container__content__top-main__inner__content__title
+          スマホでかんたん
+          %br
+          フリマアプリ
+        %p.main-page__body__top-banner__contents__container__content__top-main__inner__content__text
+          メルカリはスマホカメラからすぐに出品できる
+          %br
+          購入時も安心な独自システムのアプリです
+        .main-page__body__top-banner__contents__container__content__top-main__inner__content__link-list
+          = link_to "", class: "main-page__body__top-banner__contents__container__content__top-main__inner__content__link-list__link" do
+            = image_tag "app-store.svg", class: "main-page__body__top-banner__contents__container__content__top-main__inner__content__link-list__link__image"
+          = link_to "", class: "main-page__body__top-banner__contents__container__content__top-main__inner__content__link-list__link" do
+            = image_tag "google-play.svg", class: "main-page__body__top-banner__contents__container__content__top-main__inner__content__link-list__link__image"
+      = image_tag "main_content_pc.png", class: "main-page__body__top-banner__contents__container__content__top-main__inner__image"
