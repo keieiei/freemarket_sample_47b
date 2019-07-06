@@ -38,4 +38,11 @@ module ApplicationHelper
     end
     return status_name
   end
+
+  def first_add_active_class_name(i, base_name)
+    active_name = base_name + '--active'
+    class_name = [base_name]
+    class_name << active_name if i == 0
+    return class_name
+  end
 end
