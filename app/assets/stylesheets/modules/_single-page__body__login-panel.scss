@@ -1,0 +1,14 @@
+.single-page__body__login-panel {
+  &__no-account {
+    text-align: center;
+    padding: 40px 64px;
+  }
+  &__login-form-inner {
+    border-top: 1px solid $light-gray;
+    padding: 32px 64px;
+    &--below {
+      border: 0;
+      padding: 24px 64px 32px;
+    }
+  }
+}

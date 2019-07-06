@@ -19,4 +19,9 @@
     border-top: 1px solid $dark-white;
     padding: 40px 16px;
   }
+  &__login-panel {
+    width: 456px;
+    margin: 0 auto;
+    background: $white;
+  }
 }
