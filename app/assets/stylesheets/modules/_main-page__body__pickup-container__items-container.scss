@@ -1,0 +1,17 @@
+.main-page__body__pickup-container__items-container {
+  &__title {
+    text-align: center;
+    font-size: 22px;
+    margin: 26px 11px;
+  }
+  &__items-box {
+    @include clearfix;
+    width: auto;
+    margin: 0 auto;
+  }
+  &__all-view {
+    text-align: right;
+    padding: 20px 0 30px;
+    width: 99.5%;
+  }
+}

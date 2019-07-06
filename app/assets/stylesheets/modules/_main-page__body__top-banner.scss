@@ -1,0 +1,17 @@
+.main-page__body__top-banner {
+  &__contents {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+  &__nav {
+    color: transparent;
+    display: block;
+  }
+  &__dots {
+    line-height: 0;
+    margin: -30px;
+    text-align: center;
+    display: block;
+  }
+}

@@ -1,0 +1,11 @@
+.main-page__body__pickup-container {
+  &__title {
+    font-size: 28px;
+    text-align: center;
+  }
+  &__items-container {
+    @include clearfix;
+    width: 940px;
+    margin: 0 auto;
+  }
+}

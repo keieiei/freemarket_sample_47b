@@ -1,0 +1,17 @@
+.main-page__body__pickup-container__items-container__items-box__item {
+  &__link {
+    display: block;
+    color: $black;
+  }
+  &__figure {
+    overflow: hidden;
+    position: relative;
+    width: 213px;
+    height: 220px;
+    padding: 0 0 100%;
+  }
+  &__body {
+    height: 110px;
+    padding: 16px;
+  }
+}
