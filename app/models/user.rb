@@ -23,6 +23,8 @@ class User < ApplicationRecord
                               telphone: true
   end
 
+  validates_specific :nickname
+
   has_many :credit_cards
   has_one :receiver_information
 end
