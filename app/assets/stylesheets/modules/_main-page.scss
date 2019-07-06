@@ -17,6 +17,12 @@
     padding: 0 0 40px;
     margin: 40px auto 0;
     width: 1020px;
+    &--item-index {
+      padding: 0;
+      margin: 0 auto;
+      width: 100%;
+      background-color: $white;
+    }
   }
   &__app-banner {
     background-image: image-url("download_bg_pc.jpg");

@@ -1,0 +1,16 @@
+.main-page__body__top-banner__contents__container__content__top-main__inner__content {
+  &__title {
+    line-height: 1.2;
+    font-size: 60px;
+  }
+  &__text {
+    margin: 16px 0 0;
+    font-size: 18px;
+    line-height: 1.77778;
+  }
+  &__link-list {
+    @include clearfix;
+    margin: 24px 0 0;
+    line-height: 0;
+  }
+}

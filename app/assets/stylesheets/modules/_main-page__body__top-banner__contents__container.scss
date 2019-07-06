@@ -1,0 +1,12 @@
+.main-page__body__top-banner__contents__container {
+  &__content {
+    height: 100%;
+    width: 25%;
+    left: -25%;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 1px;
+    position: relative;
+    float: left;
+  }
+}

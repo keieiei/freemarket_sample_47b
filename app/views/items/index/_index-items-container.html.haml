@@ -1,0 +1,10 @@
+%section.main-page__body__pickup-container__items-container
+  %h3.main-page__body__pickup-container__items-container__title
+    = link_to "レディース 新着アイテム", "", class: "main-page__body__pickup-container__items-container__title__link"
+  .main-page__body__pickup-container__items-container__items-box
+    = render 'items/index/index-item'
+    = render 'items/index/index-item'
+    = render 'items/index/index-item'
+    = render 'items/index/index-item'
+  .main-page__body__pickup-container__items-container__all-view
+    = link_to "すべての商品を見る", "", class: "main-page__body__pickup-container__items-container__all-view__link"

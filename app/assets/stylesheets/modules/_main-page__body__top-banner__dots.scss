@@ -1,0 +1,18 @@
+.main-page__body__top-banner__dots {
+  &__dot {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    max-height: none;
+    opacity: 1;
+    cursor: default;
+    background: $white;
+    border-radius: 50%;
+    height: 12px;
+    margin-right: 15px;
+    width: 12px;
+    &--active {
+      background: rgba(0,0,0,0.5);
+    }
+  }
+}

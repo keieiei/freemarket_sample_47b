@@ -1,0 +1,16 @@
+%main.main-page__body.main-page__body--item-index
+  %section.main-page__body__top-banner
+    .main-page__body__top-banner__contents
+      .main-page__body__top-banner__contents__container
+        = render "items/index/index-banners/#{Settings.top_banners[Settings.top_banners.length - 1]}", { i: 1 }
+        - Settings.top_banners.each_with_index do |banner, i|
+          = render "items/index/index-banners/#{banner}", { i: i }
+        = render "items/index/index-banners/#{Settings.top_banners[0]}", { i: 1 }
+    .main-page__body__top-banner__nav
+      .main-page__body__top-banner__nav__angle.main-page__body__top-banner__nav__angle--prev
+      .main-page__body__top-banner__nav__angle.main-page__body__top-banner__nav__angle--next
+    .main-page__body__top-banner__dots
+      - Settings.top_banners.length.times do |i|
+        %div{ class: first_add_active_class_name(i, "main-page__body__top-banner__dots__dot") }
+  = render 'items/index/index-pickup-container'
+  = render 'items/index/index-pickup-container'

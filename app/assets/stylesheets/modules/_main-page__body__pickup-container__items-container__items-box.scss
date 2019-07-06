@@ -1,0 +1,9 @@
+.main-page__body__pickup-container__items-container__items-box {
+  &__item {
+    position: relative;
+    float: left;
+    margin: 0 0 0 20px;
+    width: 213px;
+    background: $white;
+  }
+}

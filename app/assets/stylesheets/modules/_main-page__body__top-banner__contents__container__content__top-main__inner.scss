@@ -1,0 +1,17 @@
+.main-page__body__top-banner__contents__container__content__top-main__inner {
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+  &__image {
+    vertical-align: bottom;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+  }
+}

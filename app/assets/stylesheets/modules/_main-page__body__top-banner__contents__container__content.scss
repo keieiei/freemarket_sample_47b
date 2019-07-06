@@ -1,0 +1,16 @@
+.main-page__body__top-banner__contents__container__content {
+  &__top-main {
+    background-image: image-url("main_bg_pc.jpg");
+    background-size: cover;
+    display: block;
+    height: 390px;
+  }
+  &__camp-link {
+    height: 390px;
+    background-image: image-url("banner-camp.jpg");
+    background-repeat: repeat-x;
+    background-size: auto;
+    display: block;
+    background-position: center;
+  }
+}

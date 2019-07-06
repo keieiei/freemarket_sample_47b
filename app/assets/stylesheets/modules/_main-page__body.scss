@@ -8,4 +8,13 @@
     width: 280px;
     margin: 0 40px 0 0;
   }
+  &__top-banner {
+    overflow: hidden;
+    position: relative;
+    height: 390px;
+  }
+  &__pickup-container {
+    background: $dark-white;
+    padding: 40px 0;
+  }
 }
