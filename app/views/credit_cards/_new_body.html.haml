@@ -2,7 +2,7 @@
   %section.single-page__body__container
     %h2.single-page__body__title
       支払い方法
-    = form_for credit_card, url: user_credit_cards_path, method: :post, html: { class: "single-page__body__form" } do |f|
+    = form_for credit_card, url: user_credit_cards_path(current_user.id), method: :post, html: { class: "single-page__body__form" } do |f|
       .single-page__body__form__box
         .single-page__body__form__group.single-page__body__form__group--top
           = f.label :card_number, "カード番号", class: 'single-page__body__form__group__label'
@@ -10,20 +10,9 @@
             必須
           = f.text_field :card_number, placeholder: '半角数字のみ', class: 'single-page__body__form__group__input-text'
           %ul.single-page__body__form__group__credit-card-list
-            %li.single-page__body__form__group__credit-card-list__item
-              = image_tag 'visa.svg', class: "single-page__body__form__group__credit-card-list__item__image"
-            %li.single-page__body__form__group__credit-card-list__item
-              = image_tag 'master-card.svg', class: "single-page__body__form__group__credit-card-list__item__image"
-            %li.single-page__body__form__group__credit-card-list__item
-              = image_tag 'saison-card.svg', class: "single-page__body__form__group__credit-card-list__item__image"
-            %li.single-page__body__form__group__credit-card-list__item
-              = image_tag 'jcb.svg', class: "single-page__body__form__group__credit-card-list__item__image"
-            %li.single-page__body__form__group__credit-card-list__item
-              = image_tag 'american_express.svg', class: "single-page__body__form__group__credit-card-list__item__image"
-            %li.single-page__body__form__group__credit-card-list__item
-              = image_tag 'dinersclub.svg', class: "single-page__body__form__group__credit-card-list__item__image"
-            %li.single-page__body__form__group__credit-card-list__item
-              = image_tag 'discover.svg', class: "single-page__body__form__group__credit-card-list__item__image"
+            - Settings.credit_card_logos.each do |logo|
+              %li.single-page__body__form__group__credit-card-list__item
+                = image_tag logo, class: "single-page__body__form__group__credit-card-list__item__image"
         .single-page__body__form__group
           = f.label :valid, "有効期限", class: 'single-page__body__form__group__label'
           %span.single-page__body__form__group__require-mark
