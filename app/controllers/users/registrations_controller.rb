@@ -47,6 +47,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end 
   end
 
+  def identification
+  end
+
+  def update_identification
+    @valid_user = User.new(update_identification_params)
+    if validate_update_identification(@valid_user)
+      current_user.update_columns(update_identification_params.to_hash)
+      redirect_to users_path
+    else
+      render :identification
+    end 
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -90,12 +103,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:nickname, :profile)
   end
 
+  def update_identification_params
+    params.require(:user).permit(:postal_code, :prefecture, :city, :street, :building)
+  end
+
   def confirm_signed_in
     return redirect_to new_user_session_path unless user_signed_in?
   end
 
   def validate_update_profile(user)
     return user.valid_nickname?
+  end
+
+  def validate_update_identification(user)
+    return user.valid_postal_code?
   end
 
   # If you have extra params to permit, append them to the sanitizer.
