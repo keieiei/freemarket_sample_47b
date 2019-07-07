@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :credit_cards, only: [:index, :new, :create, :destroy] do
       collection do
         get 'add'
+        post 'add_create'
       end
     end
   end
