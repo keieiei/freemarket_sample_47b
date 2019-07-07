@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/sign_up/confirm' => 'users/registrations#confirm'
     get 'users/sign_up/complete' => 'users/registrations#complete'
+    get 'users/edit_profile' => 'users/registrations#edit_profile'
+    post 'users/update_profile' => 'users/registrations#update_profile'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
