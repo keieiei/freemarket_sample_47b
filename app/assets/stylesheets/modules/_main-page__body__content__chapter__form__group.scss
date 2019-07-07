@@ -1,0 +1,37 @@
+.main-page__body__content__chapter__form__group {
+  &__text {
+    margin: 8px 0 0;
+    line-height: 1.5;
+    &--right {
+      text-align: right;
+    }
+  }
+  &__label {
+    font-weight: 600;
+  }
+  &__optional-mark {
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: $white;
+    font-size: 12px;
+    vertical-align: top;
+    background: $gray;
+  }
+  &__input-text {
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid $gray;
+    background: $white;
+    line-height: 1.5;
+    font-size: 16px;
+    width: 100%;
+    margin: 8px 0 0;
+  }
+  &__select-wrap {
+    position: relative;
+    background: $white;
+    margin: 8px 0 0;
+  }
+}

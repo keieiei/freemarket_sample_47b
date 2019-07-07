@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get 'users/sign_up/complete' => 'users/registrations#complete'
     get 'users/edit_profile' => 'users/registrations#edit_profile'
     post 'users/update_profile' => 'users/registrations#update_profile'
+    get 'users/identification' => 'users/registrations#identification'
+    post 'users/update_identification' => 'users/registrations#update_identification'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
