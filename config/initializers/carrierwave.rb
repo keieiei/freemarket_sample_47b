@@ -16,8 +16,8 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
    
-    config.fog_directory  = 'FreeMarket'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket47'
+    config.fog_directory  = 'mercari47b'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/mercari47b'
   else
     config.storage = :file
   end
