@@ -35,14 +35,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit_profile
-    @user = current_user
   end
 
   def update_profile
-    @user = User.find(current_user.id)
     @valid_user = User.new(update_profile_params)
     if validate_update_profile(@valid_user)
-      @user.update_columns(update_profile_params.to_hash)
+      current_user.update_columns(update_profile_params.to_hash)
       redirect_to users_path
     else
       render :edit_profile
