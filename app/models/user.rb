@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :birth_year, presence: true
   validates :birth_month, presence: true
   validates :birth_day, presence: true
+  validates :postal_code, postal_code: true
 
   with_options unless: proc { [:admin].include?(validation_context) } do
     validates :phone_number,  presence: true,
@@ -24,6 +25,9 @@ class User < ApplicationRecord
   end
 
   validates_specific :nickname
+  validates_specific :postal_code
+
+  enum prefecture: I18n.t('prefecture')
 
   has_many :credit_cards
   has_one :receiver_information
