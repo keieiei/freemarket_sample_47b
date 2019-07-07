@@ -1,0 +1,61 @@
+%section.main-page__body__content__chapter
+  %h2.main-page__body__content__chapter__title
+    本人情報の登録
+  = form_for current_user, url: users_update_identification_path, method: :post, html: { class: "main-page__body__content__chapter__form" } do |f|
+    .main-page__body__content__chapter__form__group
+      %p.main-page__body__content__chapter__form__group__text
+        お客さまの本人情報をご登録ください。
+        %br
+        登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+      %p.main-page__body__content__chapter__form__group__text.main-page__body__content__chapter__form__group__text--right
+        = link_to '', class: 'main-page__body__content__chapter__form__group__text__link' do
+          本人確認書類のアップロードについて
+          = fa_icon 'angle-right', class: 'main-page__body__content__chapter__form__group__text__link__icon-angle-right'
+    .main-page__body__content__chapter__form__group
+      %label.main-page__body__content__chapter__form__group__label
+        お名前
+      %p.main-page__body__content__chapter__form__group__text
+        = "#{current_user.family_name} #{current_user.first_name}"
+    .main-page__body__content__chapter__form__group
+      %label.main-page__body__content__chapter__form__group__label
+        お名前カナ
+      %p.main-page__body__content__chapter__form__group__text
+        = "#{current_user.family_name_kana} #{current_user.first_name_kana}"
+    .main-page__body__content__chapter__form__group
+      %label.main-page__body__content__chapter__form__group__label
+        生年月日
+      %p.main-page__body__content__chapter__form__group__text
+        = "#{current_user.birth_year}/#{sprintf("%02d", current_user.birth_month)}/#{sprintf("%02d", current_user.birth_day)}"
+    .main-page__body__content__chapter__form__group
+      = f.label :postal_code, "郵便番号", class: 'main-page__body__content__chapter__form__group__label'
+      %span.main-page__body__content__chapter__form__group__optional-mark
+        任意
+      = f.text_field :postal_code, placeholder: '例) 123-4567', class: 'main-page__body__content__chapter__form__group__input-text'
+    .main-page__body__content__chapter__form__group
+      = f.label :prefecture, "都道府県", class: 'main-page__body__content__chapter__form__group__label'
+      %span.main-page__body__content__chapter__form__group__optional-mark
+        任意
+      .main-page__body__content__chapter__form__group__select-wrap
+        = f.select :prefecture, options_for_select(t('prefecture')), { }, { class: 'main-page__body__content__chapter__form__group__select-wrap__select' }
+        = fa_icon 'angle-down', class: 'main-page__body__content__chapter__form__group__select-wrap__icon-arrow-bottom'
+    .main-page__body__content__chapter__form__group
+      = f.label :city, "市区町村", class: 'main-page__body__content__chapter__form__group__label'
+      %span.main-page__body__content__chapter__form__group__optional-mark
+        任意
+      = f.text_field :city, placeholder: '例) 横浜市緑区', class: 'main-page__body__content__chapter__form__group__input-text'
+    .main-page__body__content__chapter__form__group
+      = f.label :street, "番地", class: 'main-page__body__content__chapter__form__group__label'
+      %span.main-page__body__content__chapter__form__group__optional-mark
+        任意
+      = f.text_field :street, placeholder: '例) 青山1-1-1', class: 'main-page__body__content__chapter__form__group__input-text'
+    .main-page__body__content__chapter__form__group
+      = f.label :building, "建物名", class: 'main-page__body__content__chapter__form__group__label'
+      %span.main-page__body__content__chapter__form__group__optional-mark
+        任意
+      = f.text_field :building, placeholder: '例) 柳ビル103', class: 'main-page__body__content__chapter__form__group__input-text'
+    = f.submit "登録する", class: "main-page__body__content__chapter__form__submit-btn"
+    .main-page__body__content__chapter__form__group
+      %p.main-page__body__content__chapter__form__group__text.main-page__body__content__chapter__form__group__text--right
+        = link_to 'https://www.mercari.com/jp/help_center/article/423/', class: 'main-page__body__content__chapter__form__group__text__link' do
+          本人情報の登録について
+          = fa_icon 'angle-right', class: 'main-page__body__content__chapter__form__group__text__icon-arrow-right'
