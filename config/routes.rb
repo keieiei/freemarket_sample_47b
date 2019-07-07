@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       get 'confirm_sign_out'
     end
     resources :receiver_informations, only: [:new, :create, :edit, :update]
-    resources :credit_cards, only: [:index, :new, :create, :destroy]
+    resources :credit_cards, only: [:index, :new, :create, :destroy] do
+      collection do
+        get 'add'
+      end
+    end
   end
   resources :items, only: [:index, :new, :create]
 end
