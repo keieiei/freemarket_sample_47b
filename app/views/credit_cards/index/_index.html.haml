@@ -17,6 +17,12 @@
                 .main-page__body__content__chapter__inner__payment-list__item__form__payment-number
                   = current_user.credit_card.valid_month + " / " + current_user.credit_card.valid_year
                 = f.submit "削除する", class: "main-page__body__content__chapter__inner__payment-list__item__form__submit-btn"
+      - if current_user.credit_card == nil
+        %section.main-page__body__content__chapter__inner__btn-container
+          .main-page__body__content__chapter__inner__btn-container__content
+            = link_to add_user_credit_cards_path(current_user.id), class: 'main-page__body__content__chapter__inner__btn-container__content__link' do
+              = fa_icon 'credit-card', class: 'main-page__body__content__chapter__inner__btn-container__content__icon-card'
+              クレジットカードを追加する
       .main-page__body__content__chapter__inner__text
         = link_to '', class: 'main-page__body__content__chapter__inner__text__link' do
           支払い方法について
