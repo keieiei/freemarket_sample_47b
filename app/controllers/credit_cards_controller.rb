@@ -25,6 +25,10 @@ class CreditCardsController < ApplicationController
     end
   end
 
+  def add
+    @credit_card = current_user.credit_card.new
+  end
+
   private
 
   def credit_card_params
