@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include CreditCardHelper
+
   def valid_month_selection
     selection = []
     [*1..12].each do |i|
@@ -44,5 +46,11 @@ module ApplicationHelper
     class_name = [base_name]
     class_name << active_name if i == 0
     return class_name
+  end
+
+  def hide_head_card_number(card_number)
+    length = card_number.length - 4
+    hide_str = "*" * length
+    return card_number.gsub(/\A[0-9]{#{length}}/, hide_str)
   end
 end
