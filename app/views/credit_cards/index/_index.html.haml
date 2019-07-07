@@ -1,0 +1,23 @@
+%section.main-page__body__content__chapter
+  %h2.main-page__body__content__chapter__title
+    支払い方法
+  .main-page__body__content__chapter__inner
+    %section.main-page__body__content__chapter__inner__container
+      .main-page__body__content__chapter__inner__content
+        %h3.main-page__body__content__chapter__inner__content__title
+          クレジットカード一覧
+        %ul.main-page__body__content__chapter__inner__payment-list
+          - unless current_user.credit_card == nil
+            %li.main-page__body__content__chapter__inner__payment-list__item
+              = form_for current_user.credit_card, url: user_credit_card_path(user_id: current_user.id, id: current_user.credit_card.id), method: :delete, html: { class: "main-page__body__content__chapter__inner__payment-list__item__form" } do |f|
+                %figure.main-page__body__content__chapter__inner__payment-list__item__form__figure
+                  = image_tag credit_card_logo(current_user.credit_card.card_number), class: 'main-page__body__content__chapter__inner__payment-list__item__form__figure__image'
+                .main-page__body__content__chapter__inner__payment-list__item__form__payment-number
+                  = hide_head_card_number(current_user.credit_card.card_number)
+                .main-page__body__content__chapter__inner__payment-list__item__form__payment-number
+                  = current_user.credit_card.valid_month + " / " + current_user.credit_card.valid_year
+                = f.submit "削除する", class: "main-page__body__content__chapter__inner__payment-list__item__form__submit-btn"
+      .main-page__body__content__chapter__inner__text
+        = link_to '', class: 'main-page__body__content__chapter__inner__text__link' do
+          支払い方法について
+          = fa_icon 'angle-right', class: 'main-page__body__content__chapter__inner__text__icon-angle-right'

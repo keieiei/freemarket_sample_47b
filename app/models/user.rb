@@ -29,6 +29,6 @@ class User < ApplicationRecord
 
   enum prefecture: I18n.t('prefecture')
 
-  has_many :credit_cards
+  has_one :credit_card
   has_one :receiver_information
 end

@@ -1,0 +1,16 @@
+.main-page__body__content__chapter__inner__payment-list__item__form {
+  &__payment-number {
+    margin: 8px 0 0;
+    font-size: 16px;
+  }
+  &__submit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 6px;
+    background: $white;
+    border-radius: 3px;
+    border: 1px solid $red;
+    color: $red;
+  }
+}
