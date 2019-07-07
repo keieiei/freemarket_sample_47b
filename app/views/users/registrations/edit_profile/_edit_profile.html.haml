@@ -1,7 +1,7 @@
 %section.main-page__body__content__chapter
   %h2.main-page__body__content__chapter__title
     プロフィール
-  = form_for user, url: users_update_profile_path, method: :post, html: { class: "main-page__body__content__chapter__form" } do |f|
+  = form_for current_user, url: users_update_profile_path, method: :post, html: { class: "main-page__body__content__chapter__form" } do |f|
     .main-page__body__content__chapter__form__profile-icon
       %figure.main-page__body__content__chapter__form__profile-icon__figure
         = image_tag 'member_photo_noimage_thumb.png', class: "main-page__body__content__chapter__form__profile-icon__figure__image"
