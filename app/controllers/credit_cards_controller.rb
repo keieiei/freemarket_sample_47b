@@ -1,6 +1,9 @@
 class CreditCardsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+  end
+
   def new
     @credit_card = CreditCard.new
     @page_number = 4
@@ -12,6 +15,11 @@ class CreditCardsController < ApplicationController
     return render :new unless @credit_card.valid?
     @credit_card.save
     redirect_to users_sign_up_complete_path
+  end
+
+  def destroy
+    current_user.credit_card.destroy
+    redirect_to user_credit_cards_path(current_user.id)
   end
 
   private
