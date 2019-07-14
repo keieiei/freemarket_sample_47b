@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_14_054446) do
+ActiveRecord::Schema.define(version: 2019_07_14_101426) do
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_number", default: "", null: false
@@ -42,12 +48,32 @@ ActiveRecord::Schema.define(version: 2019_07_14_054446) do
     t.integer "delivery_way_id", null: false
     t.integer "price", null: false
     t.integer "item_state_id", null: false
-    t.integer "large_category", null: false
-    t.integer "middle_category", null: false
-    t.integer "small_category", null: false
-    t.text "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "large_category_id"
+    t.bigint "middle_category_id"
+    t.bigint "small_category_id"
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["large_category_id"], name: "index_items_on_large_category_id"
+    t.index ["middle_category_id"], name: "index_items_on_middle_category_id"
+    t.index ["small_category_id"], name: "index_items_on_small_category_id"
+  end
+
+  create_table "large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "order_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "order_number"
+    t.bigint "large_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["large_category_id"], name: "index_middle_categories_on_large_category_id"
   end
 
   create_table "receiver_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,6 +91,15 @@ ActiveRecord::Schema.define(version: 2019_07_14_054446) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_receiver_informations_on_user_id"
+  end
+
+  create_table "small_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "order_number"
+    t.bigint "middle_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["middle_category_id"], name: "index_small_categories_on_middle_category_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,5 +133,11 @@ ActiveRecord::Schema.define(version: 2019_07_14_054446) do
 
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "large_categories"
+  add_foreign_key "items", "middle_categories"
+  add_foreign_key "items", "small_categories"
+  add_foreign_key "middle_categories", "large_categories"
   add_foreign_key "receiver_informations", "users"
+  add_foreign_key "small_categories", "middle_categories"
 end

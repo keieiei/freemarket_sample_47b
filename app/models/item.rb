@@ -1,21 +1,15 @@
 class Item < ApplicationRecord
-  with_options presence: true do
-    validates :name, length: {maximum: 40}
-    validates :detail, length: {maximum: 1000}
-    validates :item_size_id
-    validates :delivery_charge_id
-    validates :prefecture_id
-    validates :delivery_time_id
-    validates :delivery_way_id
-    validates :price,numericality:{greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999}
-    validates :item_state_id
-    validates :large_category
-    validates :middle_category
-    validates :small_category
-  end
+  validates :name, :detail, :item_size_id, :delivery_charge_id, :prefecture_id, :delivery_time_id, :delivery_way_id, :price, :item_state_id, :large_category_id, :middle_category_id, :small_category_id, presence: true
+  validates :name, length: { maximum: 40 }
+  validates :detail, length: { maximum: 1000 }
+  validates :price, numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
 
   has_many :images,  dependent: :destroy, inverse_of: "item"
   accepts_nested_attributes_for :images
+  belongs_to :large_category
+  belongs_to :middle_category
+  belongs_to :small_category
+  belongs_to :brand
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :item_size
   belongs_to_active_hash :item_state
