@@ -9,13 +9,17 @@ class Item < ApplicationRecord
     validates :delivery_way_id
     validates :price,numericality:{greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999}
     validates :item_state_id
-    validates :large_category
-    validates :middle_category
-    validates :small_category
+    validates :large_category_id
+    validates :middle_category_id
+    validates :small_category_id
   end
 
   has_many :images,  dependent: :destroy, inverse_of: "item"
   accepts_nested_attributes_for :images
+  belongs_to :large_category
+  belongs_to :middle_category
+  belongs_to :small_category
+  belongs_to :brand
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :item_size
   belongs_to_active_hash :item_state
