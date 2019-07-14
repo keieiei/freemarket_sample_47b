@@ -1,5 +1,5 @@
 .main-page
   = render 'shared/main-page/main-header'
-  = render 'items/index/index-body'
+  = render 'items/index/index-body', { items: @items }
   = render 'shared/main-page/main-footer'
   = render 'shared/main-page/footer-sell-button'
