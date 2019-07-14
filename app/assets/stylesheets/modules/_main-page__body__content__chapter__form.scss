@@ -30,4 +30,8 @@
     color: $white;
     margin: 40px 0 0 0;
   }
+  &__content {
+    max-width: 343px;
+    margin: 0 auto;
+  }
 }

@@ -26,7 +26,16 @@ class CreditCardsController < ApplicationController
   end
 
   def add
-    @credit_card = current_user.credit_card.new
+    @credit_card = CreditCard.new(user_id: current_user.id)
+  end
+
+  def add_create
+    @credit_card = CreditCard.new(credit_card_params)
+    if @credit_card.save
+      redirect_to user_credit_cards_path(current_user.id)
+    else
+      render :add
+    end
   end
 
   private

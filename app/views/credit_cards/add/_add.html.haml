@@ -1,0 +1,38 @@
+%section.main-page__body__content__chapter
+  %h2.main-page__body__content__chapter__title
+    クレジットカード情報入力
+  = form_for [current_user, credit_card], url: add_create_user_credit_cards_path(current_user.id), method: :post, html: { class: 'main-page__body__content__chapter__form' } do |f|
+    .main-page__body__content__chapter__form__content
+      .main-page__body__content__chapter__form__content__group
+        = f.label :card_number, "カード番号", class: 'main-page__body__content__chapter__form__content__group__label'
+        %span.main-page__body__content__chapter__form__content__group__require-mark
+          必須
+        = f.text_field :card_number, placeholder: '半角数字のみ', class: 'main-page__body__content__chapter__form__content__group__input-text'
+      %ul.main-page__body__content__chapter__form__content__group__credit-card-list
+        - Settings.credit_card_logos.each do |logo|
+          %li.main-page__body__content__chapter__form__content__group__credit-card-list__item
+            = image_tag logo, class: "main-page__body__content__chapter__form__content__group__credit-card-list__item__image"
+      .main-page__body__content__chapter__form__content__group
+        = f.label :valid, "有効期限", class: 'main-page__body__content__chapter__form__content__group__label'
+        %span.main-page__body__content__chapter__form__content__group__require-mark
+          必須
+        %br
+        .main-page__body__content__chapter__form__content__group__valid-select-wrap
+          = f.select :valid_month, options_for_select(valid_month_selection), { prompt: "--" }, { class: 'main-page__body__content__chapter__form__content__group__valid-select-wrap__select' }
+          = fa_icon 'angle-down', class: 'main-page__body__content__chapter__form__content__group__valid-select-wrap__icon-arrow-bottom'
+          %span.main-page__body__content__chapter__form__content__group__valid-select-wrap__unit-text
+            月
+        .main-page__body__content__chapter__form__content__group__valid-select-wrap
+          = f.select :valid_year, options_for_select(19..29), { prompt: "--" }, { class: 'main-page__body__content__chapter__form__content__group__valid-select-wrap__select' }
+          = fa_icon 'angle-down', class: 'main-page__body__content__chapter__form__content__group__valid-select-wrap__icon-arrow-bottom'
+          %span.main-page__body__content__chapter__form__content__group__valid-select-wrap__unit-text
+            年
+      .main-page__body__content__chapter__form__content__group
+        = f.label :security_code, "セキュリティコード", class: 'main-page__body__content__chapter__form__content__group__label'
+        %span.main-page__body__content__chapter__form__content__group__require-mark
+          必須
+        = f.text_field :security_code, placeholder: 'カード背面4桁もしくは3桁の番号', class: 'main-page__body__content__chapter__form__content__group__input-text'
+        %p.main-page__body__content__chapter__form__content__group__text.main-page__body__content__chapter__form__content__group__text--right
+          = fa_icon 'question', class: 'main-page__body__content__chapter__form__content__group__text__question'
+          = link_to 'カード裏面の番号とは？', '', class: 'main-page__body__content__chapter__form__content__group__text__link'
+      = f.submit "次へ進む", class: "main-page__body__content__chapter__form__content__submit-btn"
