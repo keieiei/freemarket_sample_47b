@@ -1,0 +1,42 @@
+.main-page__item-container {
+  &__name {
+    font-size: 24px;
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 1.4;
+  }
+  &__content-box {
+    @include clearfix();
+    margin: 16px 0 0;
+  }
+  &__price-box {
+    margin: 24px 0 0;
+    text-align: center;
+  }
+  &__sales-point-message {
+    text-align: center;
+  }
+  &__buy-btn {
+    font-size: 24px;
+    display: block;
+    margin: 16px 0 0;
+    background: $red;
+    color: $white;
+    text-align: center;
+    font-weight: 600;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    height: 60px;
+    line-height: 60px;
+  }
+  &__description {
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 32px 0 0;
+  }
+  &__btn-container {
+    @include clearfix();
+    margin: 16px 0 0;
+    font-size: 0;
+  }
+}

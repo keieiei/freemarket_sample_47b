@@ -1,0 +1,10 @@
+.main-page__other-items {
+  &__contents {
+    @include clearfix();
+    width: 700px;
+    margin: 0 auto;
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.main-page__item-container__btn-container__left-box__btn {
+  &__icon {
+    font-size: 14px;
+    vertical-align: middle;
+    &--gray {
+      color: $gray;
+    }
+  }
+  &__context {
+    display: inline-block;
+    margin: 1px 0 0 8px;
+    font-size: 14px;
+    vertical-align: middle;
+    &--number {
+      -webkit-animation: fade-in-down ease-out .4s forwards;
+      animation: fade-in-down ease-out .4s forwards;
+    }
+  }
+}

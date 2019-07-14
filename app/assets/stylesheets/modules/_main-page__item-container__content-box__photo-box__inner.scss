@@ -1,0 +1,9 @@
+.main-page__item-container__content-box__photo-box__inner {
+  &__show {
+    position: relative;
+    overflow: hidden;
+  }
+  &__select {
+    line-height: 0;
+  }
+}

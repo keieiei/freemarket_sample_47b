@@ -1,0 +1,18 @@
+.main-page__item-container__content-box__detail__container__content__body__inner__content {
+  &__icon {
+    font-size: 16px;
+    vertical-align: middle;
+    &--good {
+      color: $red;
+    }
+    &--normal {
+      color: $orange;
+    }
+    &--bad {
+      color: $light-blue;
+    }
+  }
+  &__number {
+    vertical-align: middle;
+  }
+}

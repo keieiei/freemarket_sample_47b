@@ -1,0 +1,16 @@
+.main-page__nav {
+  &__content {
+    position: relative;
+    width: 45%;
+    word-wrap: break-word;
+    &--prev {
+      float: left;
+      padding: 0 0 0 14px;
+    }
+    &--next {
+      float: right;
+      padding: 0 14px 0 0;
+      text-align: right;
+    }
+  }
+}
