@@ -2,6 +2,22 @@
   &__list {
     @include clearfix();
     font-size: 0;
+    &__item {
+      font-size: 12px;
+      display: inline-block;
+      margin: 0 0 0 16px;
+      &:first-child {
+        margin: 0;
+      }
+    }
+    &__link {
+      display: block;
+      color: $black;
+      &:hover {
+        opacity: .7;
+        text-decoration: underline;
+      }
+    }
   }
   &__mercari-logo {
     width: 80px;
@@ -12,8 +28,15 @@
     &:hover {
       opacity: .7;
     }
+    &__image {
+      width: 80px;
+      height: 65px;
+    }
   }
   &__text {
     margin: 8px 0 0;
+    &__small {
+      font-size: 13px;
+    }
   }
 }

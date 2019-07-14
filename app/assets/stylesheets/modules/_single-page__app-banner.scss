@@ -7,5 +7,63 @@
     height: 260px;
     margin: 0 auto;
     color: $white;
+    &__links {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      &__title {
+        margin: 0;
+        font-size: 24px;
+        text-shadow: 0 0 5px $transparent-dark-black;
+      }
+      &__text {
+        margin: 10px 0 0;
+        font-size: 35px;
+        text-shadow: 0 0 5px $transparent-dark-black;
+      }
+      &__icons {
+        @include clearfix();
+        margin: 20px 0 0;
+        &__mercari-figure {
+          float: left;
+        }
+        &__link-lists {
+          float: left;
+          margin: 0 0 0 24px;
+          line-height: 68px;
+          &__item {
+            float: left;
+            &__link {
+              display: block;
+              line-height: 68px;
+              &:hover {
+                opacity: .7;
+              }
+            }
+            &__image {
+              width: 133px;
+            }
+          }
+        }
+        &__mercari-figure {
+          &__image {
+            width: 68px;
+          }
+        }
+      }
+    }
+    &__sp-figure {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 300px;
+      height: 100%;
+      &__image {
+        width: 100%;
+      }
+    }
   }
 }

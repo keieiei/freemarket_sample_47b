@@ -6,5 +6,15 @@
     &:last-child {
       margin-bottom: 40px;
     }
+    &__title {
+      line-height: 1.4;
+      font-size: 22px;
+      margin: 24px 0 8px;
+    }
+    &__box {
+      @include clearfix();
+      margin: 0 auto;
+      width: auto;
+    }
   }
 }

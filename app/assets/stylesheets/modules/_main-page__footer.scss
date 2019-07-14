@@ -25,10 +25,130 @@
       padding: 0;
       margin-top: 18px;
       width: auto;
+      &__list {
+        &__item {
+          color: $white;
+          padding-right: 30px;
+          display: block;
+          &:first-child {
+            margin: 16px 0 0;
+          }
+          &__link {
+            color: $white;
+            font-size: 12px;
+            line-height: 1.5em;
+            display: block;
+            opacity: .7;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    &__title {
+      color: $white;
+      font-size: 16px;
+      font-weight: 100;
+    }
+    &__inner-cell {
+      float: left;
+      padding-left: 10px;
+      vertical-align: top;
+      width: 50%;
+      &:first-child {
+        padding: 0 10px 0 0;
+      }
+      &__list {
+        &__item {
+          color: $white;
+          margin: 14px 0 0;
+          &:first-child {
+            margin: 14px 0 0;
+          }
+          &__link {
+            color: $white;
+            font-size: 12px;
+            line-height: 1.5em;
+            display: block;
+            opacity: .7;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    &__list {
+      &__item {
+        color: $white;
+        margin: 14px 0 0;
+        &:first-child {
+          margin: 16px 0 0;
+        }
+        &--social-link {
+          display: inline-block;
+          &__link {
+            color: $white;
+            font-size: 12px;
+            line-height: 1.5em;
+            display: block;
+            opacity: 1;
+          }
+          &__icon {
+            background: transparent;
+            margin: 16px 18px 0 0;
+            color: $white;
+            &--twitter {
+              font-size: 24px;
+            }
+            &--facebook {
+              font-size: 26px;
+            }
+          }
+        }
+        &__link {
+          color: $white;
+          font-size: 12px;
+          line-height: 1.5em;
+          display: block;
+          opacity: .7;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
   &__bottom {
     margin: 30px auto 20px;
     width: 1020px;
+  }
+  &__bottom {
+    &__logo {
+      display: inline-block;
+      margin-right: 10px;
+      width: auto;
+      color: $white;
+      font-size: 12px;
+      line-height: 1.5em;
+      &:hover {
+        opacity: .7;
+      }
+      &__image {
+        width: 124px;
+        height: 33px;
+      }
+    }
+    &__copyright {
+      display: inline-block;
+      margin: 8px 0 0;
+      text-align: center;
+      vertical-align: sub;
+      width: 745px;
+      &__text {
+        font-size: 12px;
+      }
+    }
   }
 }

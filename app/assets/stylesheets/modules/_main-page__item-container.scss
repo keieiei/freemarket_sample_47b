@@ -8,13 +8,177 @@
   &__content-box {
     @include clearfix();
     margin: 16px 0 0;
+    &__photo-box {
+      position: relative;
+      margin: 0 auto;
+      background: $light-white;
+      float: left;
+      min-width: 300px;
+      max-width: 300px;
+      min-height: 375px;
+      &__inner {
+        position: relative;
+        &__show {
+          position: relative;
+          overflow: hidden;
+          &__container {
+            position: relative;
+            left: 0px;
+            width: 300px;
+            &__content {
+              min-height: 1px;
+              float: left;
+              -webkit-backface-visibility: hidden;
+              -webkit-tap-highlight-color: transparent;
+              -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+              width: 300px;
+              &__inner {
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding: 0 0 100%;
+                min-height: 300px;
+                &__image {
+                  vertical-align: bottom;
+                  -webkit-transition: opacity 400ms ease;
+                  transition: opacity 400ms ease;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  width: auto;
+                  height: 100%;
+                  margin: auto;
+                }
+              }
+            }
+          }
+        }
+        &__select {
+          line-height: 0;
+          &__content {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            max-height: none;
+            &--active {
+              opacity: 1;
+              cursor: default;
+            }
+            &__inner {
+              overflow: hidden;
+              pointer-events: none;
+              position: static;
+              width: auto;
+              height: auto;
+              padding: 0;
+              &__image {
+                width: 100%;
+                vertical-align: bottom;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                -webkit-transform: translate(0, -50%);
+                transform: translate(0, -50%);
+              }
+            }
+          }
+        }
+      }
+    }
+    &__detail {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid $dark-white;
+      float: right;
+      max-width: 300px;
+      height: 420px;
+      margin: 0 auto;
+      &__container {
+        &__content {
+          &__title {
+            border-collapse: collapse;
+            border: 1px solid $dark-white;
+            padding: 8px;
+            width: 39%;
+            text-align: left;
+            font-weight: 400;
+            background: $light-white;
+          }
+          &__body {
+            border-collapse: collapse;
+            border: 1px solid $dark-white;
+            padding: 8px;
+            width: 61%;
+            background: $white;
+            &__link {
+              display: block;
+              margin: 0;
+            }
+            &__inner {
+              &__content {
+                display: inline-block;
+                margin: 8px 0 0 16px;
+                &:first-child {
+                  margin: 0;
+                }
+                &__icon {
+                  font-size: 16px;
+                  vertical-align: middle;
+                  &--good {
+                    color: $red;
+                  }
+                  &--normal {
+                    color: $orange;
+                  }
+                  &--bad {
+                    color: $light-blue;
+                  }
+                }
+                &__number {
+                  vertical-align: middle;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   &__price-box {
     margin: 24px 0 0;
     text-align: center;
+    &__price {
+      margin: 0 16px 0 0;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    &__tax {
+      font-size: 10px;
+    }
+    &__shipping-fee {
+      display: inline-block;
+      font-size: 16px;
+    }
   }
   &__sales-point-message {
     text-align: center;
+    &__inner {
+      display: inline-block;
+      position: relative;
+      line-height: 1.5;
+      color: $white;
+      background: $green;
+      margin: 20px 0 0 0;
+      padding: 8px;
+      border-radius: 4px;
+    }
   }
   &__buy-btn {
     font-size: 24px;
@@ -33,10 +197,64 @@
     font-size: 18px;
     line-height: 1.5;
     padding: 32px 0 0;
+    &__inner {
+      white-space: pre-wrap;
+    }
   }
   &__btn-container {
     @include clearfix();
     margin: 16px 0 0;
     font-size: 0;
+    &__left-box {
+      float: left;
+      &__btn {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 0 0 0 16px;
+        border-radius: 40px;
+        -webkit-transition: all ease-out .3s;
+        transition: all ease-out .3s;
+        color: $black;
+        border: 1px solid $dark-white;
+        background: $dark-white;
+        &:first-child {
+          margin: 0;
+        }
+        &__icon {
+          font-size: 14px;
+          vertical-align: middle;
+          &--gray {
+            color: $gray;
+          }
+        }
+        &__context {
+          display: inline-block;
+          margin: 1px 0 0 8px;
+          font-size: 14px;
+          vertical-align: middle;
+          &--number {
+            -webkit-animation: fade-in-down ease-out .4s forwards;
+            animation: fade-in-down ease-out .4s forwards;
+          }
+        }
+      }
+    }
+    &__right-box {
+      margin: 8px 0 0;
+      float: right;
+      &__link {
+        display: inline-block;
+        &__icon {
+          font-size: 14px;
+          vertical-align: middle;
+        }
+        &__context {
+          display: inline-block;
+          margin: 1px 0 0 8px;
+          font-size: 14px;
+          vertical-align: middle;
+        }
+      }
+    }
   }
 }
