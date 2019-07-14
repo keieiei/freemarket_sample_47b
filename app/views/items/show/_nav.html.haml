@@ -1,0 +1,9 @@
+%ul.main-page__nav
+  %li.main-page__nav__content.main-page__nav__content--prev
+    = link_to item_path(item_prev.id), class: 'main-page__nav__content__link' do
+      = fa_icon 'angle-left', class: ['main-page__nav__content__icon', 'main-page__nav__content__icon--left']
+      = item_prev.name
+  %li.main-page__nav__content.main-page__nav__content--next
+    = link_to item_path(item_next.id), class: 'main-page__nav__content__link' do
+      = item_next.name
+      = fa_icon 'angle-right', class: ['main-page__nav__content__icon', 'main-page__nav__content__icon--right']

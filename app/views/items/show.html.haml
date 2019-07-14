@@ -1,0 +1,9 @@
+.main-page
+  = render 'shared/main-page/main-header'
+  = render 'shared/main-page/bread-crumbs'
+  = render 'items/show/item', { item: @item }
+  = render 'items/show/comment', { item: @item }
+  = render 'items/show/nav', { item_prev: @item_prev, item_next: @item_next }
+  = render 'items/show/social-media'
+  = render 'items/show/other-items', { item: @item, other_items_same_seller: @other_items_same_seller, other_items_same_category_brand: @other_items_same_category_brand }
+  = render 'shared/main-page/main-footer'

@@ -3,15 +3,122 @@
     position: relative;
     overflow: hidden;
     height: 100%;
+    &__container {
+      position: relative;
+      height: 100%;
+      &__content {
+        height: 100%;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        min-height: 1px;
+        position: relative;
+        float: left;
+        &__top-main {
+          background-image: image-url("main_bg_pc.jpg");
+          background-size: cover;
+          display: block;
+          height: 390px;
+          &__inner {
+            position: relative;
+            max-width: 860px;
+            height: 100%;
+            margin: 0 auto;
+            &__content {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+              &__title {
+                line-height: 1.2;
+                font-size: 60px;
+              }
+              &__text {
+                margin: 16px 0 0;
+                font-size: 18px;
+                line-height: 1.77778;
+              }
+              &__link-list {
+                @include clearfix;
+                margin: 24px 0 0;
+                line-height: 0;
+                &__link {
+                  display: inline-block;
+                  width: 170px;
+                  height: 50px;
+                  margin: 0 0 0 8px;
+                  &:first-child {
+                    margin: 0;
+                  }
+                  &__image {
+                    width: 100%;
+                    vertical-align: bottom;
+                  }
+                }
+              }
+            }
+            &__image {
+              vertical-align: bottom;
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: auto;
+            }
+          }
+        }
+        &__camp-link {
+          height: 390px;
+          background-image: image-url("banner-camp.jpg");
+          background-repeat: repeat-x;
+          background-size: auto;
+          display: block;
+          background-position: center;
+        }
+      }
+    }
   }
   &__nav {
     color: transparent;
     display: block;
+    &__angle {
+      cursor: pointer;
+      height: 46px;
+      width: 31px;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-23px);
+      transform: translateY(-23px);
+      &--prev {
+        background-image: image-url("carousel-prev.png");
+        left: 60px;
+      }
+      &--next {
+        background-image: image-url("carousel-next.png");
+        right: 60px;
+      }
+    }
   }
   &__dots {
     line-height: 0;
     margin: -30px;
     text-align: center;
     display: block;
+    &__dot {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      max-height: none;
+      opacity: 1;
+      cursor: default;
+      background: $white;
+      border-radius: 50%;
+      height: 12px;
+      margin-right: 15px;
+      width: 12px;
+      &--active {
+        background: rgba(0,0,0,0.5);
+      }
+    }
   }
 }

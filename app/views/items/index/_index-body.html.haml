@@ -12,5 +12,5 @@
     .main-page__body__top-banner__dots
       - Settings.top_banners.length.times do |i|
         %div{ class: first_add_active_class_name(i, "main-page__body__top-banner__dots__dot") }
-  = render 'items/index/index-pickup-container'
-  = render 'items/index/index-pickup-container'
+  = render 'items/index/index-pickup-container', { items: items }
+  = render 'items/index/index-pickup-container', { items: items }

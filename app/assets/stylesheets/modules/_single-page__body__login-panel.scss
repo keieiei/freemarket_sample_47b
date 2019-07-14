@@ -2,6 +2,17 @@
   &__no-account {
     text-align: center;
     padding: 40px 64px;
+    &__text {
+      font-size: 14px;
+    }
+    &__link {
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid $blue;
+      background: $blue;
+      color: $white;
+      line-height: 40px;
+    }
   }
   &__login-form-inner {
     border-top: 1px solid $light-gray;
@@ -9,6 +20,89 @@
     &--below {
       border: 0;
       padding: 24px 64px 32px;
+    }
+    &__btn {
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      &--facebook {
+        margin: 16px 0 0;
+        background: $dark-blue;
+        color: $white;
+        &:first-child {
+          margin: 0;
+        }
+      }
+      &--google {
+        margin: 16px 0 0;
+        background: $white url(google.svg) no-repeat 3px top;
+        border: $google-gray solid 1px;
+        color: $black;
+      }
+      &__icon-facebook {
+        color: $white;
+        background: $dark-blue;
+        font-size: 26px;
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+      }
+    }
+    &__group {
+      margin: 24px 0 0;
+      &:first-child {
+        margin: 0;
+      }
+      &__input-text {
+        height: 48px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid $gray;
+        background: $white;
+        line-height: 1.5;
+        font-size: 16px;
+        width: 100%;
+        margin: 0;
+      }
+      &__recaptcha {
+        -webkit-transform: none;
+        transform: none;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        width: 328px;
+        height: 78px;
+        &__image {
+          width: 304px;
+          height: 78px;
+        }
+      }
+    }
+    &__submit-btn {
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+      background: $red;
+      border: 1px solid $red;
+      color: $white;
+      margin: 24px 0 0;
+    }
+    &__link {
+      display: block;
+      margin: 40px 0 0;
     }
   }
 }

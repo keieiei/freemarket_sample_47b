@@ -1,14 +1,14 @@
 .main-page__body__pickup-container__items-container__items-box__item
-  = link_to "", class: "main-page__body__pickup-container__items-container__items-box__item__link" do
+  = link_to item_path(item.id), class: "main-page__body__pickup-container__items-container__items-box__item__link" do
     %figure.main-page__body__pickup-container__items-container__items-box__item__figure
-      = image_tag "member_photo_noimage_thumb.png", class: "main-page__body__pickup-container__items-container__items-box__item__figure__image"
+      = image_tag item.images.first.image.url, class: "main-page__body__pickup-container__items-container__items-box__item__figure__image"
     .main-page__body__pickup-container__items-container__items-box__item__body
       %h3.main-page__body__pickup-container__items-container__items-box__item__body__name
-        トートバッグ
+        = item.name
       .main-page__body__pickup-container__items-container__items-box__item__body__num
         .main-page__body__pickup-container__items-container__items-box__item__body__num__price
-          ¥ 6,300
+          = number_to_currency(item.price, format: "%u%n", unit: "￥")
         .main-page__body__pickup-container__items-container__items-box__item__body__num__like
-          = fa_icon 'like-border', class: 'main-page__body__pickup-container__items-container__items-box__item__body__num__like__icon'
+          = fa_icon 'heart', class: 'main-page__body__pickup-container__items-container__items-box__item__body__num__like__icon'
           %span.main-page__body__pickup-container__items-container__items-box__item__body__num__like__value
             2

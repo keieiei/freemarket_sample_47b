@@ -1,5 +1,325 @@
 .main-page__header__nav-box__right-box {
   &__list {
     font-size: 0;
+    &__item {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      padding: 0 14px;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+      &--mypage {
+        right: 0;
+        position: absolute;
+        top: 44px;
+        z-index: 1;
+        display: none;
+        width: 320px;
+        background: $white;
+        -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+        font-size: 14px;
+      }
+      &--login {
+        position: static;
+        padding: 0;
+        margin: 0 0 0 8px;
+        &:first-child {
+          float: right;
+          margin: 0 0 0 12px;
+        }
+        &__btn {
+          display: inline-block;
+          padding: 0 10px;
+          line-height: 30px;
+          border-radius: 4px;
+          text-align: center;
+          font-size: 14px;
+          margin: 0;
+          &:first-child {
+            margin: 0 0 0 6px;
+          }
+          &--blue {
+            display: block;
+            background: $white;
+            border: 1px solid $blue;
+            color: $blue;
+            transition: all ease-out .3s;
+          }
+          &--red {
+            display: block;
+            background: $red;
+            border: 1px solid $red;
+            color: $white;
+            float: left;
+          }
+        }
+      }
+      &__root {
+        position: relative;
+        display: block;
+        height: 44px;
+        line-height: 32px;
+        font-size: 0;
+        color: #333;
+        &:hover {
+          color: $blue;
+        }
+        &__icon {
+          font-size: 20px;
+          color: $gray;
+          vertical-align: middle;
+          padding-top: 2px;
+        }
+        &__title {
+          margin-left: 10px;
+          font-size: 14px;
+          vertical-align: middle;
+        }
+        &__unread-number {
+          position: absolute;
+          top: -2px;
+          left: 6px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: $red;
+          text-align: center;
+          line-height: 20px;
+          font-size: 12px;
+          color: $white;
+        }
+        &__user-icon {
+          display: inline-block;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          &__image-wrap {
+            overflow: hidden;
+            border-radius: 50%;
+          }
+          &__image {
+            vertical-align: bottom;
+            width: 32px;
+          }
+        }
+        &__text {
+          vertical-align: middle;
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
+      &__item-box {
+        position: absolute;
+        top: 44px;
+        z-index: 1;
+        display: none;
+        width: 320px;
+        background: $white;
+        -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+        font-size: 14px;
+        left: 0;
+        &--active {
+          display: block;
+        }
+        &--mypage {
+          &__user-state {
+            text-align: center;
+          }
+          &__user-figure {
+            padding: 28px 0 0;
+            height: 80px;
+            background-image: image-url("user-bg.jpg");
+            background-repeat: no-repeat;
+            background-size: 320px 80px;
+            &__image-wrap {
+              overflow: hidden;
+              width: 60px;
+              height: 60px;
+              margin: 0 auto;
+              border-radius: 50%;
+              -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.08);
+              box-shadow: 0 1px 1px 0 rgba(0,0,0,0.08);
+            }
+            &__image {
+              width: 60px;
+              height: 60px;
+            }
+            &__name {
+              margin: 8px 0 0;
+              padding: 0 8px;
+              font-size: 16px;
+            }
+          }
+          &__review-listing {
+            margin: 40px 0 0;
+            padding: 8px 8px 0;
+            font-size: 0;
+            text-align: center;
+            &__item {
+              display: inline-block;
+              margin: 0 0 0 16px;
+              font-size: 14px;
+              &:first-child {
+                margin: 0;
+              }
+            }
+            &__link {
+              display: block;
+              font-size: 14px;
+              color: $black;
+            }
+          }
+          &__sales-point {
+            width: 300px;
+            margin: 16px auto;
+            background: $light-white;
+            border: 1px solid $light-gray;
+            &__item {
+              border-top: 1px solid $light-gray;
+              &:hover {
+                opacity: .7;
+              }
+              &__link {
+                @include clearfix();
+                display: block;
+                font-size: 14px;
+                color: $black;
+                padding: 0 8px;
+                line-height: 40px;
+              }
+              &__text {
+                float: left;
+              }
+              &__value {
+                float: right;
+              }
+              &__icon-arrow-right {
+                position: relative;
+                top: -2px;
+                font-size: 12px;
+                margin: 0 0 0 8px;
+                color: $gray;
+              }
+            }
+          }
+          &__nav-list {
+            &__item {
+              border-top: 1px solid $light-gray;
+              &__text {
+                position: relative;
+                display: block;
+                min-height: 48px;
+                padding: 16px;
+                background: $white;
+                font-size: 14px;
+                color: $black;
+                &--active {
+                  background-color: $light-white;
+                }
+              }
+              &__icon-arrow-right {
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                color: $gray;
+                -webkit-transform: translate(0, -50%);
+                transform: translate(0, -50%);
+                -webkit-transition: all ease-out .2s;
+                transition: all ease-out .2s;
+                &--active {
+                  right: 12px;
+                  font-weight: 600;
+                  color: $black;
+                }
+              }
+            }
+          }
+        }
+        &__item {
+          position: relative;
+          border-bottom: 1px solid $light-gray;
+          &:last-child {
+            border: 0;
+          }
+          &--not-found {
+            @include bold();
+            padding: 160px 0 60px;
+            background-image: image-url("logo-gray-icon.svg");
+            background-repeat: no-repeat;
+            background-position: center 40px;
+            background-size: 78px 85px;
+            text-align: center;
+            font-size: 16px;
+            color: $gray;
+            border: 0;
+          }
+          &__link {
+            display: block;
+            min-height: 80px;
+            padding: 16px;
+            color: $black;
+            &:hover {
+              background-color: $light-white;
+            }
+          }
+          &__mercari-logo {
+            position: relative;
+            overflow: hidden;
+            float: left;
+            width: 48px;
+            height: 48px;
+            &__image {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 1;
+              width: 100%;
+            }
+          }
+          &__body {
+            margin: 0 40px 0 68px;
+            &__text {
+              overflow: hidden;
+              display: block;
+              display: -webkit-box;
+              max-height: 4.4em;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              text-overflow: ellipsis;
+              line-height: 1.5;
+            }
+            &__time {
+              display: inline-block;
+              color: $dark-gray;
+              &__icon {
+                font-size: 16px;
+                color: $gray;
+                margin: 0 8px 0 0;
+              }
+              &__text {
+                vertical-align: middle;
+              }
+            }
+          }
+          &__icon-arrow-right {
+            vertical-align: middle;
+            color: $gray;
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+          }
+        }
+      }
+    }
   }
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_07_024059) do
+ActiveRecord::Schema.define(version: 2019_07_14_054446) do
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_number", default: "", null: false
@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 2019_07_07_024059) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
-    t.integer "size", null: false
-    t.integer "delivery_charge", null: false
-    t.integer "delivery_prefecture", null: false
-    t.integer "delivery_time", null: false
-    t.integer "delivery_way", null: false
+    t.integer "item_size_id", null: false
+    t.integer "delivery_charge_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "delivery_time_id", null: false
+    t.integer "delivery_way_id", null: false
     t.integer "price", null: false
-    t.integer "state", null: false
+    t.integer "item_state_id", null: false
     t.integer "large_category", null: false
     t.integer "middle_category", null: false
     t.integer "small_category", null: false

@@ -1,0 +1,120 @@
+%section.main-page__item-container
+  %h1.main-page__item-container__name
+    = item.name
+  .main-page__item-container__content-box
+    .main-page__item-container__content-box__photo-box
+      .main-page__item-container__content-box__photo-box__inner
+        .main-page__item-container__content-box__photo-box__inner__show
+          .main-page__item-container__content-box__photo-box__inner__show__container
+            - item.images.each_with_index do |image, i|
+              %div{ class: first_add_active_class_name(i, 'main-page__item-container__content-box__photo-box__inner__show__container__content')}
+                .main-page__item-container__content-box__photo-box__inner__show__container__content__inner
+                  = image_tag image.image.url, class: 'main-page__item-container__content-box__photo-box__inner__show__container__content__inner__image'
+        .main-page__item-container__content-box__photo-box__inner__select
+          - item.images.each_with_index do |image, i|
+            %div{ class: first_add_active_class_name(i, 'main-page__item-container__content-box__photo-box__inner__select__content') }
+              .main-page__item-container__content-box__photo-box__inner__select__content__inner
+                = image_tag image.image.url, class: 'main-page__item-container__content-box__photo-box__inner__select__content__inner__image'
+    %table.main-page__item-container__content-box__detail
+      %tbody.main-page__item-container__content-box__detail__container
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            出品者
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = link_to '出品者名', '', class: 'main-page__item-container__content-box__detail__container__content__body__link'
+            .main-page__item-container__content-box__detail__container__content__body__inner
+              .main-page__item-container__content-box__detail__container__content__body__inner__content
+                = fa_icon 'laugh', class: ['main-page__item-container__content-box__detail__container__content__body__inner__content__icon', 'main-page__item-container__content-box__detail__container__content__body__inner_content__icon--good']
+                %span.main-page__item-container__content-box__detail__container__content__body__inner__content__number
+                  100
+              .main-page__item-container__content-box__detail__container__content__body__inner__content
+                = fa_icon 'meh', class: ['main-page__item-container__content-box__detail__container__content__body__inner__content__icon', 'main-page__item-container__content-box__detail__container__content__body__inner_content__icon--normal']
+                %span.main-page__item-container__content-box__detail__container__content__body__inner__content__number
+                  10
+              .main-page__item-container__content-box__detail__container__content__body__inner__content
+                = fa_icon 'frown', class: ['main-page__item-container__content-box__detail__container__content__body__inner__content__icon', 'main-page__item-container__content-box__detail__container__content__body__inner_content__icon--bad']
+                %span.main-page__item-container__content-box__detail__container__content__body__inner__content__number
+                  1
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            カテゴリー
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
+              .main-page__item-container__content-box__detail__container__content__body__content
+                = item.large_category
+            = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
+              .main-page__item-container__content-box__detail__container__content__body__content
+                = fa_icon 'angle-right', class: 'main-page__item-container__content-box__detail__container__content__body__icon'
+                = item.middle_category
+            = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
+              .main-page__item-container__content-box__detail__container__content__body__content
+                = fa_icon 'angle-right', class: 'main-page__item-container__content-box__detail__container__content__body__icon'
+                = item.small_category
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            ブランド
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
+              .main-page__item-container__content-box__detail__container__content__body__content
+                = item.brand
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            商品のサイズ
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = item.item_size.name
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            商品の状態
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = item.item_state.name
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            配送料の負担
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = item.delivery_charge.name
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            配送の方法
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = item.delivery_way.name
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            配送元地域
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = link_to item.prefecture.name, '', class: 'main-page__item-container__content-box__detail__container__content__body__link'
+        %tr.main-page__item-container__content-box__detail__container__content
+          %th.main-page__item-container__content-box__detail__container__content__title
+            配送日の目安
+          %td.main-page__item-container__content-box__detail__container__content__body
+            = item.delivery_time.name
+  .main-page__item-container__price-box
+    %span.main-page__item-container__price-box__price
+      = number_to_currency(item.price, :format => "%u%n", :unit => "￥")
+    %span.main-page__item-container__price-box__tax
+      (税込)
+    %span.main-page__item-container__price-box__shipping-fee
+      = item.delivery_charge.shipping_fee
+  .main-page__item-container__sales-point-message
+    .main-page__item-container__sales-point-message__inner
+      = "売上金#{number_to_currency(300, :format => "%u%n", :unit => "￥")}をお持ちです"
+  = link_to '購入画面に進む', '', method: :post, class: 'main-page__item-container__buy-btn'
+  .main-page__item-container__description
+    %p.main-page__item-container__description__inner
+      = item.detail
+  .main-page__item-container__btn-container
+    .main-page__item-container__btn-container__left-box
+      = link_to root_path, method: :get, class: 'main-page__item-container__btn-container__left-box__btn' do
+        = fa_icon 'heart', class: ['main-page__item-container__btn-container__left-box__btn__icon', 'main-page__item-container__btn-container__left-box__btn__icon--gray']
+        %span.main-page__item-container__btn-container__left-box__btn__context
+          いいね！
+        %span.main-page__item-container__btn-container__left-box__btn__context.main-page__item-container__btn-container__left-box__btn__context--number
+          2
+      = link_to root_path, method: :get, class: 'main-page__item-container__btn-container__left-box__btn' do
+        = fa_icon 'flag', class: 'main-page__item-container__btn-container__left-box__btn__icon'
+        %span.main-page__item-container__btn-container__left-box__btn__context
+          不適切な商品の報告
+    .main-page__item-container__btn-container__right-box
+      = link_to root_path, class: 'main-page__item-container__btn-container__right-box__link' do
+        = fa_icon 'lock', class: 'main-page__item-container__btn-container__right-box__link__icon'
+        %span.main-page__item-container__btn-container__right-box__link__context
+          あんしん・あんぜんへの取り組み
