@@ -1,0 +1,9 @@
+.main-page__other-items
+  %section.main-page__other-items__contents
+    %h2.main-page__other-items__contents__title
+      = link_to "出品者さんのその他の作品", "", class: "main-page__other-items__contents__title__link"
+    = render 'items/show/items-box', { items: other_items_same_seller }
+  %section.main-page__other-items__contents
+    %h2.main-page__other-items__contents__title
+      = link_to "#{item.brand}の#{item.small_category} その他の作品", "", class: "main-page__other-items__contents__title__link"
+    = render 'items/show/items-box', { items: other_items_same_category_brand }
