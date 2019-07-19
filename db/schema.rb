@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_145714) do
+ActiveRecord::Schema.define(version: 2019_07_19_153931) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -57,10 +57,12 @@ ActiveRecord::Schema.define(version: 2019_07_19_145714) do
     t.bigint "brand_id"
     t.integer "seller_id", null: false
     t.integer "buyer_id"
+    t.bigint "user_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["large_category_id"], name: "index_items_on_large_category_id"
     t.index ["middle_category_id"], name: "index_items_on_middle_category_id"
     t.index ["small_category_id"], name: "index_items_on_small_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -140,6 +142,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_145714) do
   add_foreign_key "items", "large_categories"
   add_foreign_key "items", "middle_categories"
   add_foreign_key "items", "small_categories"
+  add_foreign_key "items", "users"
   add_foreign_key "middle_categories", "large_categories"
   add_foreign_key "receiver_informations", "users"
   add_foreign_key "small_categories", "middle_categories"
