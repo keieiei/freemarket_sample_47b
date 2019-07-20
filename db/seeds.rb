@@ -42,59 +42,83 @@ require "csv"
 #   )
 # end
 
-CSV.foreach('db/seeds/csv/test_user.csv', headers: true) do |row|
-    User.create(
-      id: row['id'],
-      email: row['email'],
-      password: row['password'],
-      nickname: row['nickname'],
-      birth_year: row['birth_year'],
-      birth_month: row['birth_month'],
-      birth_day: row['birth_day'],
-      family_name: row['family_name'],
-      first_name: row['first_name'],
-      family_name_kana: row['family_name_kana'],
-      first_name_kana: row['first_name_kana'],
-      phone_number: row['phone_number']
-    )
-  end
+# CSV.foreach('db/seeds/csv/test_user.csv', headers: true) do |row|
+#     User.create(
+#       id: row['id'],
+#       email: row['email'],
+#       password: row['password'],
+#       nickname: row['nickname'],
+#       birth_year: row['birth_year'],
+#       birth_month: row['birth_month'],
+#       birth_day: row['birth_day'],
+#       family_name: row['family_name'],
+#       first_name: row['first_name'],
+#       family_name_kana: row['family_name_kana'],
+#       first_name_kana: row['first_name_kana'],
+#       phone_number: row['phone_number']
+#     )
+#   end
   
-  CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
-    num = row['id'].to_i - 100
-    Item.create(
-      id: row['id'].to_i,
-      name: row['name'],
-      detail: row['detail'],
-      item_size_id: row['item_size_id'].to_i,
-      delivery_charge_id: row['delivery_charge_id'].to_i,
-      prefecture_id: row['prefecture_id'].to_i,
-      delivery_time_id: row['delivery_time_id'].to_i,
-      delivery_way_id: row['delivery_way_id'].to_i,
-      price: row['price'].to_i,
-      item_condition_id: row['item_condition_id'].to_i,
-      item_state_id: row['item_state_id'].to_i,
-      large_category_id: row['large_category_id'].to_i,
-      middle_category_id: row['middle_category_id'].to_i,
-      small_category_id: row['small_category_id'],
-      brand_id: row['brand_id'],
-      seller_id: row['seller_id'].to_i,
-      buyer_id: row['buyer_id'],
-      images_attributes: [
-        { 
-          image: File.open("./app/assets/images/test_images/item_#{num}.jpg")
-        }
-      ]
-    )
-  end
+#   CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
+#     num = row['id'].to_i - 100
+#     Item.create(
+#       id: row['id'].to_i,
+#       name: row['name'],
+#       detail: row['detail'],
+#       item_size_id: row['item_size_id'].to_i,
+#       delivery_charge_id: row['delivery_charge_id'].to_i,
+#       prefecture_id: row['prefecture_id'].to_i,
+#       delivery_time_id: row['delivery_time_id'].to_i,
+#       delivery_way_id: row['delivery_way_id'].to_i,
+#       price: row['price'].to_i,
+#       item_condition_id: row['item_condition_id'].to_i,
+#       item_state_id: row['item_state_id'].to_i,
+#       large_category_id: row['large_category_id'].to_i,
+#       middle_category_id: row['middle_category_id'].to_i,
+#       small_category_id: row['small_category_id'],
+#       brand_id: row['brand_id'],
+#       seller_id: row['seller_id'].to_i,
+#       buyer_id: row['buyer_id'],
+#       images_attributes: [
+#         { 
+#           image: File.open("./app/assets/images/test_images/item_#{num}.jpg")
+#         }
+#       ]
+#     )
+#   end
   
-  CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
-    num = row['id'].to_i - 100
-    if num == 1
-      (2..10).each do |i|
-        Image.create(
-          item_id: row['id'].to_i,
-          image: File.open("./app/assets/images/test_images/item_#{num}_#{i}.jpg")
-        )
+#   CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
+#     num = row['id'].to_i - 100
+#     if num == 1
+#       (2..10).each do |i|
+#         Image.create(
+#           item_id: row['id'].to_i,
+#           image: File.open("./app/assets/images/test_images/item_#{num}_#{i}.jpg")
+#         )
+#       end
+#     end
+#   end
+
+CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
+  if row['brand_id'] != nil
+    brand_large_category = BrandLargeCategory.new(
+                                                    brand_id: row['brand_id'],
+                                                    large_category_id: row['large_category_id']
+                                                  )
+    brand_large_category.save if brand_large_category.new_record?
+    if row['middle_category_id'] != nil
+      brand_middle_category = BrandMiddleCategory.new(
+                                                        brand_id: row['brand_id'],
+                                                        middle_category_id: row['middle_category_id']
+                                                      )
+      brand_middle_category.save if brand_middle_category.new_record?
+      if row['small_category_id'] != nil
+        brand_small_category = BrandSmallCategory.new(
+                                                        brand_id: row['brand_id'],
+                                                        small_category_id: row['small_category_id']
+                                                      )
+        brand_small_category.save if brand_small_category.new_record?
       end
     end
   end
+end
