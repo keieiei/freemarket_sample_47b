@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_090314) do
+ActiveRecord::Schema.define(version: 2019_07_20_105026) do
+
+  create_table "brand_large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.bigint "large_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_brand_large_categories_on_brand_id"
+    t.index ["large_category_id"], name: "index_brand_large_categories_on_large_category_id"
+  end
+
+  create_table "brand_middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.bigint "middle_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_brand_middle_categories_on_brand_id"
+    t.index ["middle_category_id"], name: "index_brand_middle_categories_on_middle_category_id"
+  end
+
+  create_table "brand_small_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "brand_id"
+    t.bigint "small_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_brand_small_categories_on_brand_id"
+    t.index ["small_category_id"], name: "index_brand_small_categories_on_small_category_id"
+  end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -137,6 +164,12 @@ ActiveRecord::Schema.define(version: 2019_07_20_090314) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "brand_large_categories", "brands"
+  add_foreign_key "brand_large_categories", "large_categories"
+  add_foreign_key "brand_middle_categories", "brands"
+  add_foreign_key "brand_middle_categories", "middle_categories"
+  add_foreign_key "brand_small_categories", "brands"
+  add_foreign_key "brand_small_categories", "small_categories"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
