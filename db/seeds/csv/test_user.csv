@@ -1,0 +1,5 @@
+id,email,password,nickname,family_name,first_name,family_name_kana,first_name_kana,birth_year,birth_month,birth_day,phone_number
+101,test1@email,111111,test1,てすと,太郎,テスト,タロウ,1990,1,1,08012345671
+102,test2@email,111111,test2,てすと,次郎,テスト,ジロウ,1991,1,1,08012345672
+103,test3@email,111111,test3,てすと,三郎,テスト,サブロウ,1992,1,1,08012345673
+104,test4@email,111111,test4,てすと,四郎,テスト,シロウ,1993,1,1,08012345674
