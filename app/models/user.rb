@@ -31,4 +31,6 @@ class User < ApplicationRecord
 
   has_one :credit_card
   has_one :receiver_information
+  has_many :buyer_transactions, class_name: 'Transaction', foreign_key: 'buyer_id'
+  has_many :seller_transactions, class_name: 'Transaction', foreign_key: 'seller_id'
 end
