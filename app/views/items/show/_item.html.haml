@@ -97,7 +97,7 @@
   .main-page__item-container__sales-point-message
     .main-page__item-container__sales-point-message__inner
       = "売上金#{number_to_currency(300, :format => "%u%n", :unit => "￥")}をお持ちです"
-  = link_to '購入画面に進む',  confirm_item_path(@item.id), method: :get, class: 'main-page__item-container__buy-btn'
+  = link_to '購入画面に進む',  confirm_item_path(@item.id), class: 'main-page__item-container__buy-btn'
   .main-page__item-container__description
     %p.main-page__item-container__description__inner
       = item.detail
