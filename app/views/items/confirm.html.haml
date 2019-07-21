@@ -19,8 +19,7 @@
         =f.submit'購入する', class:'single-page__body__btn'
       %single-page__body__confirm
         .h3 配送先
-        〒
-        =@receiver_info[0].postal_code 
+        ="〒#{(@receiver_info[0].postal_code)}" 
         %br
         =@receiver_info[0].prefecture
         =@receiver_info[0].city
@@ -35,6 +34,5 @@
         = @current_user.credit_card.valid_month
         = @current_user.credit_card.valid_year
         = link_to '変更する',''
-        %br
-    
+        %br   
   = render 'shared/single-page/single-page__footer'

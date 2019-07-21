@@ -1,45 +1,45 @@
 .single-page
   %header.single-page__header
     = render 'shared/single-page/header/single-page__header__mercari-logo'
-    %section.l-single-container.buy-item-container
-      .transact-attention
-        %h3
-          %i.far.clock
-          %span 発送をお待ちください
-        %p 出品者からの発送通知をお待ちください
-      %h2.l-single-head 購入が完了しました
-      %section.buy-content.buy-item
-        .buy-content-inner
-          %h3.buy-item-image
-          %p.buy-item-name.bold 商品名
+  %section.single-page__body__container
+    %h2.single-page__body__confirm
+      %h3
+        %i.far.clock
+        %span 発送をお待ちください
+      %p 出品者からの発送通知をお待ちください
+      %h2 購入が完了しました
+    = form_for @item, action:'buy' do |item|
+      %section.single-page__body__confirm
+        -# = image_tag @item.images.first.image.url, class: "main-page__body__pickup-container__items-container__items-box__item__figure__image"               
+        %p 商品名
+        =@item.name
       %section.buy-content.buy-user-info.buy-item
-        .buy-content-inner
-          %p.buy-price-ja.bold
-            ¥ 1,000
-            %span.item-shipping-fee.f14.bold 送料込み
-      %section.buy-content.buy-user-info
+        = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥")}  送料込み"
+      %section.single-page__body__confirm
         .buy-content-inner
           %h3 配送先
-          %address.buy-user-info-text
-            〒000-0000
+          %address
+            ="〒#{(@receiver_info[0].postal_code)}" 
+            %br
+            =@receiver_info[0].prefecture
+            =@receiver_info[0].city
+            =@receiver_info[0].street
+            =@receiver_info[0].building
             %br/
-            愛知県 名古屋市中区
-            栄3-13-20 
-            栄センタービル 001号
-            %br/
-            山口 彩
-          %p.buy-user-info-text
-      %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
+            =@receiver_info[0].family_name
+          %p
+      %section.single-page__body__confirm
         .buy-content-inner
           %h3 支払い方法
-          %p.buy-user-info-text
-            ****************
-            %br/
-            06 / 22
+          %p
+          = @current_user.credit_card.card_number
+          %br
+          = @current_user.credit_card.valid_month
+          = @current_user.credit_card.valid_year
           %figure
             %img{:alt => "visa", :height => "15", :src => "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1881812696", :width => "49"}/
           %p
-      %section.buy-content.buy-done-flow
+      %section.single-page__body__confirm
         %h3 発送通知後の流れ
         %div
           %i.icon-good

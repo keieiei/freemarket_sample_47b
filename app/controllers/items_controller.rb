@@ -46,6 +46,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(show_params[:id])
+    @receiver_info = ReceiverInformation.where(user_id: current_user.id)
     if @item.update_attribute(:buyer_id , @buyer)
       render :buy
     else
