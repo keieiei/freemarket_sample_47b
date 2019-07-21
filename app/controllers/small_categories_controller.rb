@@ -5,7 +5,7 @@ class SmallCategoriesController < ApplicationController
   def show
     @small_category = SmallCategory.find(show_params[:id])
     @items = @small_category.items.order("created_at DESC").page(params[:page]).per(5)
-    @nav_lists = nav_lists(@small_category.middle_category, "small")
+    @nav_lists = middle_nav_lists(@small_category.middle_category)
   end
 
   private

@@ -7,7 +7,7 @@ class LargeCategoriesController < ApplicationController
   def show
     @large_category = LargeCategory.find(show_params[:id])
     @items = @large_category.items.order("created_at DESC").page(params[:page]).per(5)
-    @nav_lists = nav_lists(@large_category, "large")
+    @nav_lists = large_nav_lists(@large_category)
   end
 
   private
