@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_brands, only: [:index, :show]
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
-  before_action :authenticate_user!, only: [:new,:buy_confirm]
+  before_action :authenticate_user!, only: [:new,:buy_confirm,:buy_complete]
   before_action :set_item,only:[:buy_confirm,:show,:buy]
 
   def index
