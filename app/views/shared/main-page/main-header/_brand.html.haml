@@ -1,15 +1,12 @@
 %li.main-page__header__nav-box__left-box__list__item
   %h2.main-page__header__nav-box__left-box__list__item__root
-    = link_to '', class: 'main-page__header__nav-box__left-box__list__item__root__link' do
+    = link_to brands_path, class: 'main-page__header__nav-box__left-box__list__item__root__link' do
       = fa_icon 'tag', class: 'main-page__header__nav-box__left-box__list__item__root__icon'
       %span.main-page__header__nav-box__left-box__list__item__root__text
         ブランドから探す
   %ul.main-page__header__nav-box__left-box__list__item__parent-wrap
-    / brandsテーブル実装後、この部分をeachメソッドで書き換えること
-    / 部分テンプレートもsharedから移しとくこと
-    = render 'shared/main-page/main-header/brand/brand'
-    = render 'shared/main-page/main-header/brand/brand'
-    = render 'shared/main-page/main-header/brand/brand'
+    - brands.each do |brand|
+      = render 'shared/main-page/main-header/brand/brand', { brand: brand }
     %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
       %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
-        = link_to 'ブランド一覧から探す', '', class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
+        = link_to 'ブランド一覧から探す', brands_path, class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'

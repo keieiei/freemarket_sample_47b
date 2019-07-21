@@ -5,11 +5,8 @@
       %span.main-page__header__nav-box__left-box__list__item__root__text
         カテゴリーから探す
   %ul.main-page__header__nav-box__left-box__list__item__parent-wrap
-    / categorysテーブル実装後、この部分をeachメソッドで書き換えること
-    / 部分テンプレートもsharedから移しとくこと
-    = render 'shared/main-page/main-header/category/l-category'
-    = render 'shared/main-page/main-header/category/l-category'
-    = render 'shared/main-page/main-header/category/l-category'
+    - large_categories.each do |large_category|
+      = render 'shared/main-page/main-header/category/l-category', { large_category: large_category }
     %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
       %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
-        = link_to 'カテゴリー一覧', '', class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
+        = link_to 'カテゴリー一覧', large_categories_path, class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
