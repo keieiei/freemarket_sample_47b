@@ -11,8 +11,8 @@
     .main-page__header__nav-box
       %nav.main-page__header__nav-box__left-box
         %ul.main-page__header__nav-box__left-box__list
-          = render 'shared/main-page/main-header/category'
-          = render 'shared/main-page/main-header/brand'
+          = render 'shared/main-page/main-header/category', { large_categories: large_categories }
+          = render 'shared/main-page/main-header/brand', { brands: brands }
       .main-page__header__nav-box__right-box
         %ul.main-page__header__nav-box__right-box__list
           - if user_signed_in?
