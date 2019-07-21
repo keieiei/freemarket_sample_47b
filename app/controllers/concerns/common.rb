@@ -2,15 +2,37 @@ module Common
   extend ActiveSupport::Concern
 
   def nav_lists(target, type)
-    case type 
+    lists = []
+    case type
     when "small", "middle"
-      return lists = target.small_categories
+      target.small_categories.each do |small_category|
+        lists << {name: small_category.name, link: small_category_path(small_category.id)}
+      end
+      return lists
     when "large"
-      return lists = target.middle_categories
+      target.middle_categories.each do |middle_category|
+        lists << {name: middle_category.name, link: middle_category_path(middle_category.id)}
+      end
+      return lists
     when "brand"
-      return lists = target.small_categories unless target.small_categories.empty?
-      return lists = target.middle_categories unless target.middle_categories.empty?
-      return lists = target.large_categories unless target.large_categories.empty?
+      unless target.small_categories.empty?
+        target.small_categories.each do |small_category|
+          lists << {name: small_category.name, link: small_category_path(small_category.id)}
+        end
+        return lists
+        unless target.middle_categories.empty?
+          target.middle_categories.each do |middle_category|
+            lists << {name: middle_category.name, link: middle_category_path(middle_category.id)}
+          end
+          return lists
+          unless target.large_categories.empty?
+            target.large_categories.each do |large_category|
+              lists << {name: large_category.name, link: large_category_path(middle_category.id)}
+            end
+            return lists
+          end
+        end
+      end
     end
   end
 
