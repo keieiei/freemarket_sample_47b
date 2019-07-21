@@ -1,5 +1,5 @@
 .main-page
-  = render 'shared/main-page/main-header'
+  = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands }
   = render 'shared/main-page/bread-crumbs'
   = render 'items/show/item', { item: @item }
   = render 'items/show/comment', { item: @item }

@@ -1,0 +1,56 @@
+.pagination {
+  position: relative;
+  font-size: 0;
+  text-align: center;
+  margin: 40px 0 0;
+  &__cell {
+    &--prev {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+    }
+    &--num {
+      max-width: 220px;
+      margin: 0 auto;
+    }
+    &--next {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+    }
+    &__list {
+      &__cell {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        background: $white;
+        border: 1px solid $gray;
+        font-size: 14px;
+        line-height: 42px;
+        &:hover {
+          background: $light-gray;
+          cursor: pointer;
+        }
+        &--active {
+          color: $white;
+          background: $red;
+          &:hover {
+            background: $red;
+            cursor: default;
+          }
+        }
+        &__link {
+          display: block;
+          color: $black;
+        }
+        &__icon {
+          position: relative;
+          top: .15em;
+        }
+      }
+    }
+  }
+}

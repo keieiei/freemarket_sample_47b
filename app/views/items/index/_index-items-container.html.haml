@@ -1,10 +1,9 @@
 %section.main-page__body__pickup-container__items-container
   %h3.main-page__body__pickup-container__items-container__title
-    = link_to "レディース 新着アイテム", "", class: "main-page__body__pickup-container__items-container__title__link"
+    = link_to "#{pickup[:pickup][:name]} 新着アイテム", pickup[:link], class: "main-page__body__pickup-container__items-container__title__link"
   .main-page__body__pickup-container__items-container__items-box
-    = render 'items/index/index-item', { item: items.find(1) }
-    = render 'items/index/index-item', { item: items.find(1) }
-    = render 'items/index/index-item', { item: items.find(1) }
-    = render 'items/index/index-item', { item: items.find(1) }
+    - pickup[:items].each do |item|
+      .main-page__body__pickup-container__items-container__items-box__item
+        = render 'items/index/index-item', { item: item }
   .main-page__body__pickup-container__items-container__all-view
-    = link_to "すべての商品を見る", "", class: "main-page__body__pickup-container__items-container__all-view__link"
+    = link_to "すべての商品を見る", pickup[:link], class: "main-page__body__pickup-container__items-container__all-view__link"

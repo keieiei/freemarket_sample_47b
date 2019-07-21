@@ -26,4 +26,8 @@ Rails.application.routes.draw do
     end
   end
   resources :items, only: [:index, :new, :create, :show]
+  resources :large_categories, only: [:index, :show]
+  resources :middle_categories, only: [:show]
+  resources :small_categories, only: [:show]
+  resources :brands, only: [:index, :show]
 end
