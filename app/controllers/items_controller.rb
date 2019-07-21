@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   before_action :set_pickup_brands, only: [:index]
   before_action :authenticate_user!, only: [:new,:confirm]
   before_action :set_current_user,only:[:new]
-  before_action :set_buyer,only:[:update]
   before_action :set_seller,only:[:confirm]
 
   def index
@@ -47,7 +46,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(show_params[:id])
     @receiver_info = ReceiverInformation.where(user_id: current_user.id)
-    if @item.update_attribute(:buyer_id , @buyer)
+    if @item.update_attribute(:buyer_id , current_user.id)
       render :buy
     else
       render :index
@@ -100,9 +99,4 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @seller = @item.seller_id
   end
-
-  def set_buyer
-    @buyer = current_user.id
-  end
-
 end
