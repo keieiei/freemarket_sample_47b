@@ -1,0 +1,29 @@
+.main-page__body.main-page__body--category-index
+  .main-page__body__category-index
+    .main-page__body__category-index__header
+      %h2.main-page__body__category-index__header__title
+        カテゴリー一覧
+    .main-page__body__category-index__nav
+      - large_categories.each do |large_category|
+        = link_to large_category.name, large_category_path(large_category.id), class: "main-page__body__category-index__nav__link"
+    .main-page__body__category-index__contents
+      - large_categories.each do |large_category|
+        .main-page__body__category-index__contents__content-box
+          .main-page__body__category-index__contents__content-box__header
+            %h3.main-page__body__category-index__contents__content-box__header__title
+              = large_category.name
+          .main-page__body__category-index__contents__content-box__inner
+            %p.main-page__body__category-index__contents__content-box__inner__all
+              = link_to "すべて", large_category_path(large_category.id), class: "main-page__body__category-index__contents__content-box__inner__all__link"
+            - large_category.middle_categories.each do |middle_category|
+              .main-page__body__category-index__contents__content-box__inner__middle-header
+                %h4.main-page__body__category-index__contents__content-box__inner__middle-header__title
+                  = middle_category.name
+              .main-page__body__category-index__contents__content-box__inner__small-box
+                .main-page__body__category-index__contents__content-box__inner__small-box__content
+                  %p.main-page__body__category-index__contents__content-box__inner__small-box__content__text
+                    = link_to "すべて", middle_category_path(middle_category.id), class: "main-page__body__category-index__contents__content-box__inner__small-box__content__text__link"
+                - middle_category.small_categories.each do |small_category|
+                  .main-page__body__category-index__contents__content-box__inner__small-box__content
+                    %p.main-page__body__category-index__contents__content-box__inner__small-box__content__text
+                      = link_to small_category.name, small_category_path(small_category.id), class: "main-page__body__category-index__contents__content-box__inner__small-box__content__text__link"
