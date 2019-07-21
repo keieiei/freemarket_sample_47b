@@ -47,9 +47,9 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(show_params[:id])
     if @item.update_attribute(:buyer_id , @buyer)
-      render 'buy'
+      render :buy
     else
-      redirect_to index
+      render :index
     end
   end
 

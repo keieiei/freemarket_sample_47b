@@ -36,9 +36,5 @@
         = @current_user.credit_card.valid_year
         = link_to '変更する',''
         %br
-      -# - @Item.images.each_with_index do |image, i|
-      -#   %div{ class: first_add_active_class_name(i, 'main-page__item-container__content-box__photo-box__inner__show__container__content')}
-      -#     .main-page__item-container__content-box__photo-box__inner__show__container__content__inner
-      -#       = image_tag image.image.url, class: 'main-page__item-container__content-box__photo-box__inner__show__container__content__inner__image'
     
   = render 'shared/single-page/single-page__footer'
