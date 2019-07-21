@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
   before_action :authenticate_user!, only: [:new,:buy_confirm]
-  before_action :set_item,only:[:buy_confirm,:show,:update]
+  before_action :set_item,only:[:buy_confirm,:show,:buy]
 
   def index
   end
@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
     @other_items_same_category_brand =  Item.where(show_params[:id])
   end
 
-  def update
+  def buy
     if @item.update_attribute(:buyer_id , current_user.id)
       render :buy_complete
     else

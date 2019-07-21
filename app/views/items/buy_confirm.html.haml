@@ -5,7 +5,7 @@
     %h2.single-page__body__confirm
       購入内容の確認
       %h1.single-page__body__item_info
-      = form_for @item, action:'update' do |f|  
+      = form_for( @item, url:buy_item_path) do |f|  
         %figure.main-page__body__pickup-container__items-container__items-box__item__figure
           = image_tag @item.images.first.image.url, class: "main-page__body__pickup-container__items-container__items-box__item__figure__image"               
         =@item.name

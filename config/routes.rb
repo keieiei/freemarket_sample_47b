@@ -25,10 +25,11 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :items, only: [:index, :new, :create, :show, :update] do
+  resources :items, only: [:index, :new, :create, :show] do
     member do
-      get :buy_confirm
-      get :buy
+      get 'buy_confirm'
+      patch 'buy'
+      get 'buy_complete'
     end
   end
   resources :large_categories, only: [:index, :show]
