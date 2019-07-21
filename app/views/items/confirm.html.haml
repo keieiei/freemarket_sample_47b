@@ -19,12 +19,12 @@
         =f.submit'購入する', class:'single-page__body__btn'
       %single-page__body__confirm
         .h3 配送先
-        ="〒#{(@receiver_info[0].postal_code)}" 
+        ="〒#{(current_user.receiver_information.postal_code)}" 
         %br
-        =@receiver_info[0].prefecture
-        =@receiver_info[0].city
-        =@receiver_info[0].street
-        =@receiver_info[0].building
+        =current_user.receiver_information.prefecture
+        =current_user.receiver_information.city
+        =current_user.receiver_information.street
+        =current_user.receiver_information.building
         = link_to '変更する',''
         %br
       %single-page__body__confirm
