@@ -29,10 +29,10 @@
         %br
       %single-page__body__confirm
         .h3 支払い方法 
-        = @current_user.credit_card.card_number
+        = current_user.credit_card.card_number
         %br
-        = @current_user.credit_card.valid_month
-        = @current_user.credit_card.valid_year
+        = current_user.credit_card.valid_month
+        = current_user.credit_card.valid_year
         = link_to '変更する',''
         %br   
   = render 'shared/single-page/single-page__footer'
