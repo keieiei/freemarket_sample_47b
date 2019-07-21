@@ -4,7 +4,7 @@ class MiddleCategoriesController < ApplicationController
   def show
     @middle_category = MiddleCategory.find(show_params[:id])
     @items = @middle_category.items.order("created_at DESC").page(params[:page]).per(5)
-    @nav_lists = nav_lists(@middle_category, "middle")
+    @nav_lists = middle_nav_lists(@middle_category)
   end
 
   private

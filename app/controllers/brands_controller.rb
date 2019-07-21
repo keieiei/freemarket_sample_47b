@@ -7,7 +7,7 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find(show_params[:id])
     @items = @brand.items.order("created_at DESC").page(params[:page]).per(5)
-    @nav_lists = nav_lists(@brand, "brand")
+    @nav_lists = brand_nav_lists(@brand)
   end
 
   private
