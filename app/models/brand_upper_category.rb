@@ -1,0 +1,2 @@
+class BrandUpperCategory < ApplicationRecord
+end
