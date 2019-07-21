@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :set_brands, only: [:index, :show]
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
-  before_action :authenticate_user!, only: [:new,:confirm]
-  before_action :set_item,only:[:confirm,:show,:update]
+  before_action :authenticate_user!, only: [:new,:buy_confirm]
+  before_action :set_item,only:[:buy_confirm,:show,:update]
 
   def index
   end
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def confirm
+  def buy_confirm
       if @item.seller_id != current_user.id; else render :index end
    end
 

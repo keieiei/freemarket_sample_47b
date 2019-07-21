@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
   resources :items, only: [:index, :new, :create, :show, :update] do
     member do
-      get :confirm
+      get :buy_confirm
       get :buy
     end
   end
