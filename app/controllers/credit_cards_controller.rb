@@ -1,5 +1,7 @@
 class CreditCardsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_large_categories, only: [:index, :add]
+  before_action :set_brands, only: [:index, :add]
 
   def index
   end
@@ -42,5 +44,13 @@ class CreditCardsController < ApplicationController
 
   def credit_card_params
     params.require(:credit_card).permit(:card_number, :valid_month, :valid_year, :security_code).merge(user_id: current_user.id)
+  end
+
+  def set_large_categories
+    @large_categories = LargeCategory.all
+  end
+
+  def set_brands
+    @brands = Brand.all
   end
 end

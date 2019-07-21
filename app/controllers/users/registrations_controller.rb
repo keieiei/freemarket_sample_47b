@@ -4,6 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :confirm_signed_in, except: [:new, :create, :confirm]
+  before_action :set_large_categories, only: [:edit_profile, :identification]
+  before_action :set_brands, only: [:edit_profile, :identification]
 
   # GET /resource/sign_up
   def new
@@ -117,6 +119,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def validate_update_identification(user)
     return user.valid_postal_code?
+  end
+
+  def set_large_categories
+    @large_categories = LargeCategory.all
+  end
+
+  def set_brands
+    @brands = Brand.all
   end
 
   # If you have extra params to permit, append them to the sanitizer.
