@@ -24,8 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def buy_confirm
-      if @item.seller_id == current_user.id; else return render :index end
-      
+      if @item.seller_id != current_user.id; else render :show return  end   
    end
 
   def show
