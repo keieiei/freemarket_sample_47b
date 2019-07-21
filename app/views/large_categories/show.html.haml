@@ -1,0 +1,7 @@
+.main-page
+  = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands }
+  = render 'shared/main-page/bread-crumbs'
+  = render 'large_categories/show-body/show-body', { target: @large_category, items: @items, nav_lists: @nav_lists }
+  = render 'shared/main-page/aside'
+  = render 'shared/main-page/main-footer'
+  = render 'shared/main-page/footer-sell-button'
