@@ -3,6 +3,10 @@ class ItemsController < ApplicationController
   before_action :set_brands, only: [:index, :show]
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
+  before_action :authenticate_user!, only: [:new,:confirm]
+  before_action :set_current_user,only:[:new]
+  before_action :set_buyer,only:[:update]
+  before_action :set_seller,only:[:confirm]
 
   def index
   end
@@ -21,6 +25,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def confirm
+    @item = Item.find(show_params[:id])
+    @receiver_info = ReceiverInformation.where(user_id: current_user.id)
+      if @seller == @buyer
+        render :index
+      else
+        @item = Item.find(params[:id])        
+        render :confirm
+      end
+  end
+
   def show
     @item = Item.find(show_params[:id])
     @item_prev = Item.find(show_params[:id])
@@ -29,9 +44,21 @@ class ItemsController < ApplicationController
     @other_items_same_category_brand =  Item.where(show_params[:id])
   end
 
+  def update
+    @item = Item.find(show_params[:id])
+    if @item.update_attribute(:buyer_id , @buyer)
+      render 'buy'
+    else
+      redirect_to index
+    end
+  end
+
+  def buy
+  end
+
   private
   def items_params
-    params.require(:item).permit(:name, :detail,:state,:delivery_charge,:delivery_prefecture,:delivery_time,:delivery_way,:price,:size,:large_category,:middle_category,:small_category, :brand, images_attributes: [:image])
+    params.require(:item).permit(:name, :detail,:state,:delivery_charge,:delivery_prefecture,:delivery_time,:delivery_way,:price,:size,:large_category,:middle_category,:small_category, :brand, images_attributes: [:image]).merge(seller_id: @current_user)
   end
 
   def show_params
@@ -62,6 +89,19 @@ class ItemsController < ApplicationController
       @pickup_brands << { link: brand_path(id), pickup: Brand.find(id), items: Item.where(brand_id: id).limit(4) }
     end
     return @pickup_brands
+  end
+
+  def set_current_user
+    @current_user = current_user.id
+  end
+
+  def set_seller
+    @item = Item.find(params[:id])
+    @seller = @item.seller_id
+  end
+
+  def set_buyer
+    @buyer = current_user.id
   end
 
 end
