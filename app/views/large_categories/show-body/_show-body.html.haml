@@ -3,7 +3,7 @@
     %ul.main-page__body__content__nav-list
       - nav_lists.each do |nav|
         %li.main-page__body__content__nav-list__item
-          = link_to nav.name , "", class: "main-page__body__content__nav-list__item__link"
+          = link_to nav[:name] , nav[:link], class: "main-page__body__content__nav-list__item__link"
     %section.main-page__body__content__item-box-container
       %h1.main-page__body__content__item-box-container__title
         = "#{target.name}の商品一覧"
