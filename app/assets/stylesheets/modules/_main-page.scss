@@ -23,6 +23,11 @@
       width: 100%;
       background-color: $white;
     }
+    &--category-index {
+      background: transparent;
+      margin: 40px auto;
+      width: 700px;
+    }
   }
   &__app-banner {
     background-image: image-url("download_bg_pc.jpg");
