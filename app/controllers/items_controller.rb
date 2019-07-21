@@ -53,6 +53,10 @@ class ItemsController < ApplicationController
       render :index
     end
   end
+
+  def buy
+  end
+
   private
   def items_params
     params.require(:item).permit(:name, :detail,:state,:delivery_charge,:delivery_prefecture,:delivery_time,:delivery_way,:price,:size,:large_category,:middle_category,:small_category, :brand, images_attributes: [:image]).merge(seller_id: @current_user)

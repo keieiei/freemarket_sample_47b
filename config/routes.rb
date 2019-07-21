@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :create, :show, :update] do
     member do
       get :confirm
+      get :buy
     end
   end
   resources :large_categories, only: [:index, :show]
