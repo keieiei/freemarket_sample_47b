@@ -28,11 +28,11 @@ class ItemsController < ApplicationController
   def confirm
     @item = Item.find(show_params[:id])
     @receiver_info = ReceiverInformation.where(user_id: current_user.id)
-      if @seller == @buyer
-        render :index
-      else
+      if @seller != @buyer
         @item = Item.find(params[:id])        
         render :confirm
+      else
+        render :index
       end
   end
 
