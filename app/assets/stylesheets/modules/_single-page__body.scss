@@ -24,4 +24,92 @@
     margin: 0 auto;
     background: $white;
   }
+  &__item_info {
+    text-align: center;
+    font-weight: bold;
+    padding: 16px;
+  }
+  &__confirm {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom:solid 1px rgb(235, 235, 235);
+  }
+  &__list {
+    font-weight: bold;
+    padding-top: 50px;
+    padding-left:190px;
+    border-top:solid 1px rgb(235, 235, 235);
+  }
+  &__fix {
+    text-align: center;
+    padding-top: 16px;
+    padding-left:180px;
+    padding-bottom: 30px;
+    color: rgb(0, 153, 232);
+  }
+  &__item_content {
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+  }
+  &__item_name {
+    text-align: center;
+    font-weight: bold;
+    margin-left: 16px;
+    display: inline-block;
+  }
+  &__receiver_content {
+    padding-top: 14px;
+    padding-bottom: 5px;
+    font-size:14px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+    padding-left: 90px;
+  }
+  &__image{
+    width: 60px;
+    height: 60px;
+    margin-left: 190px;
+  }
+  &__money{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  &__price_cell{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 180px;
+    display: inline-block;
+  }
+  &__btn_mng{
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  &__btn {
+    margin: 8px 0 0 ;
+    background-color: #ea352d;
+    color: white;
+    width: 320px;
+    line-height: 48px;
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+  &__pointbtn {
+    margin: 8px 0 0 ;
+    background-color: #ccc;
+    color: #333;
+    width: 320px;
+    line-height: 48px;
+    font-size: 14px;
+  }
+
 }
