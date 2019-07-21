@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   before_action :set_brands, only: [:index, :show]
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
+  before_action :authenticate_user!, only: [:new,:buy_confirm,:buy_complete]
+  before_action :set_item,only:[:buy_confirm,:show,:buy]
 
   def index
   end
@@ -21,17 +23,31 @@ class ItemsController < ApplicationController
     end
   end
 
+  def buy_confirm
+      return render :show if @item.seller_id == current_user.id  
+  end
+
   def show
-    @item = Item.find(show_params[:id])
     @item_prev = Item.find(show_params[:id])
     @item_next = Item.find(show_params[:id])
     @other_items_same_seller =  Item.where(show_params[:id])
     @other_items_same_category_brand =  Item.where(show_params[:id])
   end
 
+  def buy
+    if @item.update_attribute(:buyer_id , current_user.id)
+      render :buy_complete
+    else
+      render :index
+    end
+  end
+
+  def buy_complete
+  end
+
   private
   def items_params
-    params.require(:item).permit(:name, :detail,:state,:delivery_charge,:delivery_prefecture,:delivery_time,:delivery_way,:price,:size,:large_category,:middle_category,:small_category, :brand, images_attributes: [:image])
+    params.require(:item).permit(:name, :detail,:state,:delivery_charge,:delivery_prefecture,:delivery_time,:delivery_way,:price,:size,:large_category,:middle_category,:small_category, :brand, images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 
   def show_params
@@ -64,4 +80,7 @@ class ItemsController < ApplicationController
     return @pickup_brands
   end
 
+  def set_item
+    @item = Item.find(show_params[:id])
+  end
 end

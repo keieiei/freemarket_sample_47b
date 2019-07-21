@@ -1,0 +1,38 @@
+.single-page
+  %header.single-page__header
+    = render 'shared/single-page/header/single-page__header__mercari-logo'
+  %section.single-page__body__container
+    %h2.single-page__body__confirm
+      購入内容の確認
+      %h1.single-page__body__item_info
+      = form_for( @item, url:buy_item_path) do |f|  
+        %figure.main-page__body__pickup-container__items-container__items-box__item__figure
+          = image_tag @item.images.first.image.url, class: "main-page__body__pickup-container__items-container__items-box__item__figure__image"               
+        =@item.name
+        %br
+        = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥")}  送料込み"
+        %br    
+        =f.submit'ポイントはありません', class:'single-page__body__pbtn'
+        %br
+        = "支払い金額   #{number_to_currency(@item.price, :format => "%u%n", :unit => "￥")}"
+        %br      
+        =f.submit'購入する', class:'single-page__body__btn'
+      %single-page__body__confirm
+        .h3 配送先
+        ="〒#{(current_user.receiver_information.postal_code)}" 
+        %br
+        =current_user.receiver_information.prefecture
+        =current_user.receiver_information.city
+        =current_user.receiver_information.street
+        =current_user.receiver_information.building
+        = link_to '変更する',''
+        %br
+      %single-page__body__confirm
+        .h3 支払い方法 
+        = current_user.credit_card.card_number
+        %br
+        = current_user.credit_card.valid_month
+        = current_user.credit_card.valid_year
+        = link_to '変更する',''
+        %br   
+  = render 'shared/single-page/single-page__footer'
