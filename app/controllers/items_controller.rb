@@ -36,13 +36,13 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update_attribute(:buyer_id , current_user.id)
-      render :buy
+      render :buy_complete
     else
       render :index
     end
   end
 
-  def buy
+  def buy_complete
   end
 
   private
