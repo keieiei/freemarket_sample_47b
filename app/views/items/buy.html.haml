@@ -1,0 +1,57 @@
+.single-page
+  %header.single-page__header
+    = render 'shared/single-page/header/single-page__header__mercari-logo'
+    %section.l-single-container.buy-item-container
+      .transact-attention
+        %h3
+          %i.far.clock
+          %span 発送をお待ちください
+        %p 出品者からの発送通知をお待ちください
+      %h2.l-single-head 購入が完了しました
+      %section.buy-content.buy-item
+        .buy-content-inner
+          %h3.buy-item-image
+          %p.buy-item-name.bold 商品名
+      %section.buy-content.buy-user-info.buy-item
+        .buy-content-inner
+          %p.buy-price-ja.bold
+            ¥ 1,000
+            %span.item-shipping-fee.f14.bold 送料込み
+      %section.buy-content.buy-user-info
+        .buy-content-inner
+          %h3 配送先
+          %address.buy-user-info-text
+            〒000-0000
+            %br/
+            愛知県 名古屋市中区
+            栄3-13-20 
+            栄センタービル 001号
+            %br/
+            山口 彩
+          %p.buy-user-info-text
+      %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
+        .buy-content-inner
+          %h3 支払い方法
+          %p.buy-user-info-text
+            ****************
+            %br/
+            06 / 22
+          %figure
+            %img{:alt => "visa", :height => "15", :src => "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1881812696", :width => "49"}/
+          %p
+      %section.buy-content.buy-done-flow
+        %h3 発送通知後の流れ
+        %div
+          %i.icon-good
+          %i.icon-normal
+          %i.icon-bad
+        %p
+          商品を受け取ったら
+          %br>/
+          出品者の評価をしましょう。
+          %br>/
+          購入代金が出品者に振り込まれます。
+          %br>/
+          評価後に取引は完了です。
+        %a.bold{:href => "https://www.mercari.com/jp/mypage/"} マイページへもどる
+  = render 'shared/single-page/single-page__footer'
