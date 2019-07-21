@@ -15,19 +15,19 @@ module Common
       end
       return lists
     when "brand"
-      unless target.small_categories.empty?
-        target.small_categories.each do |small_category|
-          lists << {name: small_category.name, link: small_category_path(small_category.id)}
+      unless target.brand_small_categories.empty?
+        target.brand_small_categories.each do |brand_small_category|
+          lists << {name: brand_small_category.small_category.name, link: small_category_path(brand_small_category.small_category.id)}
         end
         return lists
-        unless target.middle_categories.empty?
-          target.middle_categories.each do |middle_category|
-            lists << {name: middle_category.name, link: middle_category_path(middle_category.id)}
+        unless target.brand.middle_categories.empty?
+          target.brand_middle_categories.each do |brand_middle_category|
+            lists << {name: brand_middle_category.middle_category.name, link: middle_category_path(brand_middle_category.middle_category.id)}
           end
           return lists
-          unless target.large_categories.empty?
-            target.large_categories.each do |large_category|
-              lists << {name: large_category.name, link: large_category_path(middle_category.id)}
+          unless target.brand_large_categories.empty?
+            target.brand_large_categories.each do |brand_large_category|
+              lists << {name: brand_large_category.large_category.name, link: large_category_path(brand_large_category.large_category.id)}
             end
             return lists
           end
@@ -35,5 +35,4 @@ module Common
       end
     end
   end
-
 end
