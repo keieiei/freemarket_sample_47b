@@ -10,7 +10,7 @@ module CreditCardHelper
   end
 
   def jcb_criteria(number)
-    return [3528..3589].to_s.include?(number[0, 4]) && number.length == 16
+    return [*(3528..3589)].to_s.include?(number[0, 4]) && number.length == 16
   end
 
   def american_express_criteria(number)
@@ -19,20 +19,20 @@ module CreditCardHelper
 
   def dinersclub_criteria(number)
     if number.length == 14
-      return [300..305].to_s.include?(number[0, 3])
+      return [*(300..305)].to_s.include?(number[0, 3])
       return number[0, 4] == '3095'
       return number[0, 2] == '36'
-      return [38..39].to_s.include?(number[0, 2])
+      return [*(38..39)].to_s.include?(number[0, 2])
     end
   end
 
   def discover_criteria(number)
     if number.length == 16
       return number[0, 5] == '60110'
-      return [60112..60114].to_s.include?(number[0, 5])
-      return [601174..601179].to_s.include?(number[0, 6])
-      return [601186..601199].to_s.include?(number[0, 6])
-      return [644..649].to_s.include?(number[0, 3])
+      return [*(60112..60114)].to_s.include?(number[0, 5])
+      return [*(601174..601179)].to_s.include?(number[0, 6])
+      return [*(601186..601199)].to_s.include?(number[0, 6])
+      return [*(644..649)].to_s.include?(number[0, 3])
       return number[0, 2] == '65'
     end
   end
