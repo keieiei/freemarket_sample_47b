@@ -6,11 +6,9 @@ class BrandValidator < ActiveModel::Validator
 
     unless middle_category_id.nil?
       brand_upper_category_m = MiddleCategory.find(middle_category_id).brand_upper_category
-      unless brand_upper_category_m.nil?
-        unless brand_id.nil?
-          brand_upper_category_b = Brand.find(brand_id).brand_upper_category
-          return record.errors.add(:base, 'ブランド種類が異なる(m)') unless brand_upper_category_b == brand_upper_category_m
-        end
+      unless brand_upper_category_m.nil? || brand_id.nil?
+        brand_upper_category_b = Brand.find(brand_id).brand_upper_category
+        return record.errors.add(:base, 'ブランド種類が異なる(m)') unless brand_upper_category_b == brand_upper_category_m
       end
       unless small_category_id.nil?
         brand_upper_category_s = SmallCategory.find(small_category_id).brand_upper_category
