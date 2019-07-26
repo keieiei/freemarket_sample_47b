@@ -10,34 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_21_121955) do
-
-  create_table "brand_large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "brand_id"
-    t.bigint "large_category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["brand_id"], name: "index_brand_large_categories_on_brand_id"
-    t.index ["large_category_id"], name: "index_brand_large_categories_on_large_category_id"
-  end
-
-  create_table "brand_middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "brand_id"
-    t.bigint "middle_category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["brand_id"], name: "index_brand_middle_categories_on_brand_id"
-    t.index ["middle_category_id"], name: "index_brand_middle_categories_on_middle_category_id"
-  end
-
-  create_table "brand_small_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "brand_id"
-    t.bigint "small_category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["brand_id"], name: "index_brand_small_categories_on_brand_id"
-    t.index ["small_category_id"], name: "index_brand_small_categories_on_small_category_id"
-  end
+ActiveRecord::Schema.define(version: 2019_07_21_155911) do
 
   create_table "brand_upper_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -84,7 +57,6 @@ ActiveRecord::Schema.define(version: 2019_07_21_121955) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
-    t.integer "item_size_id", null: false
     t.integer "delivery_charge_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "delivery_time_id", null: false
@@ -100,8 +72,10 @@ ActiveRecord::Schema.define(version: 2019_07_21_121955) do
     t.bigint "seller_id"
     t.bigint "buyer_id"
     t.integer "item_condition_id", null: false
+    t.bigint "item_size_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["item_size_id"], name: "index_items_on_item_size_id"
     t.index ["large_category_id"], name: "index_items_on_large_category_id"
     t.index ["middle_category_id"], name: "index_items_on_middle_category_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
@@ -193,17 +167,12 @@ ActiveRecord::Schema.define(version: 2019_07_21_121955) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "brand_large_categories", "brands"
-  add_foreign_key "brand_large_categories", "large_categories"
-  add_foreign_key "brand_middle_categories", "brands"
-  add_foreign_key "brand_middle_categories", "middle_categories"
-  add_foreign_key "brand_small_categories", "brands"
-  add_foreign_key "brand_small_categories", "small_categories"
   add_foreign_key "brands", "brand_upper_categories"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "item_sizes", "size_types"
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "item_sizes"
   add_foreign_key "items", "large_categories"
   add_foreign_key "items", "middle_categories"
   add_foreign_key "items", "small_categories"
