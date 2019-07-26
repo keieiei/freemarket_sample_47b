@@ -1,0 +1,17 @@
+.main-page__body.main-page__body--category-index
+  .main-page__body__category-index
+    .main-page__body__category-index__header
+      %h2.main-page__body__category-index__header__title
+        ブランド一覧
+    .main-page__body__category-index__nav
+      - brand_upper_categories.each do |brand_upper_category|
+        = link_to brand_upper_category.name, brand_upper_category_path(brand_upper_category.id), class: "main-page__body__category-index__nav__link"
+    .main-page__body__category-index__contents
+      .main-page__body__category-index__contents__content-box
+        .main-page__body__category-index__contents__content-box__header
+          %h3.main-page__body__category-index__contents__content-box__header__title
+            = brand_upper_category_show.name
+        .main-page__body__category-index__contents__content-box__inner
+          - brand_upper_category_show.brands.each do |brand|
+            %p.main-page__body__category-index__contents__content-box__inner__all
+              = link_to brand.name, brand_path(brand.id), class: "main-page__body__category-index__contents__content-box__inner__all__link"
