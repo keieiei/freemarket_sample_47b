@@ -1,6 +1,6 @@
 %li.main-page__header__nav-box__left-box__list__item
   %h2.main-page__header__nav-box__left-box__list__item__root
-    = link_to brands_path, class: 'main-page__header__nav-box__left-box__list__item__root__link' do
+    = link_to brand_upper_category_path(1), class: 'main-page__header__nav-box__left-box__list__item__root__link' do
       = fa_icon 'tag', class: 'main-page__header__nav-box__left-box__list__item__root__icon'
       %span.main-page__header__nav-box__left-box__list__item__root__text
         ブランドから探す
@@ -9,4 +9,4 @@
       = render 'shared/main-page/main-header/brand/brand', { brand: brand }
     %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
       %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
-        = link_to 'ブランド一覧から探す', brands_path, class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
+        = link_to 'ブランド一覧から探す', brand_upper_category_path(1), class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
