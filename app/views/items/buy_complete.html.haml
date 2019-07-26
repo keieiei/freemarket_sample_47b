@@ -2,55 +2,51 @@
   %header.single-page__header
     = render 'shared/single-page/header/single-page__header__mercari-logo'
   %section.single-page__body__container
-    %h2.single-page__body__confirm
-      %h3
-        %i.far.clock
+    %h2.single-page__body__complete_first
+      %h2.single-page__body__complete_second
+        =fa_icon "clock-o" 
         %span 発送をお待ちください
-      %p 出品者からの発送通知をお待ちください
-      %h2 購入が完了しました
-      %section.single-page__body__confirm
-        = image_tag @item.images.first.image.url, class: "main-page__body__pickup-container__items-container__items-box__item__figure__image"               
-        %p 商品名
-        =@item.name
-      %section.buy-content.buy-user-info.buy-item
-        = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥")}  送料込み"
-      %section.single-page__body__confirm
-        .buy-content-inner
-          %h3 配送先
-          %address
-            ="〒#{(current_user.receiver_information.postal_code)}" 
-            %br
-            =current_user.receiver_information.prefecture
-            =current_user.receiver_information.city
-            =current_user.receiver_information.street
-            =current_user.receiver_information.building
-            %br/
-            =current_user.receiver_information.family_name
-          %p
-      %section.single-page__body__confirm
-        .buy-content-inner
-          %h3 支払い方法
-          %p
-          = current_user.credit_card.card_number
-          %br
-          = current_user.credit_card.valid_month
-          = current_user.credit_card.valid_year
-          %figure
-            %img{:alt => "visa", :height => "15", :src => "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1881812696", :width => "49"}/
-          %p
-      %section.single-page__body__confirm
-        %h3 発送通知後の流れ
-        %div
-          %i.icon-good
-          %i.icon-normal
-          %i.icon-bad
-        %p
-          商品を受け取ったら
-          %br>/
-          出品者の評価をしましょう。
-          %br>/
-          購入代金が出品者に振り込まれます。
-          %br>/
-          評価後に取引は完了です。
-        %a.bold{:href => "https://www.mercari.com/jp/mypage/"} マイページへもどる
+      %h2.single-page__body__complete_first
+        %p 出品者からの発送通知をお待ちください
+    .single-page__body__buy 購入が完了しました
+    .single-page__body__item_content
+      = image_tag @item.images.first.image.url, class: "single-page__body__image_complete"
+    .single-page__body__name_complete
+      = @item.name
+    .single-page__body__money
+      = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥" )}  送料込み"
+    %br
+    .single-page__body__list 配送先
+    .single-page__body__receiver_content
+      ="〒#{(current_user.receiver_information.postal_code)}" 
+      %br
+      =current_user.receiver_information.prefecture
+      =current_user.receiver_information.city
+      =current_user.receiver_information.street
+      =current_user.receiver_information.building
+      %br
+      =current_user.receiver_information.family_name
+      =current_user.receiver_information.first_name
+    .single-page__body__list 支払い方法
+    .single-page__body__receiver_content 
+      = current_user.credit_card.card_number
+      %br
+      ="#{(current_user.credit_card.valid_month)}/#{(current_user.credit_card.valid_year)}"
+      %figure
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1881812696", :alt => "visa", :height => "15", :width => "49")
+    %section.single-page__body__flow
+      %h3 発送通知後の流れ
+      %div
+        %i.icon-good
+        %i.icon-normal
+        %i.icon-bad
+      %p
+        商品を受け取ったら
+        %br>/
+        出品者の評価をしましょう。
+        %br>/
+        購入代金が出品者に振り込まれます。
+        %br>/
+        評価後に取引は完了です。
+      %a.bold{:href => "https://www.mercari.com/jp/mypage/"} マイページへもどる
   = render 'shared/single-page/single-page__footer'
