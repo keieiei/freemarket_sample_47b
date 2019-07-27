@@ -111,42 +111,71 @@ require "csv"
 #   )
 # end
 
-CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
-  num = row['id'].to_i - 100
-  Item.create!(
-    id: row['id'],
-    name: row['name'],
-    detail: row['detail'],
-    item_size_id: row['item_size_id'],
-    delivery_charge_id: row['delivery_charge_id'],
-    prefecture_id: row['prefecture_id'],
-    delivery_time_id: row['delivery_time_id'],
-    delivery_way_id: row['delivery_way_id'],
-    price: row['price'],
-    item_condition_id: row['item_condition_id'],
-    item_state_id: row['item_state_id'],
-    large_category_id: row['large_category_id'],
-    middle_category_id: row['middle_category_id'],
-    small_category_id: row['small_category_id'],
-    brand_id: row['brand_id'],
-    seller_id: row['seller_id'],
-    buyer_id: row['buyer_id'],
-    images_attributes: [
-      { 
-        image: File.open("./app/assets/images/test_images/item_#{num}.jpg")
-      }
-    ]
-  )
-end
+# CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
+#   num = row['id'].to_i - 100
+#   Item.create!(
+#     id: row['id'],
+#     name: row['name'],
+#     detail: row['detail'],
+#     item_size_id: row['item_size_id'],
+#     delivery_charge_id: row['delivery_charge_id'],
+#     prefecture_id: row['prefecture_id'],
+#     delivery_time_id: row['delivery_time_id'],
+#     delivery_way_id: row['delivery_way_id'],
+#     price: row['price'],
+#     item_condition_id: row['item_condition_id'],
+#     item_state_id: row['item_state_id'],
+#     large_category_id: row['large_category_id'],
+#     middle_category_id: row['middle_category_id'],
+#     small_category_id: row['small_category_id'],
+#     brand_id: row['brand_id'],
+#     seller_id: row['seller_id'],
+#     buyer_id: row['buyer_id'],
+#     images_attributes: [
+#       { 
+#         image: File.open("./app/assets/images/test_images/item_#{num}.jpg")
+#       }
+#     ]
+#   )
+# end
 
-CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
-  num = row['id'].to_i - 100
-  if num == 1
-    (2..10).each do |i|
-      Image.create(
-        item_id: row['id'],
-        image: File.open("./app/assets/images/test_images/item_#{num}_#{i}.jpg")
-      )
-    end
-  end
+# CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
+#   num = row['id'].to_i - 100
+#   if num == 1
+#     (2..10).each do |i|
+#       Image.create(
+#         item_id: row['id'],
+#         image: File.open("./app/assets/images/test_images/item_#{num}_#{i}.jpg")
+#       )
+#     end
+#   end
+# end
+
+# CSV.foreach('db/seeds/csv/test_item.csv', headers: true) do |row|
+#   brand_id = row['brand_id']
+#   small_category_id = row['small_category_id']
+#   middle_category_id = row['middle_category_id']
+#   unless brand_id.nil? || small_category_id.nil?
+#     if BrandSmallCategory.where(brand_id: brand_id).where(small_category_id: small_category_id).empty?
+#       BrandSmallCategory.create!(
+#         small_category_id: row['small_category_id'],
+#         brand_id: row['brand_id']
+#       )
+#     end
+#   else
+#     unless brand_id.nil? || middle_category_id.nil? || !BrandMiddleCategory.where(brand_id: brand_id).where(middle_category_id: middle_category_id).empty?
+#       BrandMiddleCategory.create!(
+#         middle_category_id: row['middle_category_id'],
+#         brand_id: row['brand_id']
+#       )
+#     end
+#   end
+# end
+
+
+CSV.foreach('db/seeds/csv/brand.csv', headers: true) do |row|
+  BrandBrandUpperCategory.create(
+    brand_id: row['id'],
+    brand_upper_category_id: row['brand_upper_category_id']
+  )
 end
