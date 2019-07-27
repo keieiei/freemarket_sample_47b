@@ -155,13 +155,15 @@ require "csv"
 #   brand_id = row['brand_id']
 #   small_category_id = row['small_category_id']
 #   middle_category_id = row['middle_category_id']
-#   unless brand_id.nil? || small_category_id.nil? || BrandSmallCategory.where(brand_id: brand_id).where(small_category_id: small_category_id).empty?
-#     BrandSmallCategory.create!(
-#       small_category_id: row['small_category_id'],
-#       brand_id: row['brand_id']
-#     )
+#   unless brand_id.nil? || small_category_id.nil?
+#     if BrandSmallCategory.where(brand_id: brand_id).where(small_category_id: small_category_id).empty?
+#       BrandSmallCategory.create!(
+#         small_category_id: row['small_category_id'],
+#         brand_id: row['brand_id']
+#       )
+#     end
 #   else
-#     unless brand_id.nil? || middle_category_id.nil? || BrandMiddleCategory.where(brand_id: brand_id).where(middle_category_id: middle_category_id).empty?
+#     unless brand_id.nil? || middle_category_id.nil? || !BrandMiddleCategory.where(brand_id: brand_id).where(middle_category_id: middle_category_id).empty?
 #       BrandMiddleCategory.create!(
 #         middle_category_id: row['middle_category_id'],
 #         brand_id: row['brand_id']
