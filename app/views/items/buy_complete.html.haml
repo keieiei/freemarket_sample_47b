@@ -14,7 +14,8 @@
     .single-page__body__name_complete
       = @item.name
     .single-page__body__money
-      = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥" )}  送料込み"
+      = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥" )}  #{@item.delivery_charge.shipping_fee}"
+
     %br
     .single-page__body__list 配送先
     .single-page__body__receiver_content
@@ -29,11 +30,11 @@
       =current_user.receiver_information.first_name
     .single-page__body__list 支払い方法
     .single-page__body__receiver_content 
-      = current_user.credit_card.card_number
+      = hide_head_card_number(current_user.credit_card.card_number)
       %br
       ="#{(current_user.credit_card.valid_month)}/#{(current_user.credit_card.valid_year)}"
       %figure
-        = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1881812696", :alt => "visa", :height => "15", :width => "49")
+      = image_tag credit_card_logo(current_user.credit_card.card_number), class: 'main-page__body__content__chapter__inner__payment-list__item__form__figure__image'
     %section.single-page__body__flow
       %h3 発送通知後の流れ
       %div
@@ -47,6 +48,5 @@
         %br>/
         購入代金が出品者に振り込まれます。
         %br>/
-        評価後に取引は完了です。
-      %a.bold{:href => "https://www.mercari.com/jp/mypage/"} マイページへもどる
+        = link_to 'マイページへもどる','/users'
   = render 'shared/single-page/single-page__footer'
