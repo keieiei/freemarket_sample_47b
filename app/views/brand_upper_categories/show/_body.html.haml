@@ -12,6 +12,6 @@
           %h3.main-page__body__category-index__contents__content-box__header__title
             = brand_upper_category_show.name
         .main-page__body__category-index__contents__content-box__inner
-          - brand_upper_category_show.brands.each do |brand|
+          - brand_upper_category_show.brand_brand_upper_categories.each do |brand_brand_upper_category|
             %p.main-page__body__category-index__contents__content-box__inner__all
-              = link_to brand.name, brand_path(brand.id), class: "main-page__body__category-index__contents__content-box__inner__all__link"
+              = link_to brand_brand_upper_category.brand.name, brand_path(brand_brand_upper_category.brand.id), class: "main-page__body__category-index__contents__content-box__inner__all__link"
