@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   resources :large_categories, only: [:index, :show]
   resources :middle_categories, only: [:show]
   resources :small_categories, only: [:show]
-  resources :brands, only: [:index, :show]
+  resources :brands, only: [:show]
+  resources :brand_upper_categories, only: [:show]
 end

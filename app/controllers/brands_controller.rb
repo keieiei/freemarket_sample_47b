@@ -1,9 +1,7 @@
 class BrandsController < ApplicationController
-  before_action :set_large_categories, only: [:index, :show]
-  before_action :set_brands, only: [:index, :show]
+  before_action :set_large_categories, only: [:show]
+  before_action :set_brands, only: [:show]
 
-  def index
-  end
   def show
     @brand = Brand.find(show_params[:id])
     @items = @brand.items.order("created_at DESC").page(params[:page]).per(5)
