@@ -12,7 +12,7 @@
           = @item.name
         %br
         .single-page__body__money
-          = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥" )}"
+          = "#{number_to_currency(@item.price, :format => "%u%n", :unit => "￥" )}  #{@item.delivery_charge.shipping_fee}"
         %br
         .single-page__body__btn_mng
           =f.submit'ポイントはありません', class:'single-page__body__pointbtn'
