@@ -1,9 +1,103 @@
 .main-page__body__side-bar
   %nav.main-page__body__side-bar__nav
-    = render 'users/sidebar/general-list'
+    %ul.main-page__body__side-bar__nav__list
+      %li.main-page__body__side-bar__nav__list__item.main-page__body__side-bar__nav__list__item--current
+        = link_to users_path, class: 'main-page__body__side-bar__nav__list__item__text-link main-page__body__side-bar__nav__list__item--current__text-link' do
+          マイページ
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right main-page__body__side-bar__nav__list__item--current__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          お知らせ
+          %span.main-page__body__side-bar__nav__list__item__number
+            0
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          やることリスト
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          いいね！一覧
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to new_item_path, class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          出品する
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to sell_items_list_users_path, class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          出品した商品 - 出品中
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          出品した商品 - 取引中
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          出品した商品 - 売却中
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          購入した商品 - 取引中
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          購入した商品 - 過去の取引
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          ニュース一覧
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          評価一覧
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          ガイド
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          お問い合わせ
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
     %h3.main-page__body__side-bar__nav__title
       メルペイ
-    = render 'users/sidebar/merpay-list'
+    %ul.main-page__body__side-bar__nav__list
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          売上・振込申請
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          ポイント
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
     %h3.main-page__body__side-bar__nav__title
       設定
-    = render 'users/sidebar/setting-list'
+    %ul.main-page__body__side-bar__nav__list
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to users_edit_profile_path, class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          プロフィール
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          発送元・お届け先住所変更
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to user_credit_cards_path(current_user.id), class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          支払い方法
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          メール/パスワード
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to users_identification_path, class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          本人情報
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to '', class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          電話番号の確認
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
+      %li.main-page__body__side-bar__nav__list__item
+        = link_to confirm_sign_out_users_path, class: 'main-page__body__side-bar__nav__list__item__text-link' do
+          ログアウト
+          = fa_icon 'angle-right', class: 'main-page__body__side-bar__nav__list__item__icon-arrow-right'
