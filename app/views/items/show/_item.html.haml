@@ -41,27 +41,27 @@
           %td.main-page__item-container__content-box__detail__container__content__body
             = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
               .main-page__item-container__content-box__detail__container__content__body__content
-                = item.large_category
+                = item.large_category.name
             = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
               .main-page__item-container__content-box__detail__container__content__body__content
                 = fa_icon 'angle-right', class: 'main-page__item-container__content-box__detail__container__content__body__icon'
-                = item.middle_category
+                = item.middle_category.name
             = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
               .main-page__item-container__content-box__detail__container__content__body__content
                 = fa_icon 'angle-right', class: 'main-page__item-container__content-box__detail__container__content__body__icon'
-                = item.small_category
+                = item.small_category.name
         %tr.main-page__item-container__content-box__detail__container__content
           %th.main-page__item-container__content-box__detail__container__content__title
             ブランド
           %td.main-page__item-container__content-box__detail__container__content__body
             = link_to '', class: 'main-page__item-container__content-box__detail__container__content__body__link' do
               .main-page__item-container__content-box__detail__container__content__body__content
-                = item.brand
+                = item.brand.name
         %tr.main-page__item-container__content-box__detail__container__content
           %th.main-page__item-container__content-box__detail__container__content__title
             商品のサイズ
           %td.main-page__item-container__content-box__detail__container__content__body
-            = item.item_size.name
+            = item.item_size.size
         %tr.main-page__item-container__content-box__detail__container__content
           %th.main-page__item-container__content-box__detail__container__content__title
             商品の状態
