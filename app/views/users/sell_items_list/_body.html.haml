@@ -1,0 +1,39 @@
+.main-page__body
+  .main-page__body__content
+    %section.main-page__body__content__tab-container
+      %h2.main-page__body__content__tab-container__head-title
+        出品した商品
+      %ul.main-page__body__content__tab-container__title-list
+        %li.main-page__body__content__tab-container__title-list__item.main-page__body__content__tab-container__title-list__item--sell-item-list.main-page__body__content__tab-container__title-list__item--active
+          %h3.main-page__body__content__tab-container__title-list__item__title
+            = link_to '出品中', '', class: 'main-page__body__content__tab-container__title-list__item__link'
+        %li.main-page__body__content__tab-container__title-list__item.main-page__body__content__tab-container__title-list__item--sell-item-list
+          %h3.main-page__body__content__tab-container__title-list__item__title
+            = link_to '取引中', '', class: 'main-page__body__content__tab-container__title-list__item__link'
+        %li.main-page__body__content__tab-container__title-list__item.main-page__body__content__tab-container__title-list__item--sell-item-list
+          %h3.main-page__body__content__tab-container__title-list__item__title
+            = link_to '売却中', '', class: 'main-page__body__content__tab-container__title-list__item__link'
+      .main-page__body__content__tab-container__content-list
+        %ul.main-page__body__content__tab-container__content-list__content.main-page__body__content__tab-container__content-list__content--active
+          - sell_items.each do |item|
+            %li.main-page__body__content__tab-container__content-list__content__item
+              = link_to '', class: 'main-page__body__content__tab-container__content-list__content__item__link' do
+                %figure.main-page__body__content__tab-container__content-list__content__item__mercari-figure
+                  = image_tag item.images.first.image.url, class: ['main-page__body__content__tab-container__content-list__content__item__mercari-figure__image', 'main-page__body__content__tab-container__content-list__content__item__mercari-figure__image--item']
+                .main-page__body__content__tab-container__content-list__content__item__body
+                  .main-page__body__content__tab-container__content-list__content__item__body__text
+                    = item.name
+                  .main-page__body__content__tab-container__content-list__content__item__body__contents
+                    %span.main-page__body__content__tab-container__content-list__content__item__body__contents__index
+                      = fa_icon 'heart', class: 'main-page__body__content__tab-container__content-list__content__item__body__contents__index__icon'
+                      %span.main-page__body__content__tab-container__content-list__content__item__body__contents__index__number
+                        0
+                    %span.main-page__body__content__tab-container__content-list__content__item__body__contents__index
+                      = fa_icon 'comment-alt', class: 'main-page__body__content__tab-container__content-list__content__item__body__contents__index__icon'
+                      %span.main-page__body__content__tab-container__content-list__content__item__body__contents__index__number
+                        0
+                    .main-page__body__content__tab-container__content-list__content__item__body__contents__status-box
+                      = item.item_state.name
+                = fa_icon 'angle-right', class: 'main-page__body__content__tab-container__content-list__content__item__icon-arrow-right'
+    = paginate(sell_items)
+  = render 'users/sidebar/sidebar'

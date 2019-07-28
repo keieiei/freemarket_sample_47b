@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update] do
     collection do
       get 'confirm_sign_out'
+      get 'sell_items_list'
     end
     resources :receiver_informations, only: [:new, :create, :edit, :update]
     resources :credit_cards, only: [:index, :new, :create, :destroy] do
