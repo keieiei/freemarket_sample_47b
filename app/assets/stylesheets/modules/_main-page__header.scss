@@ -29,22 +29,23 @@
         -webkit-transition: all ease-out .3s;
         transition: all ease-out .3s;
       }
-      &__icon {
+      &__btn {
         position: absolute;
-        top: 0;
-        right: 0;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
+          top: 0;
+          right: 0;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          background-color: rgba(51,153,255,0);
       }
     }
     &__mercari-logo {
