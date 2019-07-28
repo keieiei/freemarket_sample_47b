@@ -6,7 +6,9 @@
         ブランドから探す
   %ul.main-page__header__nav-box__left-box__list__item__parent-wrap
     - brands.each do |brand|
-      = render 'shared/main-page/main-header/brand/brand', { brand: brand }
+      %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
+        %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
+          = link_to brand.name, brand_path(brand.id), class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
     %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
       %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
         = link_to 'ブランド一覧から探す', brand_upper_category_path(1), class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
