@@ -9,7 +9,7 @@
         = "#{target.name}の商品一覧"
       .main-page__body__content__item-box-container__content
         - items.each do |item|
-          .main-page__body__content__item-box-container__content__item
+          .main-page__body__content__item-box-container__content__item.main-page__body__content__item-box-container__content__item--category-show
             = render 'items/index/index-item', { item: item }
     = paginate(@items)
     .main-page__body__content__description
