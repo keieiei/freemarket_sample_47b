@@ -4,10 +4,10 @@
       %h1.main-page__header__top__mercari-logo
         = link_to root_path, class: 'main-page__header__top__mercari-logo__link' do
           = image_tag 'logo.svg', alt: "mercari", class: "main-page__header__top__mercari-logo__image"
-      / 検索コントローラを作成したら下記直すこと
-      %form.main-page__header__top__search-form
-        %input{name: 'keyword', class: 'main-page__header__top__search-form__input-text', placeholder: "何かお探しですか？"}
-        = fa_icon 'search', class: 'main-page__header__top__search-form__icon'
+      = form_tag search_items_path, method: :get, class: "main-page__header__top__search-form" do |f|
+        = text_field_tag :keyword, search_params[:keyword], { placeholder: "何かお探しですか？", class: 'main-page__header__top__search-form__input-text' }
+        = button_tag type: "submit", class: "main-page__header__top__search-form__btn" do
+          = fa_icon 'search', class: 'main-page__header__top__search-form__btn__icon'
     .main-page__header__nav-box
       %nav.main-page__header__nav-box__left-box
         %ul.main-page__header__nav-box__left-box__list
