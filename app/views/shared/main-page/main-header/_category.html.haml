@@ -6,7 +6,17 @@
         カテゴリーから探す
   %ul.main-page__header__nav-box__left-box__list__item__parent-wrap
     - large_categories.each do |large_category|
-      = render 'shared/main-page/main-header/category/l-category', { large_category: large_category }
+      %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
+        %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
+          = link_to large_category.name, large_category_path(large_category.id), class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
+        %ul.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap
+          - large_category.middle_categories.each do |middle_category|
+            %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child
+              = link_to middle_category.name, middle_category_path(middle_category.id), class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child__link'
+              %ul.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child__grand-child-wrap
+                - middle_category.small_categories.each do |small_category|
+                  %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child__grand-child-wrap__grand-child
+                    = link_to small_category.name, small_category_path(small_category.id), class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap__child__grand-child-wrap__grand-child__link'
     %li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
       %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
         = link_to 'カテゴリー一覧', large_categories_path, class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'

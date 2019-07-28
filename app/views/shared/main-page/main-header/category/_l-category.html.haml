@@ -1,6 +1,0 @@
-%li.main-page__header__nav-box__left-box__list__item__parent-wrap__parent
-  %h3.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__title
-    = link_to large_category.name, large_category_path(large_category.id), class: 'main-page__header__nav-box__left-box__list__item__parent-wrap__parent__link'
-  %ul.main-page__header__nav-box__left-box__list__item__parent-wrap__parent__child-wrap
-    - large_category.middle_categories.each do |middle_category|
-      = render 'shared/main-page/main-header/category/m-category', { middle_category: middle_category }
