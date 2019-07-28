@@ -8,6 +8,9 @@
       text-align: center;
       vertical-align: top;
       width: 50%;
+      &--sell-item-list {
+        width: 33.3%;
+      }
       &--active {
         background: $white;
         border-top: solid 2px;
@@ -111,6 +114,11 @@
             opacity: 1;
             -webkit-transition: opacity .3s;
             transition: opacity .3s;
+            &--item {
+              top: 50%;
+              -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+            }
           }
         }
         &__body {
@@ -135,6 +143,32 @@
             }
             &__text {
               vertical-align: middle;
+            }
+          }
+          &__contents {
+            &__index {
+              vertical-align: 2px;
+              margin: 0 6px 0 0;
+              &__icon {
+                vertical-align: middle;
+                color: $gray;
+              }
+              &__number {
+                vertical-align: middle;
+                margin: 0 0 0 2px;
+                font-size: 16px;
+                color: $dark-gray;
+              }
+            }
+            &__status-box {
+              font-weight: 600;
+              display: inline-block;
+              margin: 8px 0 0 0;
+              padding: 5px 6px;
+              border-radius: 2px;
+              font-size: 12px;
+              color: $white;
+              background: $red;
             }
           }
         }
