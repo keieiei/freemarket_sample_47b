@@ -53,4 +53,37 @@ module ApplicationHelper
     hide_str = "*" * length
     return card_number.gsub(/\A[0-9]{#{length}}/, hide_str)
   end
+
+  def select_option_add_nil(array)
+    return array << ['--', nil]
+  end
+
+  def add_first_element(array, add_element)
+    return [add_element].concat(array)
+  end
+
+  def search_result_title(keyword)
+    return "検索結果" if keyword.nil?
+    return "#{keyword}の検索結果"
+  end
+
+  def search_result_number(items)
+    return "該当する商品が見つかりません。検索条件を変えて、再度お試しください。" if items.empty?
+    return "1 - #{items.length}件表示"
+  end
+
+  def set_option_array(names, ids)
+    output_array = []
+    if ids == "integer"
+      names.each.with_index(0) do |name, i|
+        output_array << [name, i]
+      end
+    else
+      names.each.with_index(0) do |name, i|
+        id = ids[i]
+        output_array << [name, id]
+      end
+    end
+    return output_array
+  end
 end

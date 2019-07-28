@@ -1,0 +1,11 @@
+.main-page__body__content
+  %section.main-page__body__content__item-box-container
+    %h2.main-page__body__content__item-box-container__title
+      = search_result_title(search_params[:keyword])
+    .main-page__body__content__item-box-container__result-number
+      = search_result_number(items)
+    .main-page__body__content__item-box-container__content
+      - items.each do |item|
+        .main-page__body__content__item-box-container__content__item.main-page__body__content__item-box-container__content__item--search-result
+          = render 'items/index/index-item', { item: item }
+  = paginate(items)

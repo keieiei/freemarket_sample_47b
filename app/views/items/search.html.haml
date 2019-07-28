@@ -1,0 +1,7 @@
+.main-page
+  = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, search_params: @search_params }
+  %main.main-page__body.main-page__body--search
+    = render 'items/search/right-body', { items: @items, search_params: @search_params }
+    = render 'items/search/left-body', { search_params: @search_params, large_categories: @large_categories, size_types: @size_types, item_conditions: @item_conditions, delivery_charges: @delivery_charges, large_category: @large_category, middle_category: @middle_category, size_type: @size_type }
+  = render 'shared/main-page/main-footer'
+  = render 'shared/main-page/footer-sell-button'

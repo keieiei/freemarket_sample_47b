@@ -15,3 +15,21 @@ credit_card_logos :
   - 'dinersclub.svg'
   - 'discover.svg'
 delivery_way_number_for_buyer : 4
+search_sort_options:
+  - '並び替え'
+  - '価格の安い順'
+  - '価格の高い順'
+  - '出品の古い順'
+  - '出品の新しい順'
+  - 'いいね！の多い順'
+search_price_options:
+  - '選択してください'
+  - '300 ~ 1000'
+  - '1000 ~ 5000'
+  - '5000 ~ 10000'
+  - '10000 ~ 30000'
+  - '30000 ~ 50000'
+  - '50000 ~'
+status_on_sale:
+  - '販売中'
+  - '売り切れ'

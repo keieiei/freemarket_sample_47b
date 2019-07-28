@@ -31,6 +31,12 @@ Rails.application.routes.draw do
       patch 'buy'
       get 'buy_complete'
     end
+    collection do
+      get 'search'
+      get 'get_middle_categories', defaults: { format: 'json' }
+      get 'get_small_categories', defaults: { format: 'json' }
+      get 'get_item_sizes', defaults: { format: 'json' }
+    end
   end
   resources :large_categories, only: [:index, :show]
   resources :middle_categories, only: [:show]
