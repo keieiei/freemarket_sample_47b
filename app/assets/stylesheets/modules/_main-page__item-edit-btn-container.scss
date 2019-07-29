@@ -1,0 +1,31 @@
+.main-page__item-edit-btn-container {
+  &__btn {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    margin: 16px 0 16px 0;
+    color: $white;
+    &--edit {
+      background: $red;
+      border: 1px solid $red;
+    }
+    &--close {
+      background: $super-gray;
+      border: 1px solid $super-gray;
+    }
+    &--delete {
+      background: $super-gray;
+      border: 1px solid $super-gray;
+    }
+  }
+  &__text {
+    text-align: center;
+    font-size: 16px;
+  }
+}
