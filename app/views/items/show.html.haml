@@ -1,9 +1,18 @@
 .main-page
   = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, search_params: { keyword: "" } }
   = render 'shared/main-page/bread-crumbs'
-  = render 'items/show/item', { item: @item }
+  %section.main-page__item-container
+    = render 'items/show/item-info', { item: @item }
+    - unless @item.seller == current_user
+      = render 'items/show/item-buy', { item: @item }
+    = render 'items/show/item-detail', { item: @item }
+    - unless @item.seller == current_user
+      = render 'items/show/item-likes', { item: @item }
+  - if @item.seller == current_user
+    = render 'items/show/item-edit', { item: @item }
   = render 'items/show/comment', { item: @item }
-  = render 'items/show/nav', { item_prev: @item_prev, item_next: @item_next }
-  = render 'items/show/social-media'
-  = render 'items/show/other-items', { item: @item, other_items_same_seller: @other_items_same_seller, other_items_same_category_brand: @other_items_same_category_brand }
+  - unless @item.seller == current_user
+    = render 'items/show/nav', { item_prev: @item_prev, item_next: @item_next }
+    = render 'items/show/social-media'
+    = render 'items/show/other-items', { items_same_seller: @items_same_seller, items_same_type: @items_same_type, first_type_name: @first_type_name, second_type_name: @second_type_name }
   = render 'shared/main-page/main-footer'
