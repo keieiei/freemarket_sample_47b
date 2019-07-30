@@ -1,6 +1,11 @@
 .main-page
   = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, search_params: { keyword: "" } }
   = render 'shared/main-page/bread-crumbs'
+  - if @from_item_destory == true
+    .main-page__body__content
+      .main-page__body__content__notification.main-page__body__content__notification--fail
+        商品の削除に失敗しました
+        = fa_icon 'times', class: "main-page__body__content__notification__icon-close"
   %section.main-page__item-container
     = render 'items/show/item-info', { item: @item }
     - unless @item.seller == current_user
@@ -11,8 +16,12 @@
   - if @item.seller == current_user
     = render 'items/show/item-edit', { item: @item }
   = render 'items/show/comment', { item: @item }
+  - if @item.seller == current_user
+    = render 'items/show/confirm-delete', { item: @item }
   - unless @item.seller == current_user
     = render 'items/show/nav', { item_prev: @item_prev, item_next: @item_next }
     = render 'items/show/social-media'
     = render 'items/show/other-items', { items_same_seller: @items_same_seller, items_same_type: @items_same_type, first_type_name: @first_type_name, second_type_name: @second_type_name }
   = render 'shared/main-page/main-footer'
+  - if @item.seller == current_user
+    .main-page__overlay

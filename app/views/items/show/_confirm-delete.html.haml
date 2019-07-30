@@ -1,0 +1,16 @@
+%aside.main-page__item-container__confirm-delete
+  .main-page__item-container__confirm-delete__inner
+    .main-page__item-container__confirm-delete__inner__body
+      .main-page__item-container__confirm-delete__inner__body__head
+        確認
+      削除すると二度と復活できません。
+      %br
+      削除する代わりに停止することもできます。
+      %br
+      %br
+      本当に削除しますか？
+    .main-page__item-container__confirm-delete__inner__btns
+      .main-page__item-container__confirm-delete__inner__btns__clear-btn
+        キャンセル
+      = form_for @item, url: { action: 'destroy' }, method: :delete, class: "main-page__item-container__confirm-delete__inner__btns__destroy-form" do |f|
+        = f.submit "削除する", class: "main-page__item-container__confirm-delete__inner__btns__destroy-form__btn"
