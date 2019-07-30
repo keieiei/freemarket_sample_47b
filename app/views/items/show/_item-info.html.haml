@@ -90,7 +90,7 @@
           = item.delivery_time.name
 .main-page__item-container__price-box
   %span.main-page__item-container__price-box__price
-    = number_to_currency(item.price, :format => "%u%n", :unit => "￥")
+    = number_to_currency(item.price, format: "%u%n", unit: "￥")
   %span.main-page__item-container__price-box__tax
     (税込)
   %span.main-page__item-container__price-box__shipping-fee
