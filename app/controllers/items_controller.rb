@@ -28,10 +28,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item_prev = Item.find(show_params[:id])
-    @item_next = Item.find(show_params[:id])
-    @other_items_same_seller =  Item.where(show_params[:id])
-    @other_items_same_category_brand =  Item.where(show_params[:id])
+    @item_prev = set_prev_item(@item)
+    @item_next = set_next_item(@item)
+    @items_same_seller =  @item.seller.seller_items
+    @items_same_type =  set_items_same_type(@item)
   end
 
   def buy
@@ -176,5 +176,41 @@ class ItemsController < ApplicationController
     else
       @size_type = nil
     end
+  end
+
+  def set_items_same_type(item)
+    items = {}
+    if item.brand.nil?
+      if item.small_category.nil?
+        items[:types_name] = [item.middle_category.name, item.large_category.name]
+        items[:items] = Item.where(middle_category_id: item.middle_category.id).where(large_category_id: item.large_category.id)
+      else
+        items[:types_name] = [item.small_category.name, item.middle_category.name]
+        items[:items] = Item.where(small_category_id: item.small_category.id).where(middle_category_id: item.middle_category.id)
+      end
+    else
+      if item.small_category.nil?
+        items[:types_name] = [item.brand.name, item.middle_category.name]
+        items[:items] = Item.where(brand_id: item.brand.id).where(middle_category_id: item.middle_category.id)
+      else
+        items[:types_name] = [item.brand.name, item.small_category.name]
+        items[:items] = Item.where(brand_id: item.brand.id).where(small_category_id: item.small_category.id)
+      end
+    end
+    return items
+  end
+
+  def set_prev_item(item)
+    low_max_id = Item.where("id < #{item.id}").maximum(:id)
+    return Item.find(low_max_id) unless low_max_id.nil?
+    up_max_id = Item.where("id > #{item.id}").maximum(:id)
+    return Item.find(up_max_id)
+  end
+  
+  def set_next_item(item)
+    up_min_id = Item.where("id > #{item.id}").minimum(:id)
+    return Item.find(up_min_id) unless up_min_id.nil?
+    low_min_id = Item.where("id < #{item.id}").minimum(:id)
+    return Item.find(low_min_id)
   end
 end

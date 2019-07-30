@@ -51,6 +51,12 @@
         float: left;
         margin: 0 20px 20px 0;
         background: $white;
+        &--item-show {
+          width: 220px;
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+        }
         &--category-show {
           width: 188px;
           &:nth-child(5n) {

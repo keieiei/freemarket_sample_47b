@@ -1,0 +1,17 @@
+.main-page__item-container__btn-container
+  .main-page__item-container__btn-container__left-box
+    = link_to root_path, method: :get, class: 'main-page__item-container__btn-container__left-box__btn' do
+      = fa_icon 'heart', class: ['main-page__item-container__btn-container__left-box__btn__icon', 'main-page__item-container__btn-container__left-box__btn__icon--gray']
+      %span.main-page__item-container__btn-container__left-box__btn__context
+        いいね！
+      %span.main-page__item-container__btn-container__left-box__btn__context.main-page__item-container__btn-container__left-box__btn__context--number
+        2
+    = link_to root_path, method: :get, class: 'main-page__item-container__btn-container__left-box__btn' do
+      = fa_icon 'flag', class: 'main-page__item-container__btn-container__left-box__btn__icon'
+      %span.main-page__item-container__btn-container__left-box__btn__context
+        不適切な商品の報告
+  .main-page__item-container__btn-container__right-box
+    = link_to root_path, class: 'main-page__item-container__btn-container__right-box__link' do
+      = fa_icon 'lock', class: 'main-page__item-container__btn-container__right-box__link__icon'
+      %span.main-page__item-container__btn-container__right-box__link__context
+        あんしん・あんぜんへの取り組み
