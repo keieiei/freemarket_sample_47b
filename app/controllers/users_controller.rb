@@ -8,6 +8,12 @@ class UsersController < ApplicationController
   end
   def sell_items_list
     @sell_items = Item.where(seller_id: current_user.id).where(item_state_id:1).page(params[:page]).per(3)
+    if session[:tmp_from_item_destroy] == true
+      @from_item_destory = true
+      session[:tmp_from_item_destroy] = nil
+    else
+      @from_item_destory = false
+    end
   end
 
   private
