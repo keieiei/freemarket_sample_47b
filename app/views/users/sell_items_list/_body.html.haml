@@ -1,5 +1,9 @@
 .main-page__body
   .main-page__body__content
+    - if from_item_destory == true
+      .main-page__body__content__notification.main-page__body__content__notification--success
+        商品を削除しました
+        = fa_icon 'times', class: "main-page__body__content__notification__icon-close"
     %section.main-page__body__content__tab-container
       %h2.main-page__body__content__tab-container__head-title
         出品した商品
