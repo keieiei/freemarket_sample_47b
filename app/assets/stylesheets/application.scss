@@ -1,5 +1,6 @@
 @import "./reset";
 @import "font-awesome";
+@import "./config/fadeout";
 @import "./config/variable";
 @import "./mixin/bold";
 @import "./mixin/clearfix";
@@ -38,3 +39,4 @@
 @import "./modules/main-page__sell-btn";
 @import "./modules/main-page__social-media";
 @import "./modules/pagination";
+@import "./modules/modal-open";

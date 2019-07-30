@@ -83,4 +83,21 @@
     padding: 8px 16px 8px 16px;
     width: 700px;
   }
+  &__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2999;
+    background: rgba(0,0,0,0.64);
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    opacity: 0;
+    &--active {
+      display: block;
+      opacity: 1;
+    }
+  }
 }
