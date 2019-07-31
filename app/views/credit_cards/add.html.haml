@@ -1,5 +1,6 @@
 .main-page
   = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, search_params: { keyword: "" } }
+  - breadcrumb :add_user_credit_cards
   = render 'shared/main-page/bread-crumbs'
   = render 'credit_cards/add/main-body', { credit_card: @credit_card }
   = render 'shared/main-page/aside'
