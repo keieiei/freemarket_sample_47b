@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :set_brands, only: [:index, :show, :search]
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
-  before_action :authenticate_user!, only: [:new,:buy_confirm,:buy_complete]
-  before_action :set_item,only:[:buy_confirm,:show,:buy]
+  before_action :authenticate_user!, only: [:new,:buy_confirm,:buy_complete, :destroy]
+  before_action :set_item,only:[:buy_confirm,:show,:buy, :destroy]
 
   def index
   end
@@ -23,6 +23,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    session[:tmp_from_item_destroy] = true
+    if @item.seller == current_user
+      if @item.destroy
+        return redirect_to sell_items_list_users_path
+      end
+    end
+    redirect_to item_path(@item.id)
+  end
+
   def buy_confirm
       return render :show if @item.seller_id == current_user.id  
   end
@@ -32,6 +42,12 @@ class ItemsController < ApplicationController
     @item_next = set_next_item(@item)
     @items_same_seller =  @item.seller.seller_items
     @items_same_type =  set_items_same_type(@item)
+    if session[:tmp_from_item_destroy] == true
+      @from_item_destory = true
+      session[:tmp_from_item_destroy] = nil
+    else
+      @from_item_destory = false
+    end
   end
 
   def buy

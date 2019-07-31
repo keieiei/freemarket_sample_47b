@@ -85,4 +85,42 @@
       }
     }
   }
+  &__notification {
+    top: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3000;
+    padding: 24px 56px;
+    text-align: center;
+    line-height: 1.5;
+    -webkit-animation: fade-out ease-out 4.5s;
+    animation: fade-out ease-out 4.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    opacity: 1;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    &--success {
+      background: $light-green;
+      color: $dark-green;
+    }
+    &--fail {
+      background: $light-red;
+      color: $red;
+    }
+    &__icon-close {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      text-align: center;
+      line-height: 44px;
+      color: inherit;
+      top: 50%;
+      right: 8px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+    }
+  }
 }
