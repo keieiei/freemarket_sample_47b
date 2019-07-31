@@ -1,11 +1,2 @@
-/ 以下パンくずリストを導入した後書き直すこと
 %nav.main-page__bread-crumbs
-  %ul.main-page__bread-crumbs__list
-    %li.main-page__bread-crumbs__list__item
-      = link_to root_path, class: 'main-page__bread-crumbs__list__item__link' do
-        %span.main-page__bread-crumbs__list__item__text
-          メルカリ
-      = fa_icon 'angle-right', class: 'main-page__bread-crumbs__list__item__icon-arrow-right'
-    %li.main-page__bread-crumbs__list__item
-      %span.main-page__bread-crumbs__list__item__text
-        マイページ
+  = breadcrumbs pretext: "", separator: " #{content_tag(:i, '', class:'fa fa-angle-right')} ", class: "main-page__bread-crumbs__list"
