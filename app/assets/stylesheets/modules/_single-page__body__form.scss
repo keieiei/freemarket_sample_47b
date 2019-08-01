@@ -40,6 +40,18 @@
       width: 100%;
       margin: 8px 0 0;
     }
+    &__input-text-detail{
+      height: 140px;
+      width: 570px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid $gray;
+      background: $white;
+      line-height: 1.5;
+      font-size: 16px;
+      width: 100%;
+      margin: 8px 0 0;
+    }
     &__title {
       font-size: 16px;
     }
@@ -206,5 +218,146 @@
     border: 1px solid $red;
     color: $white;
     margin: 40px 0 0;
+    &__new-item{
+      width: 570px;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      background: $red;
+      border: 1px solid $red;
+      color: $white;
+      margin: 0 30px 0;
+      display: block;
+    }
+    &__return{
+      width: 200px;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      background: $gray;
+      border: 1px solid $gray;
+      color: $white;
+      margin: 30px 215px 50px;
+      display: block;
+    }
+
   }
+  &__list {
+    border-top: 1px solid $dark-white;
+    &-title{
+      padding-right: 10px;
+      border-top: 0px solid $dark-white;
+    }
+    &-delivery{
+      border-top: 0px solid $dark-white;
+    }
+  }
+  &__sell {
+    padding: 40px;
+    &-title{
+      margin-left: 35px;
+      font-size: 14px;
+    }
+    &-option{
+      padding: 20px;
+    }
+  }
+  &__sell-box {
+    float:right
+  }
+  &__title {
+    float: left;
+    font-size: 14px;
+  }
+  &__label{
+    padding-left: 250px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    &-size{
+      padding-left: 250px;
+      margin-top: 25px;
+      margin-right: 15px;
+    }
+    &-brand{
+      padding-left: 250px;
+      margin-top: 25px;
+      margin-right: 3px;
+    }
+    &-money{
+      padding-left: 275px;
+      margin-top: 25px;
+      margin-right: 3px;
+    }
+    
+  }
+  &__sell-upload-drop-box {
+    position: relative;
+    min-height: 162px;
+    background: #f5f5f5;
+    border: 1px dashed #ccc;
+    text-align: center;
+    -webkit-transition: -webkit-box-shadow ease-out .3s;
+    transition: -webkit-box-shadow ease-out .3s;
+    transition: box-shadow ease-out .3s;
+    transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+    cursor: pointer;
+    width: 570px;
+
+  }
+  &__new {
+    max-width: 650px;
+    padding-left: 80px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  &__large_category-select-wrap{
+    padding-left: 250px;
+    padding-top: 5px;
+
+  }
+  &__money-wrap{
+    padding-left: 275px;
+    padding-top: 5px;
+    
+  }
+  &__category {
+    width: 330px;
+    max-height: 100px;
+    position: relative;
+    z-index: 2;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+}
+.visible-pc{
+  position: absolute;
+  top: 45%;
+  left: 16px;
+  right: 16px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  pointer-events: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-weight: bold;
+}
+
+.fallback{
+  opacity: 0;
+}
+
+.caution{
+  text-align: left;
+  padding: 40px;
 }
