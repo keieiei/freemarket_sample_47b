@@ -1,5 +1,6 @@
 .main-page
   = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, search_params: { keyword: "" } }
+  - breadcrumb :brand_upper_category, @brand_upper_category
   = render 'shared/main-page/bread-crumbs'
   = render 'brand_upper_categories/show/body', { brand_upper_categories: @brand_upper_categories, brand_upper_category_show: @brand_upper_category }
   = render 'shared/main-page/aside'
