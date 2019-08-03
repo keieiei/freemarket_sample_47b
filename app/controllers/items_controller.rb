@@ -11,13 +11,14 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    10.times{@item.images.build}
+    @item.images.build
   end
   
   def create
     @item = Item.new(items_params)
-    if @item.save
-      render :index
+    @item.update_attribute(:item_state_id , current_user.id)
+    if  @item.save!
+      redirect_to root_path
     else
       render :new
     end
@@ -128,7 +129,7 @@ class ItemsController < ApplicationController
 
   private
   def items_params
-    params.require(:item).permit(:name, :detail,:state,:delivery_charge,:delivery_prefecture,:delivery_time,:delivery_way,:price,:size,:large_category,:middle_category,:small_category, :brand, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :detail,:item_condition_id,:delivery_charge_id,:prefecture_id,:delivery_time_id,:delivery_way_id,:price,:item_size_id,:large_category_id,:middle_category_id,:small_category_id, :brand_id, images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 
   def show_params

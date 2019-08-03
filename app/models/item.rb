@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  validates :name, :detail, :delivery_charge_id, :prefecture_id, :delivery_time_id, :delivery_way_id, :price, :item_state_id, :item_condition_id, :large_category_id, :middle_category_id, :seller_id, presence: true
+  validates :name, :detail, :delivery_charge_id, :prefecture_id, :delivery_time_id, :delivery_way_id, :price, :item_condition_id, :large_category_id, :middle_category_id, :seller_id, presence: true
   validates :name, length: { maximum: 40 }
   validates :detail, length: { maximum: 1000 }
   validates :price, numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
