@@ -16,11 +16,29 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(items_params)
-    @item.update_attribute(:item_state_id , current_user.id)
-    if  @item.save!
-      redirect_to root_path
+    if @item.valid?
+      if brand_params.present?
+        if @item.small_category.present?
+          @brand_upper_category = SmallCategory.find(@item.small_category.id).brand_upper_category
+        else
+          @brand_upper_category = MiddleCategory.find(@item.middle_category.id).brand_upper_category
+        end
+        @brand = @brand_upper_category.brands.find_by(brand_params)
+        if @brand.nil?
+          @brand = Brand.create(brand_params)
+          BrandBrandUpperCategory.create(brand_id: @brand.id, brand_upper_category: @brand_upper_category)
+          if @item.small_category.present?
+            BrandSmallCategory.create(brand_id: @brand.id, small_category_id: @item.small_category.id)
+          else
+            BrandMiddleCategory.create(brand_id: @brand.id, middle_category_id: @item.middle_category.id)
+          end
+        end
+        @item.brand_id = @brand.id
+      end
+      @item.save
+      return redirect_to root_path
     else
-      render :new
+      render :nw
     end
   end
 
@@ -98,7 +116,7 @@ class ItemsController < ApplicationController
 
   def get_middle_categories
     id = get_middle_categories_params[:large_category_id]
-    if id.nil?
+    if id.blank?
       @middle_categories = nil
     else
       @middle_categories = LargeCategory.find(id).middle_categories
@@ -120,7 +138,7 @@ class ItemsController < ApplicationController
 
   def get_item_sizes
     id = get_item_sizes_params[:size_type_id]
-    if id.nil?
+    if id.blank?
       @item_sizes = nil
     else
       @item_sizes = SizeType.find(id).item_sizes
@@ -140,7 +158,11 @@ class ItemsController < ApplicationController
 
   private
   def items_params
-    params.require(:item).permit(:name, :detail,:item_condition_id,:delivery_charge_id,:prefecture_id,:delivery_time_id,:delivery_way_id,:price,:item_size_id,:large_category_id,:middle_category_id,:small_category_id, :brand_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :detail,:item_condition_id,:delivery_charge_id,:prefecture_id,:delivery_time_id,:delivery_way_id,:price,:item_size_id,:large_category_id,:middle_category_id,:small_category_id, images_attributes: [:image]).merge(seller_id: current_user.id, item_state_id: 1)
+  end
+
+  def brand_params
+    params.require(:brand).permit(:name)
   end
 
   def show_params
