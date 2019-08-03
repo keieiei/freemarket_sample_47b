@@ -1,8 +1,3 @@
-unless @item_sizes.nil?
+if @item_sizes.present?
   json.array! @item_sizes, :id, :size
-else
-  json.child! do
-    json.id 0
-    json.size "なし"
-  end
 end

@@ -97,8 +97,8 @@ class ItemsController < ApplicationController
   end
 
   def get_middle_categories
-    id = get_middle_categories_params[:large_category_id].to_i
-    if id == 0
+    id = get_middle_categories_params[:large_category_id]
+    if id.nil?
       @middle_categories = nil
     else
       @middle_categories = LargeCategory.find(id).middle_categories
@@ -106,24 +106,35 @@ class ItemsController < ApplicationController
   end
 
   def get_small_categories
-    id = get_small_categories_params[:middle_category_id].to_i
+    id = get_small_categories_params[:middle_category_id]
     @small_categories = nil
     @item_sizes = nil
     @brand_allow = false
-    unless id == 0
+    if id.present?
       @middle_category = MiddleCategory.find(id)
       @small_categories = @middle_category.small_categories
-      @item_sizes = @middle_category.size_type.item_sizes unless @middle_category.size_type_id.nil?
-      @brand_allow = true unless @middle_category.brand_upper_category_id.nil?
+      @item_sizes = @middle_category.size_type.item_sizes if @middle_category.size_type_id.present?
+      @brand_allow = true if @middle_category.brand_upper_category_id.present?
     end
   end
 
   def get_item_sizes
-    id = get_item_sizes_params[:size_type_id].to_i
-    if id == 0
+    id = get_item_sizes_params[:size_type_id]
+    if id.nil?
       @item_sizes = nil
     else
       @item_sizes = SizeType.find(id).item_sizes
+    end
+  end
+
+  def get_sizes_brand_allow
+    id = get_sizes_brand_allow_params[:small_category_id]
+    @item_sizes = nil
+    @brand_allow = false
+    if id.present?
+      @small_category = SmallCategory.find(id)
+      @item_sizes = @small_category.size_type.item_sizes if @small_category.size_type_id.present?
+      @brand_allow = true if @small_category.brand_upper_category_id.present?
     end
   end
 
@@ -154,6 +165,10 @@ class ItemsController < ApplicationController
 
   def get_item_sizes_params
     params.permit(:size_type_id)
+  end
+
+  def get_sizes_brand_allow_params
+    params.permit(:small_category_id)
   end
 
   def set_large_categories

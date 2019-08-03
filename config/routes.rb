@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'get_middle_categories', defaults: { format: 'json' }
       get 'get_small_categories', defaults: { format: 'json' }
       get 'get_item_sizes', defaults: { format: 'json' }
+      get 'get_sizes_brand_allow', defaults: { format: 'json' }
     end
   end
   resources :large_categories, only: [:index, :show]
