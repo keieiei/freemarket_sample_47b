@@ -11,7 +11,7 @@
         .main-page__header__nav-box__right-box__list__item__item-box--mypage__user-figure__image-wrap
           = image_tag 'member_photo_noimage_thumb.png', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__user-figure__image'
         %figcaption.main-page__header__nav-box__right-box__list__item__item-box--mypage__user-figure__name
-          ユーザー名
+          = current_user.nickname
       %ul.main-page__header__nav-box__right-box__list__item__item-box--mypage__review-listing
         %li.main-page__header__nav-box__right-box__list__item__item-box--mypage__review-listing__item
           = link_to '評価： 0', '', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__review-listing__link'
@@ -38,16 +38,16 @@
           いいね！一覧
           = fa_icon 'angle-right', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__icon-arrow-right'
       %li.main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item
-        = link_to '', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__text' do
-          出荷した商品 - 出品中
+        = link_to sell_items_list_users_path, class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__text' do
+          出品した商品 - 出品中
           = fa_icon 'angle-right', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__icon-arrow-right'
       %li.main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item
         = link_to '', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__text' do
-          出荷した商品 - 取引中
+          出品した商品 - 取引中
           = fa_icon 'angle-right', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__icon-arrow-right'
       %li.main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item
         = link_to '', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__text' do
-          出荷した商品 - 売却済み
+          出品した商品 - 売却済み
           = fa_icon 'angle-right', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__icon-arrow-right'
       %li.main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item
         = link_to '', class: 'main-page__header__nav-box__right-box__list__item__item-box--mypage__nav-list__item__text' do
