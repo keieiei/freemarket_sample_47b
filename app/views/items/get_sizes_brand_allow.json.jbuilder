@@ -1,4 +1,4 @@
-unless @item_sizes.nil?
+if @item_sizes.present?
   json.item_sizes do
     json.array! @item_sizes, :id, :size
   end
