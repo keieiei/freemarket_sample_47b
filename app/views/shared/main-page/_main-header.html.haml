@@ -4,8 +4,8 @@
       %h1.main-page__header__top__mercari-logo
         = link_to root_path, class: 'main-page__header__top__mercari-logo__link' do
           = image_tag 'logo.svg', alt: "mercari", class: "main-page__header__top__mercari-logo__image"
-      = form_tag search_items_path, method: :get, class: "main-page__header__top__search-form" do |f|
-        = text_field_tag :keyword, search_params[:keyword], { placeholder: "何かお探しですか？", class: 'main-page__header__top__search-form__input-text' }
+      = form_with url:search_items_path, local: true, class: "main-page__header__top__search-form" do |f|
+        = text_field_tag :keyword, keyword, { placeholder: "何かお探しですか？", class: 'main-page__header__top__search-form__input-text' }
         = button_tag type: "submit", class: "main-page__header__top__search-form__btn" do
           = fa_icon 'search', class: 'main-page__header__top__search-form__btn__icon'
     .main-page__header__nav-box
