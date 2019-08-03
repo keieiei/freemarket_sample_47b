@@ -1,5 +1,5 @@
 .main-page__item-edit-btn-container
-  = link_to '商品の編集', "", class: ['main-page__item-edit-btn-container__btn', 'main-page__item-edit-btn-container__btn--edit']
+  = link_to '商品の編集', edit_item_path(@item), class: ['main-page__item-edit-btn-container__btn', 'main-page__item-edit-btn-container__btn--edit']
   %p.main-page__item-edit-btn-container__text
     or
   = link_to '商品の公開を停止する', "", class: ['main-page__item-edit-btn-container__btn', 'main-page__item-edit-btn-container__btn--close']
