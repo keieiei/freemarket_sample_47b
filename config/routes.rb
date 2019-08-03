@@ -33,7 +33,8 @@ Rails.application.routes.draw do
       get 'buy_complete'
     end
     collection do
-      get 'search'
+      post 'search'
+      post 'detail_search'
       get 'get_middle_categories', defaults: { format: 'json' }
       get 'get_small_categories', defaults: { format: 'json' }
       get 'get_item_sizes', defaults: { format: 'json' }
