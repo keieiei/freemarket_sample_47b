@@ -16,10 +16,10 @@
           = link_to 'メルカリロゴ利用ガイドライン', '', class: 'main-page__footer__cell__list__item__link'
         %li.main-page__footer__cell__list__item.main-page__footer__cell__list__item--social-link
           = link_to '', class: 'main-page__footer__cell__list__item--social-link__link' do
-            = fa_icon 'twitter', class: 'main-page__footer__cell__list__item--social-link__icon main-page__footer__cell__list__item--social-link__icon--twitter'
+            %i.fab.fa-twitter.main-page__footer__cell__list__item--social-link__icon.main-page__footer__cell__list__item--social-link__icon--twitter
         %li.main-page__footer__cell__list__item.main-page__footer__cell__list__item--social-link
           = link_to '', class: 'main-page__footer__cell__list__item--social-link__link' do
-            = fa_icon 'facebook', class: 'main-page__footer__cell__list__item--social-link__icon main-page__footer__cell__list__item--social-link__icon--facebook'
+            %i.fab.fa-facebook-square.main-page__footer__cell__list__item--social-link__icon.main-page__footer__cell__list__item--social-link__icon--facebook
     .main-page__footer__cell
       %h2.main-page__footer__cell__title
         ヘルプ＆ガイド
@@ -74,7 +74,7 @@
         %li.main-page__footer__cell--lang__list__item
           = link_to 'United States', '', class: 'main-page__footer__cell--lang__list__item__link'
   .main-page__footer__bottom
-    = link_to '', class: 'main-page__footer__bottom__logo' do
+    = link_to root_path, class: 'main-page__footer__bottom__logo' do
       = image_tag 'logo-white.svg', alt: "mercari", class: 'main-page__footer__bottom__logo__image'
     %span.main-page__footer__bottom__copyright
       %small.main-page__footer__bottom__copyright__text

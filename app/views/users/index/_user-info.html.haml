@@ -3,7 +3,7 @@
     %figure.main-page__body__content__user__figure
       = image_tag 'member_photo_noimage_thumb.png', class: 'main-page__body__content__user__figure__image'
     %h2.main-page__body__content__user__name
-      ユーザー名
+      = current_user.nickname
     .main-page__body__content__user__review-listing
       .main-page__body__content__user__review-listing__text
         評価
