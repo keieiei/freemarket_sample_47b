@@ -23,7 +23,7 @@ crumb :users_confirm_sign_out do
 end
 
 crumb :users_sell_items_list do
-  link "出品した商品-出品中", users_sell_items_list
+  link "出品した商品-出品中", users_sell_items_list_path
   parent :users
 end
 
@@ -33,7 +33,7 @@ crumb :user_credit_cards do
 end
 
 crumb :add_user_credit_cards do
-  link "クレジットカード情報入力", add_user_credit_cards(user_id: current_user.id)
+  link "クレジットカード情報入力", add_user_credit_cards_path(user_id: current_user.id)
   parent :user_credit_cards
 end
 
