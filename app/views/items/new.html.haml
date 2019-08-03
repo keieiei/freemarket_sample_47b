@@ -28,7 +28,6 @@
           =f.label  :detail,'商品の説明', class: 'single-page__body__form__group__label'
           %span.single-page__body__form__group__require-mark
             必須
-          %br
           = f.text_area :detail, placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。', class: 'single-page__body__form__group__input-text-detail'
       .single-page__body__form__list 
         .single-page__body__form__sell
@@ -39,53 +38,49 @@
               =f.label :large_category_id,'カテゴリー', class: 'single-page__body__form__label'
               %span.single-page__body__form__group__require-mark
                 必須
-              %br
-                .single-page__body__form__large_category-select-wrap
-                  .single-page__body__form__group__large_category-select-wrap__select-wrap
-                    = f.collection_select :large_category_id, LargeCategory.all, :id, :name, {},{class: 'single-page__body__form__category' }
-                    = fa_icon 'angle-down', class: 'single-page__body__form__group__large_category-select-wrap__select-wrap__icon-arrow-bottom'
-                %label{for: 'middle_category_id', class: 'single-page__body__form__group__label'}
-                %br
-                .single-page__body__form__large_category-select-wrap
-                  .single-page__body__form__group__middle_category-select-wrap__select-wrap
-                    = f.collection_select :middle_category_id, MiddleCategory.all, :id, :name, {},{class: 'single-page__body__form__category' }
-                    = fa_icon 'angle-down', class: 'single-page__body__form__group__middle_category-select-wrap__select-wrap__icon-arrow-bottom'
-                %label{for: 'small_category_id', class: 'single-page__body__form__group__label'}
-                %br
-                .single-page__body__form__large_category-select-wrap
-                  .single-page__body__form__group__small_category-select-wrap__select-wrap
-                  = f.collection_select :small_category_id, SmallCategory.all, :id, :name, {},{class: 'single-page__body__form__category' }
-                  = fa_icon 'angle-down', class: 'single-page__body__form__group__small_category-select-wrap__select-wrap__icon-arrow-bottom'
-              .single-page__body__form__sell-box-option
+              .single-page__body__form__large_category-select-wrap
+                .single-page__body__form__group__large_category-select-wrap__select-wrap
+                  = f.collection_select :large_category_id, LargeCategory.all, :id, :name, {},{class: 'single-page__body__form__category' }
+                  = fa_icon 'angle-down', class: 'single-page__body__form__group__large_category-select-wrap__select-wrap__icon-arrow-bottom'
+              %label{for: 'middle_category_id', class: 'single-page__body__form__group__label'}
+    
+              .single-page__body__form__large_category-select-wrap
+                .single-page__body__form__group__middle_category-select-wrap__select-wrap
+                  = f.collection_select :middle_category_id, MiddleCategory.all, :id, :name, {},{class: 'single-page__body__form__category' }
+                  = fa_icon 'angle-down', class: 'single-page__body__form__group__middle_category-select-wrap__select-wrap__icon-arrow-bottom'
+              %label{for: 'small_category_id', class: 'single-page__body__form__group__label'}
+    
+              .single-page__body__form__large_category-select-wrap
+                .single-page__body__form__group__small_category-select-wrap__select-wrap
+                = f.collection_select :small_category_id, SmallCategory.all, :id, :name, {},{class: 'single-page__body__form__category' }
+                = fa_icon 'angle-down', class: 'single-page__body__form__group__small_category-select-wrap__select-wrap__icon-arrow-bottom'
+            .single-page__body__form__sell-box-option
+              .single-page__body__form__group
                 =f.label :item_size_id,'サイズ', class: 'single-page__body__form__label-size'
                 %span.single-page__body__form__group__require-mark
-                  必須
-                %br
+                  必須     
                 .single-page__body__form__large_category-select-wrap
                   .single-page__body__form__group__size-select-wrap__select-wrap
                     = f.collection_select :item_size_id, ItemSize.all, :id, :size, {},{class: 'single-page__body__form__category' }
                     = fa_icon 'angle-down', class: 'single-page__body__form__group__size-select-wrap__select-wrap__icon-arrow-bottom'
-              .single-page__body__form__sell-box-option
-                .single-page__body__form__group
-                  =f.label :brand,'ブランド', class: 'single-page__body__form__label-brand'            
-                  %span.single-page__body__form__group__optional-mark
-                    任意
-                  .single-page__body__form__large_category-select-wrap
-                    .single-page__body__form__group__state-select-wrap__select-wrap
-                      = f.collection_select :brand_id, Brand.all, :id, :name, {},{class: 'single-page__body__form__category' }
-                      = fa_icon 'angle-down', class: 'single-page__body__form__group__state-select-wrap__select-wrap__icon-arrow-bottom'                      
-                %br
+            .single-page__body__form__sell-box-option
+              .single-page__body__form__group
+                =f.label :brand,'ブランド', class: 'single-page__body__form__label-brand'            
+                %span.single-page__body__form__group__optional-mark
+                  任意
+                .single-page__body__form__large_category-select-wrap
+                  .single-page__body__form__group__state-select-wrap__select-wrap
+                    = f.collection_select :brand_id, Brand.all, :id, :name, {},{class: 'single-page__body__form__category' }
+                    = fa_icon 'angle-down', class: 'single-page__body__form__group__state-select-wrap__select-wrap__icon-arrow-bottom'                            
               .single-page__body__form__sell-box-option
                 .single-page__body__form__group
                   =f.label :item_condition_id,'商品の状態', class: 'single-page__body__form__label'
                   %span.single-page__body__form__group__require-mark
-                    必須
-                  %br
+                    必須        
                   .single-page__body__form__large_category-select-wrap
                     .single-page__body__form__group__state-select-wrap__select-wrap
                       = f.collection_select :item_condition_id, ItemCondition.all, :id, :name, {},{class: 'single-page__body__form__category' }
-                      = fa_icon 'angle-down', class: 'single-page__body__form__group__state-select-wrap__select-wrap__icon-arrow-bottom'
-                %br
+                      = fa_icon 'angle-down', class: 'single-page__body__form__group__state-select-wrap__select-wrap__icon-arrow-bottom'      
       .single-page__body__form__list-delivery        
         .single-page__body__form__sell
           %h3.single-page__body__form__sell-title
@@ -94,19 +89,16 @@
             .single-page__body__form__sell-box-option
               =f.label :delivery_charge_id,'配送料の負担', class: 'single-page__body__form__label'
               %span.single-page__body__form__group__require-mark
-                必須
-              %br
+                必須    
               .single-page__body__form__large_category-select-wrap
                 .single-page__body__form__group__small_category-select-wrap__select-wrap
                 = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :name, {},{class: 'single-page__body__form__category' }
-                = fa_icon 'angle-down', class: 'single-page__body__form__group__delivery_charge-select-wrap__select-wrap__icon-arrow-bottom'
-                %br
+                = fa_icon 'angle-down', class: 'single-page__body__form__group__delivery_charge-select-wrap__select-wrap__icon-arrow-bottom'      
             .single-page__body__form__sell-box-option
               .single-page__body__form__group
                 =f.label :delivery_way_id,'配送の方法', class: 'single-page__body__form__label'
                 %span.single-page__body__form__group__require-mark
-                  必須
-                %br
+                  必須     
                 .single-page__body__form__large_category-select-wrap
                   .single-page__body__form__group__small_category-select-wrap__select-wrap
                   = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :name, {},{class: 'single-page__body__form__category' }
@@ -116,7 +108,7 @@
                 =f.label :prefecture_id,'発送元の地域', class: 'single-page__body__form__label'
                 %span.single-page__body__form__group__require-mark
                   必須
-                %br
+      
                 .single-page__body__form__large_category-select-wrap
                   .single-page__body__form__group__small_category-select-wrap__select-wrap
                   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {},{class: 'single-page__body__form__category' }                    
@@ -125,8 +117,7 @@
               .single-page__body__form__group               
                 =f.label :delivery_time_id,'発送までの日数', class: 'single-page__body__form__label'
                 %span.single-page__body__form__group__require-mark
-                  必須
-                %br
+                  必須      
                 .single-page__body__form__large_category-select-wrap
                   .single-page__body__form__group__small_category-select-wrap__select-wrap
                     = f.collection_select :delivery_time_id, DeliveryTime.all, :id, :name, {},{class: 'single-page__body__form__category' }                      
@@ -138,8 +129,7 @@
             .single-page__body__form__group
               =f.label :price,'価格', class: 'single-page__body__form__label-money'
               %span.single-page__body__form__group__require-mark
-                必須
-              %br
+                必須    
               .single-page__body__form__money-wrap
                 .single-page__body__form__group__small_category-select-wrap__select-wrap
                   = f.text_field :price , placeholder: '例）300', class: 'single-page__body__form__category', id: "price_form"
