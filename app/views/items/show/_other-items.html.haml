@@ -1,14 +1,14 @@
 .main-page__other-items
   %section.main-page__other-items__contents
     %h2.main-page__other-items__contents__title
-      = link_to "#{items_same_seller[0].seller.nickname}さんのその他の作品", "", class: "main-page__other-items__contents__title__link"
+      = link_to "#{items_same_seller[0].seller.nickname}さんのその他の商品", "", class: "main-page__other-items__contents__title__link"
     .main-page__other-items__contents__box
       - items_same_seller.each do |item|
         .main-page__body__content__item-box-container__content__item.main-page__body__content__item-box-container__content__item--item-show
           = render 'items/index/index-item', { item: item }
   %section.main-page__other-items__contents
     %h2.main-page__other-items__contents__title
-      = link_to "#{items_same_type[:types_name][0]}の#{items_same_type[:types_name][1]} その他の作品", "", class: "main-page__other-items__contents__title__link"
+      = link_to "#{items_same_type[:types_name][0]}の#{items_same_type[:types_name][1]} その他の商品", "", class: "main-page__other-items__contents__title__link"
     .main-page__other-items__contents__box
       - items_same_type[:items].each do |item|
         .main-page__body__content__item-box-container__content__item.main-page__body__content__item-box-container__content__item--item-show
