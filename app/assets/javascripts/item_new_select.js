@@ -133,7 +133,7 @@ $(document).on('turbolinks:load', function(){
         data: { middle_category_id: middle_category_id },
         dataType: 'json'
       })
-      .done(function(return_data) {
+      .done(function(small_categories_item_sizes_brand_allow) {
         if (smallCategoryBox.length >= 1) {
           smallCategoryBox.remove();
         }
@@ -143,15 +143,15 @@ $(document).on('turbolinks:load', function(){
         if (brandBox.length >= 1) {
           brandBox.remove();
         }
-        if (return_data.small_categories.length > 1) {
+        if (small_categories_item_sizes_brand_allow.small_categories.length > 1) {
           var html = addSmallBox(return_data.small_categories);
           parent.append(html);
         }
-        if (return_data.item_sizes.length > 1) {
+        if (small_categories_item_sizes_brand_allow.item_sizes.length > 1) {
           var html = addSizeBox(return_data.item_sizes);
           grandparent.append(html);
         }
-        if (return_data.brand_allow == true) {
+        if (small_categories_item_sizes_brand_allow.brand_allow == true) {
           var html = addBrandBox();
           grandparent.append(html);
         }
@@ -176,18 +176,18 @@ $(document).on('turbolinks:load', function(){
         data: { small_category_id: small_category_id },
         dataType: 'json'
       })
-      .done(function(return_data) {
+      .done(function(item_sizes_brand_allow) {
         if (sizeBox.length >= 1) {
           sizeBox.remove();
         }
         if (brandBox.length >= 1) {
           brandBox.remove();
         }
-        if (return_data.item_sizes.length > 1) {
+        if (item_sizes_brand_allow.item_sizes.length > 1) {
           var html = addSizeBox(return_data.item_sizes);
           grandparent.append(html);
         }
-        if (return_data.brand_allow == true) {
+        if (item_sizes_brand_allow.brand_allow == true) {
           var html = addBrandBox();
           grandparent.append(html);
         }
