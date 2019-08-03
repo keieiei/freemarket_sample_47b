@@ -1,7 +1,7 @@
 .main-page
-  = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, search_params: @search_params }
+  = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, keyword: @keyword }
   %main.main-page__body.main-page__body--search
-    = render 'items/search/right-body', { items: @items, search_params: @search_params }
-    = render 'items/search/left-body', { search_params: @search_params, large_categories: @large_categories, size_types: @size_types, item_conditions: @item_conditions, delivery_charges: @delivery_charges, large_category: @large_category, middle_category: @middle_category, size_type: @size_type }
+    = render 'items/search/right-body', { items: @items, keyword: @keyword }
+    = render 'items/search/left-body', { q: @q, keyword: @keyword, large_categories: @large_categories, size_types: @size_types, item_conditions: @item_conditions, delivery_charges: @delivery_charges, large_category: @large_category, middle_category: @middle_category, size_type: @size_type, item_states: @item_states, sort_options: @sort_options, selected_sort: @selected_sort }
   = render 'shared/main-page/main-footer'
   = render 'shared/main-page/footer-sell-button'

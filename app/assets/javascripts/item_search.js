@@ -9,13 +9,29 @@ $(document).on('turbolinks:load', function(){
   var priceMinInputClass = ".main-page__body__side-bar__form__container__group__input-text--price_min";
   var priceMaxInputClass = ".main-page__body__side-bar__form__container__group__input-text--price_max";
   var checkboxClass = ".main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox";
-
-  function checkboxAllboxId(element) {
-    return "#" + element + "_0";
-  };
+  var clearBtnClass = ".main-page__body__side-bar__form__container__search-btn-box__clear-btn"
 
   $(function(){
-    $(document).on('change', checkboxAllboxId("item_condition_id"), function(e) {
+    $(document).on('click', clearBtnClass, function(e) {
+      e.preventDefault();
+      var parent = $(this).parent().parent();
+      parent.find("#q_sorts").val("id desc");
+      parent.find("#q_name_or_detail_cont").val("");
+      parent.find("#q_large_category_id_eq").val("");
+      parent.find("#q_large_category_id_eq").parent().parent().find(".main-page__body__side-bar__form__container__group__child-wrap").remove();
+      parent.find("#q_large_category_id_eq").parent().parent().find(".main-page__body__side-bar__form__container__group__grand-child-wrap").remove();
+      parent.find("#q_brand_name_cont").val("");
+      parent.find("#q_item_size_size_type_id_eq").val("");
+      parent.find("#q_item_size_size_type_id_eq").parent().parent().find(".main-page__body__side-bar__form__container__group__child-wrap").remove();
+      parent.find("#price_select").val(0);
+      parent.find("#q_price_gteq").val("");
+      parent.find("#q_price_lteq").val("");
+      parent.find(".main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox").prop("checked", false);
+    })
+  })
+
+  $(function(){
+    $(document).on('change', "#q_item_condition_id_eq_any", function(e) {
       e.preventDefault();
       var otherCheckboxes = $(this).parent().parent().find(checkboxClass);
       if ($(this).prop("checked") == true) {
@@ -27,7 +43,7 @@ $(document).on('turbolinks:load', function(){
   })
 
   $(function(){
-    $(document).on('change', checkboxAllboxId("delivery_charge_id"), function(e) {
+    $(document).on('change', "#q_delivery_charge_id_eq_any", function(e) {
       e.preventDefault();
       var otherCheckboxes = $(this).parent().parent().find(checkboxClass);
       if ($(this).prop("checked") == true) {
@@ -39,7 +55,7 @@ $(document).on('turbolinks:load', function(){
   })
 
   $(function(){
-    $(document).on('change', checkboxAllboxId("status_on_sale_id"), function(e) {
+    $(document).on('change', "#q_item_state_id_eq_any", function(e) {
       e.preventDefault();
       var otherCheckboxes = $(this).parent().parent().find(checkboxClass);
       if ($(this).prop("checked") == true) {
@@ -54,7 +70,8 @@ $(document).on('turbolinks:load', function(){
     var html = `<div class="main-page__body__side-bar__form__container__group__child-wrap">
                   <div class="main-page__body__side-bar__form__container__group__child-wrap__select-wrap main-page__body__side-bar__form__container__group__child-wrap__select-wrap--active">
                     <i class="fas fa-chevron-down main-page__body__side-bar__form__container__group__child-wrap__select-wrap__icon"></i>
-                    <select name="middle_category_id" class="main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select--middle_category">`
+                    <select name="middle_category_id" class="main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select--middle_category">
+                      <option value>すべて</option>`
     for (var i=0; i<middle_categories.length; i++) {
       html = html + `<option value="${middle_categories[i].id}">${middle_categories[i].name}</option>`
     }
@@ -100,9 +117,9 @@ $(document).on('turbolinks:load', function(){
                   <div class="main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap--active">`
     for (var i=0; i<small_categories.length; i++) {
       html = html + `<div class="main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap">
-                      <input type="checkbox" name="small_category_id[${small_categories[i].id}]" id="small_category_id[${small_categories[i].id}]" value="${small_categories[i].id}" class="main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__checkbox">
+                      <input type="checkbox" name="q[small_category_id_eq_any][]" id="q_small_category_id_eq_any_${small_categories[i].id}" value="${small_categories[i].id}" class="main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__checkbox">
                       <i class="fas fa-check main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__icon"></i>
-                      <label for="small_category_id[${small_categories[i].id}]" class="main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__label">${small_categories[i].name}</label>
+                      <label for="q_small_category_id_eq_any_${small_categories[i].id}" class="main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__label">${small_categories[i].name}</label>
                     </div>`
     }
     var html = html + ` </div>
@@ -122,12 +139,12 @@ $(document).on('turbolinks:load', function(){
         data: { middle_category_id: middle_category_id },
         dataType: 'json'
       })
-      .done(function(small_categories) {
+      .done(function(return_data) {
         if (smallCategoryWrap.length >= 1) {
           smallCategoryWrap.remove();
         }
-        if (small_categories.length > 1) {
-          var html = addSmallCheckbox(small_categories);
+        if (return_data.small_categories.length > 1) {
+          var html = addSmallCheckbox(return_data.small_categories);
           parent.append(html);
         }
       })
@@ -142,9 +159,9 @@ $(document).on('turbolinks:load', function(){
                   <div class="main-page__body__side-bar__form__container__group__child-wrap__wrap main-page__body__side-bar__form__container__group__child-wrap__wrap--active">`
     for (var i=0; i<item_sizes.length; i++) {
       html = html + `<div class="main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap">
-                      <input type="checkbox" name="item_size_id[${item_sizes[i].id}]" id="item_size_id[${item_sizes[i].id}]" value="${item_sizes[i].id}" class="main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox">
+                      <input type="checkbox" name="q[item_size_id_eq_any][]" id="q_item_size_id_eq_any_${item_sizes[i].id}" value="${item_sizes[i].id}" class="main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox">
                       <i class="fas fa-check main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__icon"></i>
-                      <label for="item_size_id[${item_sizes[i].id}]" class="main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label">${item_sizes[i].size}</label>
+                      <label for="q_item_size_id_eq_any_${item_sizes[i].id}" class="main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label">${item_sizes[i].size}</label>
                     </div>`
     }
     var html = html + ` </div>

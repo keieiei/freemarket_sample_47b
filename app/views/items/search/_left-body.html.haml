@@ -1,73 +1,73 @@
 .main-page__body__side-bar
-  = form_tag search_items_path, method: :get, class: "main-page__body__side-bar__form" do |f|
+  = search_form_for q, url:detail_search_items_path, method: :post, class: "main-page__body__side-bar__form" do |f|
     .main-page__body__side-bar__form__search-sort
       .main-page__body__side-bar__form__search-sort__wrap
         %i.fas.fa-chevron-down.main-page__body__side-bar__form__search-sort__wrap__icon
-        = select_tag 'search_sort', options_for_select(set_option_array(Settings.search_sort_options, "integer"), selected: search_params[:search_sort]), class: 'main-page__body__side-bar__form__search-sort__wrap__select'
+        = f.collection_select :sorts, sort_options, :sort_way, :name, { selected: selected_sort }, { onchange: "submit(this.form)", class: 'main-page__body__side-bar__form__search-sort__wrap__select' }
     .main-page__body__side-bar__form__container
       %h3.main-page__body__side-bar__form__container__title
         詳細検索
       .main-page__body__side-bar__form__container__group
-        = label_tag :keyword, class: 'main-page__body__side-bar__form__container__group__label' do
+        = f.label :name_or_detail_cont, class: 'main-page__body__side-bar__form__container__group__label' do
           = fa_icon 'plus', class: 'main-page__body__side-bar__form__container__group__label__icon'
           %span.main-page__body__side-bar__form__container__group__label__text
             キーワードを追加する
-        = text_field_tag :keyword, search_params[:keyword], {placeholder: '例）値下げ', class: 'main-page__body__side-bar__form__container__group__input-text'}
+        = f.search_field :name_or_detail_cont, { value: keyword, placeholder: '例）値下げ', class: 'main-page__body__side-bar__form__container__group__input-text' }
       .main-page__body__side-bar__form__container__group
-        = label_tag :category, class: 'main-page__body__side-bar__form__container__group__label' do
+        = f.label :category, class: 'main-page__body__side-bar__form__container__group__label' do
           = fa_icon 'list', class: 'main-page__body__side-bar__form__container__group__label__icon'
           %span.main-page__body__side-bar__form__container__group__label__text
             カテゴリーを選択する
         .main-page__body__side-bar__form__container__group__select-wrap
           = fa_icon 'angle-down', class: 'main-page__body__side-bar__form__container__group__select-wrap__icon'
-          = select_tag 'large_category_id', options_for_select(set_option_array(add_first_element(large_categories.pluck(:name), "すべて"), add_first_element(large_categories.ids, 0)), selected: search_params[:large_category_id]), class: ['main-page__body__side-bar__form__container__group__select-wrap__select', 'main-page__body__side-bar__form__container__group__select-wrap__select--large_category']
+          = f.collection_select :large_category_id_eq, large_categories, :id, :name, { include_blank: "すべて" }, { class: ['main-page__body__side-bar__form__container__group__select-wrap__select', 'main-page__body__side-bar__form__container__group__select-wrap__select--large_category'] }
         - unless large_category.nil?
           .main-page__body__side-bar__form__container__group__child-wrap
             .main-page__body__side-bar__form__container__group__child-wrap__select-wrap.main-page__body__side-bar__form__container__group__child-wrap__select-wrap--active
               = fa_icon 'angle-down', class: 'main-page__body__side-bar__form__container__group__child-wrap__select-wrap__icon'
-              = select_tag 'search_middle_category', options_for_select(set_option_array(add_first_element(large_category.middle_categories.pluck(:name), "すべて"), add_first_element(large_category.middle_categories.ids, 0)), selected: search_params[:middle_category_id]), class: ['main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select', 'main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select--middle_category']
+              = f.collection_select :middle_category_id_eq, large_category.middle_categories, :id, :name, { include_blank: "すべて" }, { class: ['main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select', 'main-page__body__side-bar__form__container__group__child-wrap__select-wrap__select--middle_category'] }
           - unless middle_category.nil?
             .main-page__body__side-bar__form__container__group__grand-child-wrap
               .main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap.main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap--active
                 - middle_category.small_categories.each do |small_category|
                   .main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap
-                    = check_box_tag "small_category_id[#{small_category.id}]", small_category.id, search_params[:small_category_id].include?(small_category.id), class: "main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__checkbox"
+                    = f.check_box :small_category_id_eq_any, { multiple: true, include_hidden: false, class: "main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__checkbox" }, small_category.id
                     %i.fas.fa-check.main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__icon
-                    = label_tag "small_category_id[#{small_category.id}]", "#{small_category.name}", class: "main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__label"
+                    = f.label "small_category_id_eq_any_#{small_category.id}", "#{small_category.name}", class: "main-page__body__side-bar__form__container__group__grand-child-wrap__select-wrap__checkbox-wrap__label"
       .main-page__body__side-bar__form__container__group
-        = label_tag :brand_name, class: 'main-page__body__side-bar__form__container__group__label' do
+        = f.label :brand_name_cont, class: 'main-page__body__side-bar__form__container__group__label' do
           = fa_icon 'tag', class: 'main-page__body__side-bar__form__container__group__label__icon'
           %span.main-page__body__side-bar__form__container__group__label__text
             ブランド名から探す
-        = text_field_tag :brand_name, search_params[:brand_name], { placeholder: '例）シャネル', class: 'main-page__body__side-bar__form__container__group__input-text' }
+        = f.search_field :brand_name_cont, { placeholder: '例）シャネル', class: 'main-page__body__side-bar__form__container__group__input-text' }
       .main-page__body__side-bar__form__container__group
-        = label_tag :item_size, class: 'main-page__body__side-bar__form__container__group__label' do
+        = f.label :item_size, class: 'main-page__body__side-bar__form__container__group__label' do
           = fa_icon 'expand', class: 'main-page__body__side-bar__form__container__group__label__icon'
           %span.main-page__body__side-bar__form__container__group__label__text
             サイズを指定する
         .main-page__body__side-bar__form__container__group__select-wrap
           = fa_icon 'angle-down', class: 'main-page__body__side-bar__form__container__group__select-wrap__icon'
-          = select_tag 'size_type_id', options_for_select(set_option_array(add_first_element(size_types.pluck(:name), "すべて"), add_first_element(size_types.ids, 0)), selected: search_params[:size_type_id]), class: ['main-page__body__side-bar__form__container__group__select-wrap__select', 'main-page__body__side-bar__form__container__group__select-wrap__select--size_type']
+          = f.collection_select :item_size_size_type_id_eq, size_types, :id, :name, { include_blank: "すべて" }, { class: ['main-page__body__side-bar__form__container__group__select-wrap__select', 'main-page__body__side-bar__form__container__group__select-wrap__select--size_type'] }
         - unless size_type.nil?
           .main-page__body__side-bar__form__container__group__child-wrap
             .main-page__body__side-bar__form__container__group__child-wrap__wrap.main-page__body__side-bar__form__container__group__child-wrap__wrap--active
               - size_type.item_sizes.each do |item_size|
                 .main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap
-                  = check_box_tag "item_size_id[#{item_size.id}]", item_size.id, search_params[:item_size_id].include?(item_size.id), class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox"
+                  = f.check_box :item_size_id_eq_any, { multiple: true, include_hidden: false, class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox" }, item_size.id
                   %i.fas.fa-check.main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__icon
-                  = label_tag "item_size_id[#{item_size.id}]", "#{item_size.size}", class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
+                  = f.label "item_size_id_eq_any_[#{item_size.id}]", item_size.size, class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
       .main-page__body__side-bar__form__container__group
-        = label_tag :price, class: 'main-page__body__side-bar__form__container__group__label' do
+        = f.label :price, class: 'main-page__body__side-bar__form__container__group__label' do
           = fa_icon 'coins', class: 'main-page__body__side-bar__form__container__group__label__icon'
           %span.main-page__body__side-bar__form__container__group__label__text
             価格
         .main-page__body__side-bar__form__container__group__select-wrap
           = fa_icon 'angle-down', class: 'main-page__body__side-bar__form__container__group__select-wrap__icon'
-          = select_tag 'price_select', options_for_select(set_option_array(Settings.search_price_options, "integer"), selected: search_params[:price_select]), class: ['main-page__body__side-bar__form__container__group__select-wrap__select', 'main-page__body__side-bar__form__container__group__select-wrap__select--price']
-        = text_field_tag :price_min, search_params[:price_min], { placeholder: '¥ Min', class: ["main-page__body__side-bar__form__container__group__input-text", "main-page__body__side-bar__form__container__group__input-text--price", "main-page__body__side-bar__form__container__group__input-text--price_min"] }
+          = select_tag 'price_select', options_for_select(set_option_array(Settings.search_price_options, "integer")), class: ['main-page__body__side-bar__form__container__group__select-wrap__select', 'main-page__body__side-bar__form__container__group__select-wrap__select--price']
+        = f.number_field :price_gteq, { min: 300, max: 9999999, placeholder: '¥ Min', class: ["main-page__body__side-bar__form__container__group__input-text", "main-page__body__side-bar__form__container__group__input-text--price", "main-page__body__side-bar__form__container__group__input-text--price_min"] }
         %span.main-page__body__side-bar__form__container__group__text-center
           = "~"
-        = text_field_tag :price_max, search_params[:price_max], { placeholder: '¥ Max', class: ["main-page__body__side-bar__form__container__group__input-text", "main-page__body__side-bar__form__container__group__input-text--price", "main-page__body__side-bar__form__container__group__input-text--price_max"] }
+        = f.number_field :price_lteq, { min: 300, max: 9999999, placeholder: '¥ Max', class: ["main-page__body__side-bar__form__container__group__input-text", "main-page__body__side-bar__form__container__group__input-text--price", "main-page__body__side-bar__form__container__group__input-text--price_max"] }
       .main-page__body__side-bar__form__container__group.main-page__body__side-bar__form__container__group--clearfix
         = label_tag :item_condition, class: 'main-page__body__side-bar__form__container__group__label' do
           = fa_icon 'star', class: 'main-page__body__side-bar__form__container__group__label__icon'
@@ -75,11 +75,14 @@
             商品の状態
         .main-page__body__side-bar__form__container__group__child-wrap
           .main-page__body__side-bar__form__container__group__child-wrap__wrap.main-page__body__side-bar__form__container__group__child-wrap__wrap--active
-            - set_option_array(add_first_element(item_conditions.pluck(:name), "すべて"), add_first_element(item_conditions.pluck(:id), 0)).each do |item_condition|
+            - set_option_array(add_first_element(item_conditions.pluck(:name), "すべて"), add_first_element(item_conditions.pluck(:id), nil)).each do |item_condition|
               .main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap
-                = check_box_tag "item_condition_id[#{item_condition[1]}]", item_condition[1], search_params[:item_condition_id].include?(item_condition[1]), class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox"
+                = f.check_box :item_condition_id_eq_any, { multiple: true, include_hidden: false, class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox" }, item_condition[1]
                 %i.fas.fa-check.main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__icon
-                = label_tag "item_condition_id[#{item_condition[1]}]", "#{item_condition[0]}", class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
+                - if item_condition[1].nil?
+                  = f.label "item_condition_id_eq_any", item_condition[0], class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
+                - else
+                  = f.label "item_condition_id_eq_any_#{item_condition[1]}", item_condition[0], class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
       .main-page__body__side-bar__form__container__group.main-page__body__side-bar__form__container__group--clearfix
         = label_tag :delivery_charge, class: 'main-page__body__side-bar__form__container__group__label' do
           %i.fas.fa-truck.main-page__body__side-bar__form__container__group__label__icon
@@ -87,11 +90,14 @@
             配送料の負担
         .main-page__body__side-bar__form__container__group__child-wrap
           .main-page__body__side-bar__form__container__group__child-wrap__wrap.main-page__body__side-bar__form__container__group__child-wrap__wrap--active
-            - set_option_array(add_first_element(delivery_charges.pluck(:name), "すべて"), add_first_element(delivery_charges.pluck(:id), 0)).each do |delivery_charge|
+            - set_option_array(add_first_element(delivery_charges.pluck(:name), "すべて"), add_first_element(delivery_charges.pluck(:id), nil)).each do |delivery_charge|
               .main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap
-                = check_box_tag "delivery_charge_id[#{delivery_charge[1]}]", delivery_charge[1], search_params[:delivery_charge_id].include?(delivery_charge[1]), class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox"
+                = f.check_box :delivery_charge_id_eq_any, { multiple: true, include_hidden: false, class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox" }, delivery_charge[1]
                 %i.fas.fa-check.main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__icon
-                = label_tag "delivery_charge_id_#{delivery_charge[1]}", "#{delivery_charge[0]}", class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
+                - if delivery_charge[1].nil?
+                  = f.label "delivery_charge_id_eq_any", "#{delivery_charge[0]}", class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
+                - else
+                  = f.label "delivery_charge_id_eq_any_#{delivery_charge[1]}", "#{delivery_charge[0]}", class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
       .main-page__body__side-bar__form__container__group.main-page__body__side-bar__form__container__group--clearfix
         = label_tag :status_on_sale, class: 'main-page__body__side-bar__form__container__group__label' do
           %i.fas.fa-shopping-cart.main-page__body__side-bar__form__container__group__label__icon
@@ -99,12 +105,15 @@
             販売状況
         .main-page__body__side-bar__form__container__group__child-wrap
           .main-page__body__side-bar__form__container__group__child-wrap__wrap.main-page__body__side-bar__form__container__group__child-wrap__wrap--active
-            - add_first_element(Settings.status_on_sale, "すべて").each_with_index do |status, i|
+            - set_option_array(add_first_element(item_states.pluck(:name), "すべて"), add_first_element(delivery_charges.pluck(:id), nil)).each do |item_state|
               .main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap
-                = check_box_tag "status_on_sale_id[#{i}]", i, search_params[:status_on_sale_id].include?(i), class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox"
+                = f.check_box :item_state_id_eq_any, { multiple: true, include_hidden: false, class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__checkbox" }, item_state[1]
                 %i.fas.fa-check.main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__icon
-                = label_tag "status_on_sale_id_#{i}", status, class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
+                - if item_state[1].nil?
+                  = f.label "item_state_id_eq_any", item_state[0], class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
+                - else
+                  = f.label "item_state_id_eq_any_#{item_state[1]}", item_state[0], class: "main-page__body__side-bar__form__container__group__child-wrap__wrap__checkbox-wrap__label"
       .main-page__body__side-bar__form__container__search-btn-box
         .main-page__body__side-bar__form__container__search-btn-box__clear-btn
           クリア
-        = submit_tag "完了", class: "main-page__body__side-bar__form__container__search-btn-box__submit-btn"
+        = f.submit "完了", class: "main-page__body__side-bar__form__container__search-btn-box__submit-btn"

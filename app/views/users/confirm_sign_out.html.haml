@@ -1,5 +1,5 @@
 .main-page
-  = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, search_params: { keyword: "" } }
+  = render 'shared/main-page/main-header', { large_categories: @large_categories, brands: @brands, keyword: "" }
   - breadcrumb :users_confirm_sign_out
   = render 'shared/main-page/bread-crumbs'
   = render 'users/confirm_sign_out/main-body'
