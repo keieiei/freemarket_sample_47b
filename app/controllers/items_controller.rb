@@ -127,6 +127,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def get_sizes_brand_allow
+    id = get_sizes_brand_allow_params[:small_category_id].to_i
+    @item_sizes = nil
+    @brand_allow = false
+    unless id == 0
+      @small_category = SmallCategory.find(id)
+      @item_sizes = @small_category.size_type.item_sizes unless @small_category.size_type_id.nil?
+      @brand_allow = true unless @small_category.brand_upper_category_id.nil?
+    end
+  end
+
   private
   def items_params
     params.require(:item).permit(:name, :detail,:item_condition_id,:delivery_charge_id,:prefecture_id,:delivery_time_id,:delivery_way_id,:price,:item_size_id,:large_category_id,:middle_category_id,:small_category_id, :brand_id, images_attributes: [:image]).merge(seller_id: current_user.id)
@@ -154,6 +165,10 @@ class ItemsController < ApplicationController
 
   def get_item_sizes_params
     params.permit(:size_type_id)
+  end
+
+  def get_sizes_brand_allow_params
+    params.permit(:small_category_id)
   end
 
   def set_large_categories
