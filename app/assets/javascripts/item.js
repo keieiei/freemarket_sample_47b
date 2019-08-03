@@ -63,6 +63,7 @@ $(document).on('turbolinks:load', function(){
   }
   function nextMoveBanner() {
     moveBanner('next');
+    setTimeout(nextMoveBanner, 5000);
   }
 
   initializeSet();
@@ -77,5 +78,5 @@ $(document).on('turbolinks:load', function(){
       e.preventDefault();
       moveBanner('next');
   })
-  var count = setInterval(nextMoveBanner, 5000);
+  setTimeout(nextMoveBanner, 5000);
 })
