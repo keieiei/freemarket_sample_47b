@@ -3,7 +3,7 @@
     = render 'shared/single-page/header/single-page__header__mercari-logo'
   %section.single-page__body__container
     %h2.single-page__body__title 商品情報を入力
-    =form_for @item, :url => { :action => "update" } do |f|
+    =form_for @item, url: { action: "update" } do |f|
       .single-page__body__form__new
         =f.label :image,'出品画像', class: 'single-page__body__form__image'
         %span.single-page__body__form__group__require-mark
