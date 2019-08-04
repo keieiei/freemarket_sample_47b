@@ -78,123 +78,118 @@ $(document).on('turbolinks:load', function(){
     return html;
   }
 
-  $(function(){
-    $(document).on('change', largeCategorySelectId, function(e) {
-      e.preventDefault();
-      var large_category_id = $(this).val();
-      var parent = $(this).parent().parent().parent();
-      var grandparent = parent.parent();
-      middleCategoryBox = parent.find(middleCategoryBoxId);
-      smallCategoryBox = parent.find(smallCategoryBoxId);
-      sizeBox = grandparent.find(sizeBoxId);
-      brandBox = grandparent.find(brandBoxId);
-      $.ajax({
-        type: 'GET',
-        url: '/items/get_middle_categories',
-        data: { large_category_id: large_category_id },
-        dataType: 'json'
-      })
-      .done(function(middle_categories) {
-        if (middleCategoryBox.length >= 1) {
-          middleCategoryBox.remove();
-        }
-        if (smallCategoryBox.length >= 1) {
-          smallCategoryBox.remove();
-        }
-        if (sizeBox.length >= 1) {
-          sizeBox.remove();
-        }
-        if (brandBox.length >= 1) {
-          brandBox.remove();
-        }
-        if (middle_categories.length > 1) {
-          var html = addMiddleBox(middle_categories);
-          parent.append(html);
-        }
-      })
-      .fail(function(){
-        alert('middle_categoryのセレクトボックスの表示に失敗しました');
-      })
+  $(largeCategorySelectId).on('change', function(e) {
+    e.preventDefault();
+    var large_category_id = $(this).val();
+    var parent = $(this).parent().parent().parent();
+    var grandparent = parent.parent();
+    middleCategoryBox = parent.find(middleCategoryBoxId);
+    smallCategoryBox = parent.find(smallCategoryBoxId);
+    sizeBox = grandparent.find(sizeBoxId);
+    brandBox = grandparent.find(brandBoxId);
+    $.ajax({
+      type: 'GET',
+      url: '/items/get_middle_categories',
+      data: { large_category_id: large_category_id },
+      dataType: 'json'
+    })
+    .done(function(middle_categories) {
+      if (middleCategoryBox.length >= 1) {
+        middleCategoryBox.remove();
+      }
+      if (smallCategoryBox.length >= 1) {
+        smallCategoryBox.remove();
+      }
+      if (sizeBox.length >= 1) {
+        sizeBox.remove();
+      }
+      if (brandBox.length >= 1) {
+        brandBox.remove();
+      }
+      if (middle_categories.length > 1) {
+        var html = addMiddleBox(middle_categories);
+        parent.append(html);
+      }
+    })
+    .fail(function(){
+      alert('middle_categoryのセレクトボックスの表示に失敗しました');
     })
   })
 
-  $(function(){
-    $(document).on('change', middleCategorySelectId, function(e) {
-      e.preventDefault();
-      var middle_category_id = $(this).val();
-      var parent = $(this).parent().parent().parent().parent();
-      var grandparent = parent.parent();
-      smallCategoryBox = parent.find(smallCategoryBoxId);
-      sizeBox = grandparent.find(sizeBoxId);
-      brandBox = grandparent.find(brandBoxId);
-      $.ajax({
-        type: 'GET',
-        url: '/items/get_small_categories',
-        data: { middle_category_id: middle_category_id },
-        dataType: 'json'
-      })
-      .done(function(small_categories_item_sizes_brand_allow) {
-        if (smallCategoryBox.length >= 1) {
-          smallCategoryBox.remove();
-        }
-        if (sizeBox.length >= 1) {
-          sizeBox.remove();
-        }
-        if (brandBox.length >= 1) {
-          brandBox.remove();
-        }
-        if (small_categories_item_sizes_brand_allow.small_categories.length > 1) {
-          var html = addSmallBox(small_categories_item_sizes_brand_allow.small_categories);
-          parent.append(html);
-        }
-        if (small_categories_item_sizes_brand_allow.item_sizes.length > 1) {
-          var html = addSizeBox(small_categories_item_sizes_brand_allow.item_sizes);
-          grandparent.append(html);
-        }
-        if (small_categories_item_sizes_brand_allow.brand_allow == true) {
-          var html = addBrandBox();
-          grandparent.append(html);
-        }
-      })
-      .fail(function(){
-        alert('middle_categoryのセレクトボックスの表示に失敗しました');
-      })
+
+  $('body').on('change', middleCategorySelectId, function(e) {
+    e.preventDefault();
+    var middle_category_id = $(this).val();
+    var parent = $(this).parent().parent().parent().parent();
+    var grandparent = parent.parent();
+    smallCategoryBox = parent.find(smallCategoryBoxId);
+    sizeBox = grandparent.find(sizeBoxId);
+    brandBox = grandparent.find(brandBoxId);
+    $.ajax({
+      type: 'GET',
+      url: '/items/get_small_categories',
+      data: { middle_category_id: middle_category_id },
+      dataType: 'json'
+    })
+    .done(function(small_categories_item_sizes_brand_allow) {
+      if (smallCategoryBox.length >= 1) {
+        smallCategoryBox.remove();
+      }
+      if (sizeBox.length >= 1) {
+        sizeBox.remove();
+      }
+      if (brandBox.length >= 1) {
+        brandBox.remove();
+      }
+      if (small_categories_item_sizes_brand_allow.small_categories.length > 1) {
+        var html = addSmallBox(small_categories_item_sizes_brand_allow.small_categories);
+        parent.append(html);
+      }
+      if (small_categories_item_sizes_brand_allow.item_sizes.length > 1) {
+        var html = addSizeBox(small_categories_item_sizes_brand_allow.item_sizes);
+        grandparent.append(html);
+      }
+      if (small_categories_item_sizes_brand_allow.brand_allow == true) {
+        var html = addBrandBox();
+        grandparent.append(html);
+      }
+    })
+    .fail(function(){
+      alert('middle_categoryのセレクトボックスの表示に失敗しました');
     })
   })
 
-  $(function(){
-    $(document).on('change', smallCategorySelectId, function(e) {
-      e.preventDefault();
-      var small_category_id = $(this).val();
-      var parent = $(this).parent().parent().parent().parent();
-      var grandparent = parent.parent();
-      sizeBox = grandparent.find(sizeBoxId);
-      brandBox = grandparent.find(brandBoxId);
-      $.ajax({
-        type: 'GET',
-        url: '/items/get_sizes_brand_allow',
-        data: { small_category_id: small_category_id },
-        dataType: 'json'
-      })
-      .done(function(item_sizes_brand_allow) {
-        if (sizeBox.length >= 1) {
-          sizeBox.remove();
-        }
-        if (brandBox.length >= 1) {
-          brandBox.remove();
-        }
-        if (item_sizes_brand_allow.item_sizes.length > 1) {
-          var html = addSizeBox(item_sizes_brand_allow.item_sizes);
-          grandparent.append(html);
-        }
-        if (item_sizes_brand_allow.brand_allow == true) {
-          var html = addBrandBox();
-          grandparent.append(html);
-        }
-      })
-      .fail(function(){
-        alert('item_sizeのセレクトボックスの表示に失敗しました');
-      })
+  $('body').on('change', smallCategorySelectId, function(e) {
+    e.preventDefault();
+    var small_category_id = $(this).val();
+    var parent = $(this).parent().parent().parent().parent();
+    var grandparent = parent.parent();
+    sizeBox = grandparent.find(sizeBoxId);
+    brandBox = grandparent.find(brandBoxId);
+    $.ajax({
+      type: 'GET',
+      url: '/items/get_sizes_brand_allow',
+      data: { small_category_id: small_category_id },
+      dataType: 'json'
+    })
+    .done(function(item_sizes_brand_allow) {
+      if (sizeBox.length >= 1) {
+        sizeBox.remove();
+      }
+      if (brandBox.length >= 1) {
+        brandBox.remove();
+      }
+      if (item_sizes_brand_allow.item_sizes.length > 1) {
+        var html = addSizeBox(item_sizes_brand_allow.item_sizes);
+        grandparent.append(html);
+      }
+      if (item_sizes_brand_allow.brand_allow == true) {
+        var html = addBrandBox();
+        grandparent.append(html);
+      }
+    })
+    .fail(function(){
+      alert('item_sizeのセレクトボックスの表示に失敗しました');
     })
   })
 })
