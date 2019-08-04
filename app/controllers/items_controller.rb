@@ -156,7 +156,7 @@ class ItemsController < ApplicationController
 
   private
   def items_params
-    params.require(:item).permit(:name, :detail,:item_condition_id,:delivery_charge_id,:prefecture_id,:delivery_time_id,:delivery_way_id,:price,:item_size_id,:large_category_id,:middle_category_id,:small_category_id, images_attributes: [:image]).merge(seller_id: current_user.id, item_state_id: 1)
+    params.require(:item).permit(:name, :detail,:item_condition_id,:delivery_charge_id,:prefecture_id,:delivery_time_id,:delivery_way_id,:price,:item_size_id,:large_category_id,:middle_category_id,:small_category_id, images_attributes: [:id,:image]).merge(seller_id: current_user.id, item_state_id: 1)
   end
 
   def brand_params
