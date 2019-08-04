@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :items, only: [:index, :new, :create, :show, :destroy] do
+  resources :items, only: [:index, :new, :create, :show, :destroy,:edit,:update] do
     member do
       get 'buy_confirm'
       patch 'buy'

@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
   before_action :authenticate_user!, only: [:new,:buy_confirm,:buy_complete, :destroy]
-  before_action :set_item,only:[:buy_confirm,:show,:buy, :destroy]
+  before_action :set_item,only:[:buy_confirm,:show,:buy, :destroy,:edit,:update]
 
   def index
   end
@@ -32,6 +32,18 @@ class ItemsController < ApplicationController
       end
     end
     redirect_to item_path(@item.id)
+  end
+
+  def edit
+
+  end
+
+  def update
+    if  @item.update!(items_params)
+      redirect_to root_path
+    else
+      render :edit
+    end 
   end
 
   def buy_confirm
