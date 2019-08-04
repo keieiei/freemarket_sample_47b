@@ -34,6 +34,12 @@
         font-size: 0;
         text-align: center;
         font-size: 14px;
+        &--sold-out {
+          border: 1px solid $dark-gray;
+          background: $dark-gray;
+          color: $white;
+          cursor: not-allowed;
+        }
       }
     }
   }

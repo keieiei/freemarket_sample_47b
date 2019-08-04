@@ -1,4 +1,8 @@
-.main-page__item-container__sales-point-message
-  .main-page__item-container__sales-point-message__inner
-    = "売上金#{number_to_currency(300, format: "%u%n", unit: "￥")}をお持ちです"
-= link_to '購入画面に進む',  buy_confirm_item_path(@item.id), class: 'main-page__item-container__buy-btn'
+- if @item.item_state_id == 1
+  .main-page__item-container__sales-point-message
+    .main-page__item-container__sales-point-message__inner
+      = "売上金#{number_to_currency(300, format: "%u%n", unit: "￥")}をお持ちです"
+  = link_to '購入画面に進む',  buy_confirm_item_path(@item.id), class: 'main-page__item-container__buy-btn'
+- elsif @item.item_state_id == 4
+  .main-page__item-container__buy-btn.main-page__item-container__buy-btn--sold-out
+    売り切れました

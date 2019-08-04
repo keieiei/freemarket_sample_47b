@@ -1,6 +1,11 @@
 = link_to item_path(item.id), class: "main-page__body__pickup-container__items-container__items-box__item__link" do
   %figure.main-page__body__pickup-container__items-container__items-box__item__figure
     = image_tag item.images.first.image.url, class: "main-page__body__pickup-container__items-container__items-box__item__figure__image"
+    - if item.item_state.id == 4
+      %figcaption.main-page__body__pickup-container__items-container__items-box__item__figure__caption
+        .main-page__body__pickup-container__items-container__items-box__item__figure__caption__badge.main-page__body__pickup-container__items-container__items-box__item__figure__caption__badge--sold-out
+          .main-page__body__pickup-container__items-container__items-box__item__figure__caption__badge__text
+            SOLD
   .main-page__body__pickup-container__items-container__items-box__item__body
     %h3.main-page__body__pickup-container__items-container__items-box__item__body__name
       = item.name
