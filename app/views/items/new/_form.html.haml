@@ -9,7 +9,7 @@
         %div
           最大10枚までアップロードできます
         .single-page__body__form__sell-upload-drop-box
-          = f.fields_for :images do |image|
+          = f.fields_for @images do |image|
             %label.fallback
               = image.file_field :image, multipart: true,type: 'file',class: 'input-default'
           .visible-pc
@@ -74,7 +74,7 @@
           - if item.brand_id.present?
             .single-page__body__form__sell-box-option#brand-box
               .single-page__body__form__group
-                = fields_for @brand do |brand|
+                = f.fields_for @brand do |brand|
                   = f.label :name, "ブランド", class: "single-page__body__form__label-brand"
                   %span.single-page__body__form__group__optional-mark
                     任意
