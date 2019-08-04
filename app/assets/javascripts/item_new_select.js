@@ -144,11 +144,11 @@ $(document).on('turbolinks:load', function(){
           brandBox.remove();
         }
         if (small_categories_item_sizes_brand_allow.small_categories.length > 1) {
-          var html = addSmallBox(return_data.small_categories);
+          var html = addSmallBox(small_categories_item_sizes_brand_allow.small_categories);
           parent.append(html);
         }
         if (small_categories_item_sizes_brand_allow.item_sizes.length > 1) {
-          var html = addSizeBox(return_data.item_sizes);
+          var html = addSizeBox(small_categories_item_sizes_brand_allow.item_sizes);
           grandparent.append(html);
         }
         if (small_categories_item_sizes_brand_allow.brand_allow == true) {
@@ -184,7 +184,7 @@ $(document).on('turbolinks:load', function(){
           brandBox.remove();
         }
         if (item_sizes_brand_allow.item_sizes.length > 1) {
-          var html = addSizeBox(return_data.item_sizes);
+          var html = addSizeBox(item_sizes_brand_allow.item_sizes);
           grandparent.append(html);
         }
         if (item_sizes_brand_allow.brand_allow == true) {
