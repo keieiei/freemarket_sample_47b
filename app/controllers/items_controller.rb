@@ -17,24 +17,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(items_params)
     if @item.valid?
-      if brand_params.present?
-        if @item.small_category.present?
-          @brand_upper_category = SmallCategory.find(@item.small_category.id).brand_upper_category
-        else
-          @brand_upper_category = MiddleCategory.find(@item.middle_category.id).brand_upper_category
-        end
-        @brand = @brand_upper_category.brands.find_by(brand_params)
-        if @brand.nil?
-          @brand = Brand.create(brand_params)
-          BrandBrandUpperCategory.create(brand_id: @brand.id, brand_upper_category: @brand_upper_category)
-          if @item.small_category.present?
-            BrandSmallCategory.create(brand_id: @brand.id, small_category_id: @item.small_category.id)
-          else
-            BrandMiddleCategory.create(brand_id: @brand.id, middle_category_id: @item.middle_category.id)
-          end
-        end
-        @item.brand_id = @brand.id
-      end
+      @item.brand_id = set_brand_id(@item, brand_params) if brand_params.present?
       @item.save
       return redirect_to root_path
     else
@@ -53,15 +36,18 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
+    @brand = @item.brand if @item.brand_id.present?
   end
 
   def update
-    if  @item.update!(items_params)
-      redirect_to root_path
-    else
-      render :edit
-    end 
+    if Item.new(items_params).valid?
+      @brand_id = set_brand_id(Item.new(items_params), brand_params)
+      if  @item.update!(items_params.merge(brand_id: @brand_id))
+        redirect_to root_path
+      else
+        render :edit
+      end
+    end
   end
 
   def buy_confirm
@@ -269,6 +255,29 @@ class ItemsController < ApplicationController
     return Item.find(up_min_id) unless up_min_id.nil?
     low_min_id = Item.where("id < #{item.id}").minimum(:id)
     return Item.find(low_min_id)
+  end
+
+  def set_brand_id(item, brand_params)
+    if brand_params[:name].present?
+      if item.small_category.present?
+        brand_upper_category = SmallCategory.find(item.small_category.id).brand_upper_category
+      else
+        brand_upper_category = MiddleCategory.find(item.middle_category.id).brand_upper_category
+      end
+      brand = brand_upper_category.brands.find_by(brand_params)
+      if brand.nil?
+        brand = Brand.create(brand_params)
+        BrandBrandUpperCategory.create(brand_id: brand.id, brand_upper_category: brand_upper_category)
+        if item.small_category.present?
+          BrandSmallCategory.create(brand_id: brand.id, small_category_id: item.small_category.id)
+        else
+          BrandMiddleCategory.create(brand_id: brand.id, middle_category_id: item.middle_category.id)
+        end
+      end
+      return brand.id
+    else
+      return nil
+    end
   end
 
 end
