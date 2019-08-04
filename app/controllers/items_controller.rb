@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_brands, only: [:index, :show, :search, :detail_search]
   before_action :set_pickup_categories, only: [:index]
   before_action :set_pickup_brands, only: [:index]
-  before_action :authenticate_user!, only: [:new,:buy_confirm,:buy_complete, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :buy_confirm, :buy_complete, :destroy]
   before_action :set_item,only:[:buy_confirm,:show,:buy, :destroy,:edit,:update]
 
   def index
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   end
 
   def buy_confirm
-      return render :show if @item.seller_id == current_user.id  
+      return render :show if @item.seller_id == current_user.id || @item.item_state_id == 4
   end
 
   def show
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    if @item.update_attribute(:buyer_id , current_user.id)
+    if @item.update_attributes(buyer_id: current_user.id, item_state_id: 4)
       render :buy_complete
     else
       render :index
