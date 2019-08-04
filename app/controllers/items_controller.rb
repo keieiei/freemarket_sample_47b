@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.images.build
+    @images = @item.images.build
   end
   
   def create
@@ -37,10 +37,11 @@ class ItemsController < ApplicationController
 
   def edit
     @brand = @item.brand if @item.brand_id.present?
+    @images = @item.images
   end
 
   def update
-    if Item.new(items_params).valid?
+    if @item.update!(items_params.merge(brand_id: nil))
       @brand_id = set_brand_id(Item.new(items_params), brand_params)
       if  @item.update!(items_params.merge(brand_id: @brand_id))
         redirect_to root_path
@@ -160,7 +161,8 @@ class ItemsController < ApplicationController
   end
 
   def brand_params
-    params.require(:brand).permit(:name)
+    return params.require(:brand).permit(:name) if params[:brand].present?
+    return { name: nil }
   end
 
   def show_params
