@@ -23,7 +23,7 @@ crumb :users_confirm_sign_out do
 end
 
 crumb :users_sell_items_list do
-  link "出品した商品-出品中", users_sell_items_list_path
+  link "出品した商品-出品中", sell_items_list_users_path
   parent :users
 end
 
