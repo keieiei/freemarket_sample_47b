@@ -14,6 +14,10 @@
           %div{ class: first_add_active_class_name(i, 'main-page__item-container__content-box__photo-box__inner__select__content') }
             .main-page__item-container__content-box__photo-box__inner__select__content__inner
               = image_tag image.image.url, class: 'main-page__item-container__content-box__photo-box__inner__select__content__inner__image'
+    - if item.item_state.id == 4
+      .main-page__item-container__content-box__photo-box__badge.main-page__item-container__content-box__photo-box__badge--sold-out
+        .main-page__item-container__content-box__photo-box__badge__text
+          SOLD
   %table.main-page__item-container__content-box__detail
     %tbody.main-page__item-container__content-box__detail__container
       %tr.main-page__item-container__content-box__detail__container__content

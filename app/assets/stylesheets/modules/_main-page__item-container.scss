@@ -98,6 +98,37 @@
           }
         }
       }
+      &__badge {
+        &__text {
+          top: 18px;
+          font-size: 20px;
+          position: absolute;
+          left: 0;
+          z-index: 2;
+          color: $white;
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          letter-spacing: 2px;
+          font-weight: 600;
+        }
+        &:after {
+          display: block;
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 80px 80px 0 0;
+        }
+        &--sold-out {
+          &:after {
+            border-color: $red transparent transparent transparent;
+          }
+        }
+      }
     }
     &__detail {
       width: 100%;
@@ -199,6 +230,10 @@
     transition: all ease-out .3s;
     height: 60px;
     line-height: 60px;
+    &--sold-out {
+      background: $dark-gray;
+      cursor: not-allowed;
+    }
   }
   &__description {
     font-size: 18px;
